@@ -1,26 +1,161 @@
 @import "tailwindcss";
 
+/* ================================================
+   KAHU Studio Design System - Tailwind v4 Config
+   ================================================ */
+
+@theme {
+  /* Colors - KAHU Palette */
+  --color-kahu-terracotta: #8B3A3A;
+  --color-kahu-terracotta-light: #A65454;
+  --color-kahu-terracotta-dark: #6B2D2D;
+  --color-kahu-ivory: #FFFDF9;
+  --color-kahu-cream: #FAF7F2;
+  --color-kahu-cream-warm: #F5F0E8;
+  --color-kahu-cream-deep: #EDE6DB;
+  --color-kahu-charcoal: #1A1714;
+  --color-kahu-bark: #2D2420;
+  --color-kahu-bark-soft: #3D322C;
+  --color-kahu-taupe: #6B5B4F;
+  --color-kahu-olive: #5C6B4A;
+  --color-kahu-olive-light: #7A8B68;
+  --color-kahu-stone: #9A958F;
+  --color-kahu-stone-light: #B5B0AA;
+
+  /* Typography Scale */
+  --font-size-display-xl: clamp(3rem, 8vw, 6rem);
+  --font-size-display-lg: clamp(2.5rem, 6vw, 4.5rem);
+  --font-size-display-md: clamp(2rem, 4vw, 3rem);
+  --font-size-display-sm: clamp(1.5rem, 3vw, 2rem);
+  --font-size-body-lg: 1.125rem;
+  --font-size-body-md: 1rem;
+  --font-size-body-sm: 0.875rem;
+  --font-size-caption: 0.8125rem;
+
+  /* Font Families */
+  --font-display: var(--font-cormorant);
+  --font-body: var(--font-dm-sans);
+
+  /* Animation Easing */
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Spacing */
+  --spacing-section: clamp(4rem, 10vw, 8rem);
+  --spacing-container: clamp(1rem, 5vw, 2rem);
+}
+
+/* Base Styles */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: var(--color-kahu-cream-warm);
+  --foreground: var(--color-kahu-charcoal);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Utilities */
+.font-display {
+  font-family: var(--font-display), serif;
+}
+
+.font-body {
+  font-family: var(--font-body), sans-serif;
+}
+
+/* Text Sizes */
+.text-display-xl {
+  font-size: var(--font-size-display-xl);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.text-display-lg {
+  font-size: var(--font-size-display-lg);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.text-display-md {
+  font-size: var(--font-size-display-md);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.text-display-sm {
+  font-size: var(--font-size-display-sm);
+  line-height: 1.25;
+}
+
+.text-body-lg {
+  font-size: var(--font-size-body-lg);
+  line-height: 1.6;
+}
+
+.text-body-md {
+  font-size: var(--font-size-body-md);
+  line-height: 1.6;
+}
+
+.text-body-sm {
+  font-size: var(--font-size-body-sm);
+  line-height: 1.5;
+}
+
+.text-caption {
+  font-size: var(--font-size-caption);
+  line-height: 1.4;
+}
+
+/* Animation Utilities */
+.transition-smooth {
+  transition-timing-function: var(--ease-smooth);
+}
+
+/* Pulse Animation for Flash Sale Badge */
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+/* Selection Color */
+::selection {
+  background-color: var(--color-kahu-terracotta);
+  color: var(--color-kahu-ivory);
+}
+
+/* Focus Styles */
+:focus-visible {
+  outline: 2px solid var(--color-kahu-terracotta);
+  outline-offset: 2px;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-kahu-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-kahu-stone);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-kahu-taupe);
 }
