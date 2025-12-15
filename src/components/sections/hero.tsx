@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { HeroTitleReveal, WipeReveal } from "@/components/animations/organic-reveal";
 import { FloatingShapes, GrainTexture, AmbientGlow } from "@/components/animations/floating-shapes";
 import { usePrefersReducedMotion, useIsDesktop } from "@/hooks/use-media-query";
-import { KAHU_EASE, DURATION, DELAY, SPRING } from "@/lib/animation-config";
+import { KAHU_EASE, DURATION, DELAY, SPRING, EASE } from "@/lib/animation-config";
 
 // ============================================================================
 // Hero Section - Première impression spectaculaire
@@ -24,15 +24,21 @@ export function HeroSection() {
     offset: ["start start", "end start"],
   });
 
-  // Effets parallax subtils
-  const contentY = useTransform(scrollYProgress, [0, 1], [0, 100]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  // Effets parallax cinematiques Apple-style
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
+  const contentScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.92]);
+  const contentBlur = useTransform(scrollYProgress, [0, 0.4], [0, 8]);
+
   const smoothY = useSpring(contentY, SPRING.parallax);
   const smoothOpacity = useSpring(contentOpacity, SPRING.parallax);
+  const smoothScale = useSpring(contentScale, SPRING.parallax);
 
-  // Parallax du background
-  const bgY = useTransform(scrollYProgress, [0, 1], [0, 50]);
+  // Parallax du background - plus prononce
+  const bgY = useTransform(scrollYProgress, [0, 1], [0, 80]);
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
   const smoothBgY = useSpring(bgY, SPRING.parallax);
+  const smoothBgScale = useSpring(bgScale, SPRING.parallax);
 
   return (
     <section
@@ -68,11 +74,12 @@ export function HeroSection() {
         </>
       )}
 
-      {/* Background Pattern - Points subtils avec parallax */}
+      {/* Background Pattern - Points subtils avec parallax et scale */}
       <motion.div
         className="absolute inset-0 opacity-[0.03]"
         style={{
           y: shouldReduceMotion || !isDesktop ? 0 : smoothBgY,
+          scale: shouldReduceMotion || !isDesktop ? 1 : smoothBgScale,
         }}
       >
         <div
@@ -84,7 +91,7 @@ export function HeroSection() {
         />
       </motion.div>
 
-      {/* ============ Main Content ============ */}
+      {/* ============ Main Content avec Scroll Zoom Apple-style ============ */}
       <motion.div
         className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto"
         style={
@@ -93,6 +100,7 @@ export function HeroSection() {
             : {
                 y: smoothY,
                 opacity: smoothOpacity,
+                scale: smoothScale,
               }
         }
       >
@@ -103,8 +111,8 @@ export function HeroSection() {
           className="mb-6"
         />
 
-        {/* Sous-titre avec effet wipe */}
-        <WipeReveal delay={0.8} direction="up">
+        {/* Sous-titre avec effet wipe - timing dramatique */}
+        <WipeReveal delay={DELAY.hero.subtitle} direction="up">
           <p className="text-body-lg text-kahu-taupe max-w-xl mx-auto leading-relaxed">
             Design mobilier artisanal à Abidjan.
             <br className="hidden sm:block" />
@@ -112,21 +120,27 @@ export function HeroSection() {
           </p>
         </WipeReveal>
 
-        {/* Boutons CTA avec stagger */}
+        {/* Boutons CTA avec stagger cinematique */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
-            duration: DURATION.slow,
-            delay: 1.2,
-            ease: KAHU_EASE,
+            duration: DURATION.cinematic,
+            delay: DELAY.hero.buttons,
+            ease: EASE.dramatic,
           }}
           className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <motion.div
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            transition={{ duration: DURATION.fast }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              delay: DELAY.hero.buttons,
+              duration: DURATION.slow,
+              ease: EASE.reveal,
+            }}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
           >
             <Button href="/creations" size="lg">
               Découvrir les créations
@@ -134,11 +148,15 @@ export function HeroSection() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.4, duration: DURATION.normal }}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              delay: DELAY.hero.buttons + 0.15,
+              duration: DURATION.slow,
+              ease: EASE.reveal,
+            }}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
           >
             <Button href="/atelier" variant="ghost" size="lg">
               L&apos;Atelier
@@ -168,9 +186,9 @@ function ScrollIndicator() {
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{
-        delay: 2,
-        duration: DURATION.slow,
-        ease: KAHU_EASE,
+        delay: DELAY.hero.scroll,
+        duration: DURATION.cinematic,
+        ease: EASE.cinematic,
       }}
       className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
     >

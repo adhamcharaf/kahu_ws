@@ -187,6 +187,17 @@ export function ProductTiltCard({
   const shadowX = useTransform(mouseX, [-0.5, 0.5], [20, -20]);
   const shadowY = useTransform(mouseY, [-0.5, 0.5], [20, -20]);
 
+  // Pre-computed transforms (must be at top level, before any returns)
+  const boxShadowValue = useTransform(
+    [shadowX, shadowY, scale] as unknown as [],
+    ([x, y, s]: number[]) =>
+      s > 1
+        ? `${x * 0.5}px ${y * 0.5}px 30px rgba(0, 0, 0, 0.08), ${x * 0.2}px ${y * 0.2}px 10px rgba(0, 0, 0, 0.05)`
+        : "0 4px 20px rgba(0, 0, 0, 0.05)"
+  );
+
+  const highlightOpacity = useTransform(scale, [1, 1.03], [0, 0.3]);
+
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     if (!ref.current || shouldReduceMotion) return;
 
@@ -238,13 +249,7 @@ export function ProductTiltCard({
           scale,
           transformStyle: "preserve-3d",
           // Shadow dynamique
-          boxShadow: useTransform(
-            [shadowX, shadowY, scale] as any,
-            ([x, y, s]: number[]) =>
-              s > 1
-                ? `${x * 0.5}px ${y * 0.5}px 30px rgba(0, 0, 0, 0.08), ${x * 0.2}px ${y * 0.2}px 10px rgba(0, 0, 0, 0.05)`
-                : "0 4px 20px rgba(0, 0, 0, 0.05)"
-          ),
+          boxShadow: boxShadowValue,
         }}
         className="relative rounded-sm overflow-hidden"
       >
@@ -254,7 +259,7 @@ export function ProductTiltCard({
         <motion.div
           className="absolute inset-0 pointer-events-none"
           style={{
-            opacity: useTransform(scale, [1, 1.03], [0, 0.3]),
+            opacity: highlightOpacity,
             background: `linear-gradient(
               135deg,
               rgba(255, 255, 255, 0.1) 0%,

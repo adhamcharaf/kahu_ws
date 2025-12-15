@@ -7,14 +7,26 @@
 export const KAHU_EASE = [0.22, 1, 0.36, 1] as const;
 export const KAHU_EASE_CSS = "cubic-bezier(0.22, 1, 0.36, 1)";
 
-// Durées standardisées (en secondes)
+// Easings Apple-style pour effets cinematiques
+export const EASE = {
+  smooth: [0.22, 1, 0.36, 1] as const,      // KAHU signature
+  cinematic: [0.65, 0, 0.35, 1] as const,   // In-out fluide (page transitions)
+  dramatic: [0.16, 1, 0.3, 1] as const,     // Depart rapide, arrivee douce
+  reveal: [0.77, 0, 0.175, 1] as const,     // Fast start, smooth end (hero)
+  bounce: [0.34, 1.56, 0.64, 1] as const,   // Leger overshoot
+} as const;
+
+// Durees standardisees (en secondes)
 export const DURATION = {
-  instant: 0.15,    // Micro-interactions (hover states)
-  fast: 0.3,        // Transitions rapides (boutons, badges)
-  normal: 0.5,      // Transitions standard (cards, sections)
-  slow: 0.8,        // Animations importantes (hero, reveal)
-  reveal: 1.2,      // Grandes révélations (page load)
-  contemplative: 2, // Animations décoratives lentes (floating shapes)
+  instant: 0.15,      // Micro-interactions (hover states)
+  fast: 0.3,          // Transitions rapides (boutons, badges)
+  normal: 0.5,        // Transitions standard (cards, sections)
+  slow: 0.8,          // Animations importantes (hero, reveal)
+  cinematic: 0.9,     // Transitions de page Apple-style
+  reveal: 1.2,        // Grandes revelations (page load)
+  dramatic: 1.4,      // Reveals hero dramatiques
+  contemplative: 2,   // Animations decoratives lentes (floating shapes)
+  epic: 2.5,          // Sequence hero complete
 } as const;
 
 // Delays standardisés (en secondes)
@@ -30,10 +42,12 @@ export const DELAY = {
     long: 0.4,
   },
   hero: {
-    title: 0,
-    subtitle: 0.2,
-    buttons: 0.4,
-    scroll: 1,
+    grain: 0,           // Background grain
+    shapes: 0.3,        // Floating shapes
+    title: 0.6,         // Titre principal
+    subtitle: 1.0,      // Sous-titre
+    buttons: 1.3,       // CTAs
+    scroll: 2.0,        // Scroll indicator
   },
 } as const;
 

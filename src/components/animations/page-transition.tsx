@@ -4,7 +4,7 @@ import { motion, AnimatePresence, Variants } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
 import { usePrefersReducedMotion } from "@/hooks/use-media-query";
-import { KAHU_EASE, DURATION } from "@/lib/animation-config";
+import { KAHU_EASE, DURATION, EASE } from "@/lib/animation-config";
 
 // ============================================================================
 // Page Transition - Transitions fluides entre les pages
@@ -14,7 +14,7 @@ import { KAHU_EASE, DURATION } from "@/lib/animation-config";
 interface PageTransitionProps {
   children: ReactNode;
   /** Mode de transition */
-  mode?: "fade" | "slide" | "scale" | "reveal";
+  mode?: "fade" | "slide" | "scale" | "reveal" | "cinematic";
   /** Durée customisée */
   duration?: number;
 }
@@ -106,6 +106,35 @@ const transitionVariants: Record<string, Variants> = {
       transition: {
         duration: DURATION.fast,
         ease: KAHU_EASE,
+      },
+    },
+  },
+
+  // Mode cinematique Apple-style - plus lent, plus dramatique
+  cinematic: {
+    initial: {
+      opacity: 0,
+      y: 40,
+      filter: "blur(4px)",
+    },
+    enter: {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
+      transition: {
+        duration: DURATION.cinematic,
+        ease: EASE.cinematic,
+        when: "beforeChildren",
+        staggerChildren: 0.08,
+      },
+    },
+    exit: {
+      opacity: 0,
+      y: -20,
+      filter: "blur(4px)",
+      transition: {
+        duration: DURATION.fast,
+        ease: EASE.cinematic,
       },
     },
   },

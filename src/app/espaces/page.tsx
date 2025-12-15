@@ -5,6 +5,13 @@ import Footer from "@/components/layout/footer";
 import { ProjectCard } from "@/components/ui/project-card";
 import { ProjectGridSkeleton } from "@/components/ui/skeleton";
 import { getProjects } from "@/lib/notion";
+import {
+  EspacesHero,
+  AnimatedProjectsSection,
+  AnimatedProjectGrid,
+  AnimatedProjectItem,
+  EmptyProjectsState,
+} from "./espaces-hero";
 
 export const metadata: Metadata = {
   title: "Espaces",
@@ -19,25 +26,17 @@ async function ProjectsGrid() {
   const projects = await getProjects();
 
   if (projects.length === 0) {
-    return (
-      <div className="text-center py-16">
-        <p className="text-body-md text-kahu-taupe">
-          Aucun projet pour le moment.
-        </p>
-      </div>
-    );
+    return <EmptyProjectsState />;
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+    <AnimatedProjectGrid>
       {projects.map((project, index) => (
-        <ProjectCard
-          key={project.id}
-          project={project}
-          priority={index < 2}
-        />
+        <AnimatedProjectItem key={project.id}>
+          <ProjectCard project={project} priority={index < 2} />
+        </AnimatedProjectItem>
       ))}
-    </div>
+    </AnimatedProjectGrid>
   );
 }
 
@@ -47,27 +46,15 @@ export default function EspacesPage() {
       <Header />
 
       <main className="pt-20">
-        {/* Hero Section */}
-        <section className="py-section bg-kahu-cream-deep">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h1 className="font-display text-display-lg text-kahu-charcoal">
-              Espaces
-            </h1>
-            <p className="mt-4 text-body-lg text-kahu-taupe max-w-2xl">
-              Des amenagements sur-mesure qui transforment vos espaces de vie.
-              Chaque projet est une collaboration unique avec nos clients.
-            </p>
-          </div>
-        </section>
+        {/* Hero Section avec animations cinematiques */}
+        <EspacesHero />
 
-        {/* Projects Grid */}
-        <section className="py-section bg-kahu-cream-warm">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <Suspense fallback={<ProjectGridSkeleton count={4} />}>
-              <ProjectsGrid />
-            </Suspense>
-          </div>
-        </section>
+        {/* Projects Grid avec transitions fluides */}
+        <AnimatedProjectsSection>
+          <Suspense fallback={<ProjectGridSkeleton count={4} />}>
+            <ProjectsGrid />
+          </Suspense>
+        </AnimatedProjectsSection>
       </main>
 
       <Footer />

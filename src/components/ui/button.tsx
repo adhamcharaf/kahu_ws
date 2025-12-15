@@ -175,16 +175,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     // Render as internal link
     if (href) {
       return (
-        <Link href={href} passHref legacyBehavior>
-          <motion.a
-            className={baseStyles}
-            onClick={createRipple}
-            {...motionProps}
-          >
+        <motion.div {...motionProps} className="inline-block">
+          <Link href={href} className={baseStyles} onClick={createRipple}>
             {children}
             <RippleEffect />
-          </motion.a>
-        </Link>
+          </Link>
+        </motion.div>
       );
     }
 

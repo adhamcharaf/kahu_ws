@@ -11,6 +11,13 @@ import {
   getFlashSaleProducts,
 } from "@/lib/notion";
 import type { ProductFilter, ProductCategory } from "@/lib/types";
+import {
+  CreationsHero,
+  AnimatedProductsSection,
+  AnimatedProductGrid,
+  AnimatedProductItem,
+  EmptyState,
+} from "./creations-hero";
 
 export const metadata: Metadata = {
   title: "Creations",
@@ -46,25 +53,17 @@ async function ProductGrid({ filter }: { filter: ProductFilter }) {
   }
 
   if (products.length === 0) {
-    return (
-      <div className="text-center py-16">
-        <p className="text-body-md text-kahu-taupe">
-          Aucune creation dans cette categorie pour le moment.
-        </p>
-      </div>
-    );
+    return <EmptyState />;
   }
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+    <AnimatedProductGrid>
       {products.map((product, index) => (
-        <ProductCard
-          key={product.id}
-          product={product}
-          priority={index < 4}
-        />
+        <AnimatedProductItem key={product.id}>
+          <ProductCard product={product} priority={index < 4} />
+        </AnimatedProductItem>
       ))}
-    </div>
+    </AnimatedProductGrid>
   );
 }
 
@@ -79,36 +78,21 @@ export default async function CreationsPage({
       <Header />
 
       <main className="pt-20">
-        {/* Hero Section */}
-        <section className="py-section bg-kahu-cream-deep">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h1 className="font-display text-display-lg text-kahu-charcoal">
-              Creations
-            </h1>
-            <p className="mt-4 text-body-lg text-kahu-taupe max-w-2xl">
-              Des pieces uniques, fabriquees a la main dans notre atelier
-              d&apos;Abidjan. Chaque creation porte en elle une intention, une
-              histoire.
-            </p>
-          </div>
-        </section>
+        {/* Hero Section avec animations cinematiques */}
+        <CreationsHero />
 
-        {/* Filters & Grid */}
-        <section className="py-section bg-kahu-cream-warm">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            {/* Filters */}
+        {/* Filters & Grid avec transitions fluides */}
+        <AnimatedProductsSection
+          filters={
             <Suspense fallback={null}>
               <ProductFilters />
             </Suspense>
-
-            {/* Products Grid */}
-            <div className="mt-10">
-              <Suspense fallback={<ProductGridSkeleton count={6} />}>
-                <ProductGrid filter={filter} />
-              </Suspense>
-            </div>
-          </div>
-        </section>
+          }
+        >
+          <Suspense fallback={<ProductGridSkeleton count={6} />}>
+            <ProductGrid filter={filter} />
+          </Suspense>
+        </AnimatedProductsSection>
       </main>
 
       <Footer />

@@ -19,8 +19,8 @@ export default function Template({ children }: TemplateProps) {
       {/* Annonce de navigation pour l'accessibilité */}
       <RouteAnnouncer />
 
-      {/* Wrapper de transition */}
-      <PageTransition mode="slide">
+      {/* Wrapper de transition - Mode cinematique Apple-style */}
+      <PageTransition mode="cinematic">
         {children}
       </PageTransition>
     </>

@@ -24,3 +24,6 @@ export * from "./page-transition";
 
 // Counter animations
 export * from "./counter-animation";
+
+// Scroll cinema - Apple-style scroll animations
+export * from "./scroll-cinema";
