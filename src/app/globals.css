@@ -36,12 +36,44 @@
   --font-display: var(--font-cormorant);
   --font-body: var(--font-dm-sans);
 
-  /* Animation Easing */
+  /* Animation Easing - Apple-style */
   --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-cinematic: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-dramatic: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-reveal: cubic-bezier(0.77, 0, 0.175, 1);
 
   /* Spacing */
   --spacing-section: clamp(4rem, 10vw, 8rem);
   --spacing-container: clamp(1rem, 5vw, 2rem);
+
+  /* Gradient Presets - Creative Color Usage */
+  --gradient-cream-flow: linear-gradient(180deg,
+    var(--color-kahu-cream) 0%,
+    var(--color-kahu-cream-warm) 50%,
+    var(--color-kahu-cream-deep) 100%);
+
+  --gradient-terracotta-glow: radial-gradient(
+    ellipse 80% 50% at 50% 50%,
+    rgba(139, 58, 58, 0.15) 0%,
+    transparent 70%);
+
+  --gradient-terracotta-soft: radial-gradient(
+    circle at center,
+    rgba(139, 58, 58, 0.08) 0%,
+    transparent 60%);
+
+  --gradient-olive-accent: radial-gradient(
+    ellipse at 70% 30%,
+    rgba(92, 107, 74, 0.1) 0%,
+    transparent 50%);
+
+  --gradient-dark-immersive: linear-gradient(180deg,
+    var(--color-kahu-bark) 0%,
+    var(--color-kahu-charcoal) 100%);
+
+  --gradient-hero-ambient:
+    radial-gradient(ellipse 100% 80% at 30% 20%, rgba(139, 58, 58, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse 80% 60% at 70% 80%, rgba(92, 107, 74, 0.06) 0%, transparent 40%);
 }
 
 /* Base Styles */
@@ -158,4 +190,47 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-kahu-taupe);
+}
+
+/* ================================================
+   3D Gallery Animation
+   ================================================ */
+
+@keyframes gallery3d-float {
+  0% {
+    transform: translate(-50%, -50%) translateZ(-400px) scale(0.7);
+    opacity: 0;
+    filter: blur(6px);
+  }
+  10% {
+    opacity: 0.4;
+    filter: blur(3px);
+  }
+  25% {
+    opacity: 0.8;
+    filter: blur(1px);
+  }
+  40% {
+    transform: translate(-50%, -50%) translateZ(-100px) scale(0.9);
+    opacity: 1;
+    filter: blur(0px);
+  }
+  60% {
+    transform: translate(-50%, -50%) translateZ(50px) scale(1);
+    opacity: 1;
+    filter: blur(0px);
+  }
+  75% {
+    opacity: 0.8;
+    filter: blur(1px);
+  }
+  90% {
+    opacity: 0.4;
+    filter: blur(3px);
+  }
+  100% {
+    transform: translate(-50%, -50%) translateZ(200px) scale(1.1);
+    opacity: 0;
+    filter: blur(6px);
+  }
 }
