@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import MobileNav from "./mobile-nav";
@@ -52,11 +53,15 @@ export default function Header() {
         <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 sm:h-20 items-center justify-between">
             {/* Logo */}
-            <Link
-              href="/"
-              className="font-display text-xl sm:text-2xl font-medium tracking-wide text-kahu-charcoal hover:text-kahu-terracotta transition-colors"
-            >
-              KAHU
+            <Link href="/" className="block">
+              <Image
+                src="/images/Logo.png"
+                alt="KAHU Studio"
+                width={200}
+                height={80}
+                className="h-16 sm:h-20 w-auto"
+                priority
+              />
             </Link>
 
             {/* Desktop Navigation */}

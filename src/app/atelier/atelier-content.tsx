@@ -3,15 +3,16 @@
 import { motion } from "framer-motion";
 import {
   SectionReveal,
-  ScrollParallax,
   CinemaStagger,
   CinemaStaggerItem,
   ColorMorphSection,
   CinematicHeader,
 } from "@/components/animations/scroll-cinema";
 import { GrainTexture, AmbientGlow } from "@/components/animations/floating-shapes";
+import { ArtGallerySlider } from "@/components/art-gallery-slider";
 import { usePrefersReducedMotion, useIsDesktop } from "@/hooks/use-media-query";
 import { DURATION, EASE, DELAY } from "@/lib/animation-config";
+import { atelierArtworks } from "@/data/artworks";
 
 // ============================================================================
 // Atelier Content - Version animee Apple-style
@@ -53,19 +54,13 @@ export function AtelierContent() {
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Portrait avec effet parallax */}
-            <ScrollParallax factor={0.2}>
-              <SectionReveal variant="fade-scale">
-                <div className="aspect-[3/4] bg-kahu-cream-deep rounded-sm overflow-hidden">
-                  {/* Placeholder for portrait image */}
-                  <motion.div
-                    className="w-full h-full bg-gradient-to-br from-kahu-terracotta/5 to-kahu-olive/5"
-                    whileHover={shouldReduceMotion ? {} : { scale: 1.02 }}
-                    transition={{ duration: 0.6, ease: EASE.cinematic }}
-                  />
-                </div>
-              </SectionReveal>
-            </ScrollParallax>
+            {/* Slider galerie atelier */}
+            <SectionReveal variant="fade-scale">
+              <ArtGallerySlider
+                artworks={atelierArtworks}
+                className="rounded-sm overflow-hidden"
+              />
+            </SectionReveal>
 
             {/* Text avec reveal */}
             <div>

@@ -1,0 +1,83 @@
+// ============================================================================
+// useSliderWheel - Hook de navigation par molette de souris
+// ============================================================================
+
+"use client";
+
+import { useEffect, useRef, useCallback } from "react";
+import { WHEEL_CONFIG } from "@/lib/slider-constants";
+
+interface UseSliderWheelProps {
+  /** Ref du container */
+  containerRef: React.RefObject<HTMLElement | null>;
+  /** Callback de navigation */
+  onNavigate: (direction: -1 | 1) => void;
+  /** Active/desactive le hook */
+  enabled?: boolean;
+}
+
+export function useSliderWheel({
+  containerRef,
+  onNavigate,
+  enabled = true,
+}: UseSliderWheelProps): void {
+  const lastNavigationRef = useRef(0);
+  const accumulatedDeltaRef = useRef(0);
+
+  const handleWheel = useCallback(
+    (e: WheelEvent) => {
+      if (!enabled) return;
+
+      // Verifier si l'event est sur notre container
+      const container = containerRef.current;
+      if (!container || !container.contains(e.target as Node)) {
+        return;
+      }
+
+      // Empecher le scroll de la page
+      e.preventDefault();
+
+      const now = Date.now();
+      const timeSinceLastNav = now - lastNavigationRef.current;
+
+      // Verification du cooldown
+      if (timeSinceLastNav < WHEEL_CONFIG.cooldown) {
+        return;
+      }
+
+      // Accumuler le delta pour une detection plus fluide
+      accumulatedDeltaRef.current += e.deltaY * WHEEL_CONFIG.sensitivity;
+
+      // Verifier si le delta accumule depasse le seuil
+      if (Math.abs(accumulatedDeltaRef.current) > WHEEL_CONFIG.threshold) {
+        const direction = accumulatedDeltaRef.current > 0 ? 1 : -1;
+
+        onNavigate(direction);
+        lastNavigationRef.current = now;
+        accumulatedDeltaRef.current = 0;
+      }
+    },
+    [enabled, containerRef, onNavigate]
+  );
+
+  useEffect(() => {
+    if (!enabled) return;
+
+    const container = containerRef.current;
+    if (!container) return;
+
+    // passive: false requis pour appeler preventDefault
+    container.addEventListener("wheel", handleWheel, { passive: false });
+
+    return () => {
+      container.removeEventListener("wheel", handleWheel);
+    };
+  }, [enabled, containerRef, handleWheel]);
+
+  // Reset du delta accumule au demontage
+  useEffect(() => {
+    return () => {
+      accumulatedDeltaRef.current = 0;
+    };
+  }, []);
+}

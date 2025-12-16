@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const navLinks = [
   { href: "/atelier", label: "Atelier" },
@@ -17,11 +18,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
           {/* Brand */}
           <div>
-            <Link
-              href="/"
-              className="font-display text-2xl font-medium tracking-wide text-kahu-ivory hover:text-kahu-terracotta-light transition-colors"
-            >
-              KAHU
+            <Link href="/" className="inline-block">
+              <Image
+                src="/images/Logo.png"
+                alt="KAHU Studio"
+                width={100}
+                height={40}
+                className="h-10 w-auto brightness-0 invert"
+              />
             </Link>
             <p className="mt-4 text-body-sm text-kahu-stone-light max-w-xs">
               Studio de design mobilier artisanal a Abidjan. Creations uniques,

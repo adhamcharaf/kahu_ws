@@ -87,7 +87,7 @@ export function HeroSection() {
           className="mb-8"
         >
           <Image
-            src="/images/logo.png"
+            src="/images/Logo.png"
             alt="KAHU"
             width={280}
             height={112}
