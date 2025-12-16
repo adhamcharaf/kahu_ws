@@ -2,9 +2,11 @@
 
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { HeroTitleReveal, WipeReveal } from "@/components/animations/organic-reveal";
-import { FloatingShapes, GrainTexture, AmbientGlow } from "@/components/animations/floating-shapes";
+import { GrainTexture } from "@/components/animations/floating-shapes";
+import { CSS3DGallery } from "@/components/animations/css-3d-gallery";
 import { usePrefersReducedMotion, useIsDesktop } from "@/hooks/use-media-query";
 import { KAHU_EASE, DURATION, DELAY, SPRING, EASE } from "@/lib/animation-config";
 
@@ -47,49 +49,18 @@ export function HeroSection() {
     >
       {/* ============ Background Layers ============ */}
 
-      {/* Grain Texture - Texture subtile */}
-      <GrainTexture opacity={0.025} />
-
-      {/* Floating Shapes - Formes organiques */}
-      <FloatingShapes
-        count={3}
-        color="rgb(139, 58, 58)" // terracotta
-        opacity={0.04}
-        size="lg"
-      />
-
-      {/* Ambient Glow - Lueur chaleureuse */}
-      {isDesktop && (
-        <>
-          <AmbientGlow
-            color="rgba(139, 58, 58, 0.08)"
-            size={600}
-            position={{ x: "20%", y: "30%" }}
-          />
-          <AmbientGlow
-            color="rgba(92, 107, 74, 0.05)"
-            size={400}
-            position={{ x: "80%", y: "70%" }}
-          />
-        </>
+      {/* Layer 1: Galerie CSS 3D ou fallback statique */}
+      {!shouldReduceMotion ? (
+        <CSS3DGallery />
+      ) : (
+        <HeroStaticBackground />
       )}
 
-      {/* Background Pattern - Points subtils avec parallax et scale */}
-      <motion.div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          y: shouldReduceMotion || !isDesktop ? 0 : smoothBgY,
-          scale: shouldReduceMotion || !isDesktop ? 1 : smoothBgScale,
-        }}
-      >
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)`,
-            backgroundSize: "48px 48px",
-          }}
-        />
-      </motion.div>
+      {/* Layer 2: Grain Texture - Texture subtile par-dessus */}
+      <GrainTexture opacity={0.02} />
+
+      {/* Layer 3: Gradient overlay pour lisibilité du texte */}
+      <div className="absolute inset-0 z-[1] pointer-events-none bg-gradient-to-b from-kahu-cream-deep/60 via-kahu-cream-deep/30 to-kahu-cream-deep/70" />
 
       {/* ============ Main Content avec Scroll Zoom Apple-style ============ */}
       <motion.div
@@ -104,6 +75,27 @@ export function HeroSection() {
               }
         }
       >
+        {/* Logo grand format */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{
+            duration: DURATION.cinematic,
+            delay: 0.2,
+            ease: EASE.dramatic,
+          }}
+          className="mb-8"
+        >
+          <Image
+            src="/images/logo.png"
+            alt="KAHU"
+            width={280}
+            height={112}
+            className="h-28 sm:h-36 md:h-44 w-auto mx-auto"
+            priority
+          />
+        </motion.div>
+
         {/* Titre principal avec révélation caractère par caractère */}
         <HeroTitleReveal
           title="KAHU Studio"
@@ -299,5 +291,44 @@ export function MinimalHero({
         </motion.div>
       </div>
     </section>
+  );
+}
+
+// ============================================================================
+// Hero Static Background - Fallback pour reduced motion / loading
+// ============================================================================
+
+function HeroStaticBackground() {
+  return (
+    <div className="absolute inset-0 z-0">
+      {/* Pattern de points subtils */}
+      <div
+        className="absolute inset-0 opacity-[0.04]"
+        style={{
+          backgroundImage: `radial-gradient(circle at 2px 2px, rgb(139, 58, 58) 1px, transparent 0)`,
+          backgroundSize: "48px 48px",
+        }}
+      />
+
+      {/* Ambient glow */}
+      <div
+        className="absolute w-[400px] h-[400px] rounded-full blur-3xl opacity-10"
+        style={{
+          background: "radial-gradient(circle, rgba(139, 58, 58, 0.4) 0%, transparent 70%)",
+          left: "20%",
+          top: "30%",
+          transform: "translate(-50%, -50%)",
+        }}
+      />
+      <div
+        className="absolute w-[300px] h-[300px] rounded-full blur-3xl opacity-8"
+        style={{
+          background: "radial-gradient(circle, rgba(92, 107, 74, 0.3) 0%, transparent 70%)",
+          right: "20%",
+          bottom: "30%",
+          transform: "translate(50%, 50%)",
+        }}
+      />
+    </div>
   );
 }
