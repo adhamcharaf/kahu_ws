@@ -53,21 +53,24 @@ export function MagneticElement({
     y.set(0);
   }
 
+  // Cast pour éviter erreur TypeScript avec ElementType générique
+  const Wrapper = Component as any;
+
   // Si désactivé ou mobile, pas d'effet
   if (!isDesktop || shouldReduceMotion || disabled) {
     return (
-      <Component className={className}>
+      <Wrapper className={className}>
         {children}
-      </Component>
+      </Wrapper>
     );
   }
 
   return (
-    <Component ref={ref} className={className}>
+    <Wrapper ref={ref} className={className}>
       <motion.div style={{ x, y }}>
         {children}
       </motion.div>
-    </Component>
+    </Wrapper>
   );
 }
 
