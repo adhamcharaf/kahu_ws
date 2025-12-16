@@ -81,6 +81,7 @@ export function ParallaxWrapper({
   return (
     <div ref={ref} className={className}>
       <motion.div
+        className="w-full h-full"
         style={{
           ...restStyle,
           y: direction === "vertical" || direction === "both" ? smoothY : undefined,

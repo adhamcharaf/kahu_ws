@@ -53,7 +53,14 @@ export function CSS3DGallery({
 }: CSS3DGalleryProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(true);
-  const isDesktop = useIsDesktop();
+  const [mounted, setMounted] = useState(false);
+  const isDesktopQuery = useIsDesktop();
+  const isDesktop = mounted ? isDesktopQuery : false; // Valeur stable côté serveur
+
+  // Monter côté client uniquement pour éviter hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Observer pour lazy-load animation
   useEffect(() => {
@@ -110,9 +117,11 @@ export function CSS3DGallery({
               left: `calc(50% + ${imagePositions[index].x}px)`,
               top: `calc(50% + ${imagePositions[index].y}px)`,
               // Animation Z linéaire pour mouvement fluide constant
-              animation: isVisible
-                ? `gallery3d-float ${speed}s linear infinite`
-                : "none",
+              // Propriétés séparées pour éviter conflit shorthand/non-shorthand
+              animationName: isVisible ? "gallery3d-float" : "none",
+              animationDuration: `${speed}s`,
+              animationTimingFunction: "linear",
+              animationIterationCount: "infinite",
               animationDelay: `${-(index / images.length) * speed}s`,
               transformStyle: "preserve-3d",
             }}

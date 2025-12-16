@@ -36,7 +36,7 @@ export default function Home() {
         <PhilosophyBlock />
 
         {/* Custom CTA */}
-        <CustomCTA />
+        <CustomCTA imageSrc="/images/atelier/outils.png" />
       </main>
 
       <Footer />

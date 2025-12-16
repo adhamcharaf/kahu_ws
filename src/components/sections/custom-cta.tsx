@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { TextReveal } from "@/components/animations/text-reveal";
@@ -25,6 +25,14 @@ export function CustomCTA({ imageSrc }: CustomCTAProps) {
   const isInView = useInView(ref, VIEWPORT.default);
   const shouldReduceMotion = usePrefersReducedMotion();
   const isDesktop = useIsDesktop();
+
+  // Monter côté client pour éviter hydration mismatch
+  const [mounted, setMounted] = useState(false);
+  const isDesktopValue = mounted ? isDesktop : false;
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Animation variants
   const imageVariants = {
@@ -64,7 +72,7 @@ export function CustomCTA({ imageSrc }: CustomCTAProps) {
             animate={isInView ? "visible" : "hidden"}
             className="order-2 lg:order-1"
           >
-            {isDesktop && !shouldReduceMotion ? (
+            {isDesktopValue && !shouldReduceMotion ? (
               <ParallaxWrapper speed={0.3} className="aspect-[4/3]">
                 <div className="relative w-full h-full bg-kahu-cream rounded-sm overflow-hidden">
                   {imageSrc ? (
