@@ -35,6 +35,7 @@ import {
   GallerySlideCounter,
   GalleryTitle,
 } from "./gallery-keyboard-hint";
+import { GalleryFilters } from "./gallery-filters";
 
 // ============================================================================
 // Composant Principal
@@ -47,6 +48,8 @@ export function FullscreenGallerySlider({
   autoPlayInterval = 5,
   showKeyboardHint = true,
   title = "Gallery",
+  showFilters = false,
+  currentFilter = "tous",
 }: FullscreenGalleryProps) {
   // Refs
   const containerRef = useRef<HTMLElement>(null);
@@ -55,6 +58,7 @@ export function FullscreenGallerySlider({
   // State
   const [activeIndex, setActiveIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   // Hooks responsive
   const isDesktop = useIsDesktop();
@@ -100,8 +104,14 @@ export function FullscreenGallerySlider({
     mass: SLIDER_SPRING.drag.mass,
   });
 
-  // Calculer la largeur d'une card
+  // Monter cote client uniquement
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Calculer la largeur d'une card (SSR-safe)
   const getCardWidth = useCallback(() => {
+    if (typeof window === "undefined") return 300; // Valeur par defaut SSR
     const heightVh = isDesktop
       ? card.heightVhDesktop
       : isMobile
@@ -111,9 +121,10 @@ export function FullscreenGallerySlider({
     return height * card.aspectRatio + card.gap;
   }, [isDesktop, isMobile, card]);
 
-  // Calculer l'offset pour centrer la card active
+  // Calculer l'offset pour centrer la card active (SSR-safe)
   const getTrackOffset = useCallback(
     (index: number) => {
+      if (typeof window === "undefined") return 0; // Valeur par defaut SSR
       const cardWidth = getCardWidth();
       const containerWidth =
         containerRef.current?.offsetWidth || window.innerWidth;
@@ -123,18 +134,20 @@ export function FullscreenGallerySlider({
     [getCardWidth, card.gap]
   );
 
-  // Track offset anime
-  const trackOffset = useMotionValue(getTrackOffset(activeIndex));
+  // Track offset anime - initialiser a 0 pour SSR
+  const trackOffset = useMotionValue(0);
   const springTrackOffset = useSpring(trackOffset, {
     stiffness: SLIDER_SPRING.slide.stiffness,
     damping: SLIDER_SPRING.slide.damping,
     mass: SLIDER_SPRING.slide.mass,
   });
 
-  // Mettre a jour l'offset quand l'index change
+  // Mettre a jour l'offset quand monte ou index change
   useEffect(() => {
-    trackOffset.set(getTrackOffset(activeIndex));
-  }, [activeIndex, getTrackOffset, trackOffset]);
+    if (mounted) {
+      trackOffset.set(getTrackOffset(activeIndex));
+    }
+  }, [mounted, activeIndex, getTrackOffset, trackOffset]);
 
   // Handlers de drag
   const handleDragStart = useCallback(() => {
@@ -215,12 +228,21 @@ export function FullscreenGallerySlider({
         disabled={prefersReducedMotion}
       />
 
-      {/* Header - Titre et compteur */}
-      <header className="absolute top-0 left-0 right-0 z-20 px-4 md:px-8 lg:px-12 py-4 md:py-6">
+      {/* Header - Titre, compteur et filtres */}
+      <header className="absolute top-0 left-0 right-0 z-20 pt-20 sm:pt-24 md:pt-8 px-5 md:px-8 lg:px-12 pb-4">
         <div className="flex items-center justify-between">
-          <GalleryTitle title={title} />
-          <GallerySlideCounter current={activeIndex} total={artworks.length} />
+          <GalleryTitle title={title} className="text-xl md:text-2xl tracking-tight" />
+          <GallerySlideCounter current={activeIndex} total={artworks.length} className="tabular-nums" />
         </div>
+        {/* Filtres de categorie avec scroll horizontal */}
+        {showFilters && (
+          <div className="mt-4 -mx-5 px-5 overflow-x-auto scrollbar-hide">
+            <GalleryFilters
+              currentFilter={currentFilter}
+              className="flex gap-2 pb-1"
+            />
+          </div>
+        )}
       </header>
 
       {/* Track des cards */}
@@ -274,24 +296,36 @@ export function FullscreenGallerySlider({
             />
           )}
 
-          {/* Hint "navigate" pour mobile */}
+          {/* Hint "glisser" pour mobile - anime subtilement */}
           {isMobile && (
-            <div className="flex items-center gap-2 text-white/40 text-xs">
-              <svg
-                className="w-4 h-4"
+            <motion.div
+              className="flex items-center gap-2.5 text-white/50"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1, duration: 0.6 }}
+            >
+              <motion.svg
+                className="w-5 h-5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
                 strokeWidth={1.5}
+                animate={{ x: [0, 4, 0] }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  repeatDelay: 3,
+                  ease: [0.22, 1, 0.36, 1]
+                }}
               >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"
                 />
-              </svg>
-              <span>navigate</span>
-            </div>
+              </motion.svg>
+              <span className="text-sm font-light tracking-wide">glisser</span>
+            </motion.div>
           )}
 
           {/* Dots de navigation - centre */}

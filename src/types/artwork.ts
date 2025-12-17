@@ -107,6 +107,10 @@ export interface GalleryArtwork {
   year?: number;
   /** Categorie */
   category?: string;
+  /** Prix en FCFA (optionnel) */
+  price?: number;
+  /** Description du produit (optionnelle) */
+  description?: string;
   /** Image pour la galerie */
   image: {
     /** URL de l'image */
@@ -119,6 +123,9 @@ export interface GalleryArtwork {
   /** Lien vers la page detail */
   href?: string;
 }
+
+/** Type de filtre pour les produits */
+export type GalleryFilter = "tous" | "capsule" | "mobilier" | "objet" | "flash";
 
 /**
  * Props pour les composants de la galerie fullscreen
@@ -136,4 +143,8 @@ export interface FullscreenGalleryProps {
   showKeyboardHint?: boolean;
   /** Titre de la section */
   title?: string;
+  /** Afficher les filtres (page creations) */
+  showFilters?: boolean;
+  /** Filtre actuel */
+  currentFilter?: GalleryFilter;
 }

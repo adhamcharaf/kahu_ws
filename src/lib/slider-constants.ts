@@ -113,8 +113,8 @@ export const SLIDER_SPRING = {
  * Configuration de la galerie fullscreen
  */
 export const FULLSCREEN_GALLERY_CONFIG = {
-  /** Couleur de fond sombre editoriale */
-  backgroundColor: "#0a0a0a",
+  /** Couleur de fond charcoal chaud (coherent DA KAHU) */
+  backgroundColor: "#1A1714",
 
   /** Configuration des cards */
   card: {
@@ -202,14 +202,14 @@ export const FULLSCREEN_WHEEL_CONFIG = {
  * Configuration du background ambient
  */
 export const FULLSCREEN_BACKGROUND_CONFIG = {
-  /** Opacite des gradients */
+  /** Opacite des gradients (augmentees pour plus d'impact) */
   opacity: {
     /** Layer 1 (principal) */
-    layer1: 0.4,
+    layer1: 0.55,
     /** Layer 2 (secondaire) */
-    layer2: 0.28,
+    layer2: 0.40,
     /** Layer 3 (accent) */
-    layer3: 0.2,
+    layer3: 0.30,
   },
   /** Positions des gradients */
   positions: {
@@ -217,10 +217,23 @@ export const FULLSCREEN_BACKGROUND_CONFIG = {
     layer2: { x: "70%", y: "60%" },
     layer3: { x: "50%", y: "80%" },
   },
-  /** Tailles des gradients (format: "width% height%") */
+  /** Tailles des gradients (agrandies pour plus de couverture) */
   sizes: {
-    layer1: "80% 60%",
-    layer2: "60% 80%",
-    layer3: "50% 50%",
+    layer1: "100% 80%",
+    layer2: "80% 100%",
+    layer3: "70% 70%",
+  },
+  /** Glow terracotta permanent (signature KAHU) */
+  ambientGlow: {
+    color: "#8B3A3A",
+    opacity: 0.1,
+    size: "120% 100%",
+    position: "50% 50%",
+  },
+  /** Vignette chaude (bark au lieu de noir) */
+  vignette: {
+    color: "#2D2420",
+    opacity: 0.5,
+    size: "90% 70%",
   },
 } as const;

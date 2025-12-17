@@ -11,6 +11,7 @@ import { useIsDesktop, useIsMobile } from "@/hooks/use-media-query";
 import { usePrefersReducedMotion } from "@/hooks/use-media-query";
 import {
   FULLSCREEN_GALLERY_CONFIG,
+  FULLSCREEN_BACKGROUND_CONFIG,
   SLIDER_SPRING,
 } from "@/lib/slider-constants";
 
@@ -114,11 +115,26 @@ export function GalleryAmbientBackground({
     );
   }
 
+  // Config du glow et vignette
+  const { ambientGlow, vignette } = FULLSCREEN_BACKGROUND_CONFIG;
+
   return (
     <div
       className="absolute inset-0 z-0 overflow-hidden"
       style={{ backgroundColor: FULLSCREEN_GALLERY_CONFIG.backgroundColor }}
     >
+      {/* Layer 0: Glow terracotta permanent - signature KAHU */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: `radial-gradient(
+            ellipse ${ambientGlow.size} at ${ambientGlow.position},
+            rgba(139, 58, 58, ${ambientGlow.opacity}) 0%,
+            transparent 70%
+          )`,
+        }}
+      />
+
       <AnimatePresence mode="wait">
         <motion.div
           key={activeId}
@@ -128,27 +144,36 @@ export function GalleryAmbientBackground({
           exit="exit"
           variants={layerVariants}
         >
-          {/* Layer 1 - Principal (toujours visible) */}
+          {/* Layer 1 - Principal (toujours visible) avec blur/bloom */}
           <motion.div
             className="absolute inset-0 will-change-transform"
-            style={{ background: gradientStyles.layer1 }}
+            style={{
+              background: gradientStyles.layer1,
+              filter: "blur(40px)",
+            }}
             animate={isDesktop && !prefersReducedMotion ? floatAnimation1 : undefined}
           />
 
-          {/* Layer 2 - Secondaire (tablet + desktop) */}
+          {/* Layer 2 - Secondaire (tablet + desktop) avec blur/bloom */}
           {layerCount >= 2 && (
             <motion.div
               className="absolute inset-0 will-change-transform"
-              style={{ background: gradientStyles.layer2 }}
+              style={{
+                background: gradientStyles.layer2,
+                filter: "blur(50px)",
+              }}
               animate={isDesktop && !prefersReducedMotion ? floatAnimation2 : undefined}
             />
           )}
 
-          {/* Layer 3 - Accent (desktop seulement) */}
+          {/* Layer 3 - Accent (desktop seulement) avec blur/bloom */}
           {layerCount >= 3 && (
             <motion.div
               className="absolute inset-0 will-change-transform"
-              style={{ background: gradientStyles.layer3 }}
+              style={{
+                background: gradientStyles.layer3,
+                filter: "blur(60px)",
+              }}
               animate={!prefersReducedMotion ? floatAnimation3 : undefined}
             />
           )}
@@ -163,12 +188,15 @@ export function GalleryAmbientBackground({
         }}
       />
 
-      {/* Vignette - effet cinematique */}
+      {/* Vignette chaude - bark au lieu de noir */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: `radial-gradient(ellipse 80% 60% at 50% 50%, transparent 0%, ${FULLSCREEN_GALLERY_CONFIG.backgroundColor} 100%)`,
-          opacity: 0.4,
+          background: `radial-gradient(
+            ellipse ${vignette.size} at 50% 50%,
+            transparent 0%,
+            rgba(45, 36, 32, ${vignette.opacity}) 100%
+          )`,
         }}
       />
     </div>

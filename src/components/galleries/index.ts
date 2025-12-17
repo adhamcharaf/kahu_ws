@@ -14,3 +14,8 @@ export {
   GallerySlideCounter,
   GalleryTitle,
 } from "./gallery-keyboard-hint";
+
+// Masonry Gallery
+export { MasonryGallery } from "./masonry-gallery";
+export { AutoScrollColumn } from "./auto-scroll-column";
+export { GalleryLightbox } from "./lightbox";

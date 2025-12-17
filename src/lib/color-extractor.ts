@@ -296,33 +296,33 @@ export function filterDistinctColors(
 /**
  * Cree un gradient CSS anime multi-layer pour le background fullscreen
  * @param colors - Couleurs extraites de l'image
- * @param opacity - Opacite de base (defaut: 0.4)
+ * @param opacity - Opacite de base (defaut: 0.55 - augmentee pour plus d'impact)
  * @returns Object avec 3 layers de gradient
  */
 export function createAnimatedBackgroundGradient(
   colors: ExtractedColors,
-  opacity: number = 0.4
+  opacity: number = 0.55
 ): { layer1: string; layer2: string; layer3: string } {
   const [c1, c2 = c1, c3 = c2] = filterDistinctColors(colors.palette);
 
   return {
-    // Layer 1: Principal, ellipse large en haut-gauche
+    // Layer 1: Principal, ellipse tres large pour couvrir plus d'espace
     layer1: `radial-gradient(
-      ellipse 80% 60% at 30% 40%,
+      ellipse 100% 80% at 30% 40%,
       ${toRgba(c1, opacity)} 0%,
-      transparent 70%
+      transparent 65%
     )`,
-    // Layer 2: Secondaire, ellipse verticale en bas-droite
+    // Layer 2: Secondaire, ellipse verticale etendue
     layer2: `radial-gradient(
-      ellipse 60% 80% at 70% 60%,
-      ${toRgba(c2, opacity * 0.7)} 0%,
-      transparent 60%
+      ellipse 80% 100% at 70% 60%,
+      ${toRgba(c2, opacity * 0.72)} 0%,
+      transparent 55%
     )`,
-    // Layer 3: Accent, cercle en bas-centre
+    // Layer 3: Accent, ellipse en bas-centre elargie
     layer3: `radial-gradient(
-      ellipse 50% 50% at 50% 80%,
-      ${toRgba(c3, opacity * 0.5)} 0%,
-      transparent 50%
+      ellipse 70% 70% at 50% 80%,
+      ${toRgba(c3, opacity * 0.55)} 0%,
+      transparent 45%
     )`,
   };
 }

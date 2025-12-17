@@ -49,9 +49,6 @@ export function useSliderWheel({
         return;
       }
 
-      // Empecher le scroll de la page
-      e.preventDefault();
-
       const now = Date.now();
       const timeSinceLastNav = now - lastNavigationRef.current;
 
@@ -60,13 +57,19 @@ export function useSliderWheel({
         return;
       }
 
-      // En mode fullscreen, prioriser deltaX pour trackpad/Magic Mouse
       let delta: number;
       if (fullscreenMode) {
-        // Prioriser le scroll horizontal (trackpad) si disponible
-        delta =
-          Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+        // En mode fullscreen: UNIQUEMENT reagir au scroll horizontal
+        // Si le scroll vertical est predominant, laisser passer pour scroller la page
+        if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+          return; // Ne pas bloquer, permettre scroll vertical de la page
+        }
+        // Scroll horizontal detecte -> navigation galerie
+        e.preventDefault();
+        delta = e.deltaX;
       } else {
+        // Mode normal: utiliser deltaY
+        e.preventDefault();
         delta = e.deltaY;
       }
 

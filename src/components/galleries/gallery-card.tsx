@@ -13,7 +13,11 @@ import type { GalleryArtwork } from "@/types/artwork";
 import { useIsDesktop, usePrefersReducedMotion } from "@/hooks/use-media-query";
 import { FULLSCREEN_GALLERY_CONFIG, SLIDER_EASE } from "@/lib/slider-constants";
 import { cn } from "@/lib/utils";
-import { formatGalleryYear } from "@/lib/gallery-utils";
+import {
+  formatGalleryYear,
+  formatGalleryPrice,
+  truncateDescription,
+} from "@/lib/gallery-utils";
 
 interface GalleryCardProps {
   /** Artwork a afficher */
@@ -201,6 +205,32 @@ export function GalleryCard({
           >
             {artwork.artist}
           </span>
+        )}
+
+        {/* Prix */}
+        {artwork.price && artwork.price > 0 && (
+          <span
+            className={cn(
+              "block text-lg md:text-xl font-semibold mt-2",
+              "text-white"
+            )}
+            style={{ fontFamily: "var(--font-body, Inter, sans-serif)" }}
+          >
+            {formatGalleryPrice(artwork.price)}
+          </span>
+        )}
+
+        {/* Description - tronquee */}
+        {artwork.description && (
+          <p
+            className={cn(
+              "text-xs md:text-sm font-light mt-2 leading-relaxed",
+              "text-white/60 line-clamp-2"
+            )}
+            style={{ fontFamily: "var(--font-body, Inter, sans-serif)" }}
+          >
+            {truncateDescription(artwork.description, 80)}
+          </p>
         )}
 
         {/* Categorie - Badge subtil */}

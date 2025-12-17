@@ -192,6 +192,15 @@ body {
   background: var(--color-kahu-taupe);
 }
 
+/* Scrollbar Hide Utility - pour scroll horizontal fluide */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* ================================================
    3D Gallery Animation
    ================================================ */

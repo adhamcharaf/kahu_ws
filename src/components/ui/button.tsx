@@ -42,9 +42,9 @@ const variantStyles: Record<ButtonVariant, string> = {
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
-  sm: "px-4 py-2 text-body-sm",
-  md: "px-6 py-3 text-body-md",
-  lg: "px-8 py-4 text-body-md",
+  sm: "px-5 py-2.5 min-h-[44px] text-body-sm",
+  md: "px-7 py-3.5 min-h-[48px] text-body-md",
+  lg: "px-9 py-4 min-h-[52px] text-body-md",
 };
 
 // Couleur du ripple selon la variante
@@ -146,13 +146,13 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       </AnimatePresence>
     );
 
-    // Animation hover/tap
+    // Animation hover/tap - sensation de pression douce
     const motionProps = shouldReduceMotion
       ? {}
       : {
           whileHover: { scale: 1.02 },
-          whileTap: { scale: 0.98 },
-          transition: { duration: DURATION.fast, ease: KAHU_EASE },
+          whileTap: { scale: 0.97, transition: { duration: 0.1 } },
+          transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
         };
 
     // Render as external link

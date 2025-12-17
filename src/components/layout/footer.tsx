@@ -38,12 +38,12 @@ export default function Footer() {
             <h3 className="text-body-sm font-medium uppercase tracking-wider text-kahu-stone mb-4">
               Navigation
             </h3>
-            <nav className="flex flex-col gap-2">
+            <nav className="flex flex-col gap-0.5">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-body-sm text-kahu-stone-light hover:text-kahu-ivory transition-colors"
+                  className="py-2.5 -mx-2 px-2 rounded-lg text-body-sm text-kahu-stone-light hover:text-kahu-ivory hover:bg-white/5 active:bg-white/10 transition-all duration-200"
                 >
                   {link.label}
                 </Link>
@@ -56,30 +56,30 @@ export default function Footer() {
             <h3 className="text-body-sm font-medium uppercase tracking-wider text-kahu-stone mb-4">
               Contact
             </h3>
-            <address className="not-italic flex flex-col gap-2 text-body-sm text-kahu-stone-light">
-              <p>Riviera 2 les jardins</p>
-              <p>Abidjan, Cote d&apos;Ivoire</p>
+            <address className="not-italic flex flex-col gap-0.5 text-body-sm text-kahu-stone-light">
+              <p className="py-1">Riviera 2 les jardins</p>
+              <p className="py-1">Abidjan, Cote d&apos;Ivoire</p>
               <a
                 href="mailto:kahu.ci@outlook.com"
-                className="hover:text-kahu-ivory transition-colors"
+                className="inline-flex items-center min-h-[44px] py-2 hover:text-kahu-ivory transition-colors"
               >
                 kahu.ci@outlook.com
               </a>
               <a
                 href="tel:+2250704160700"
-                className="hover:text-kahu-ivory transition-colors"
+                className="inline-flex items-center min-h-[44px] py-2 hover:text-kahu-ivory transition-colors"
               >
                 +225 07 04 16 07 00
               </a>
             </address>
 
             {/* Social */}
-            <div className="mt-6">
+            <div className="mt-4">
               <a
                 href="https://www.instagram.com/kahu.ci/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-body-sm text-kahu-stone-light hover:text-kahu-ivory transition-colors"
+                className="inline-flex items-center gap-2 min-h-[44px] py-2 text-body-sm text-kahu-stone-light hover:text-kahu-ivory transition-colors"
               >
                 <svg
                   className="w-5 h-5"

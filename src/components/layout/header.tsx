@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useIsMobile } from "@/hooks/use-media-query";
 import MobileNav from "./mobile-nav";
 
 const navLinks = [
@@ -18,6 +19,7 @@ const navLinks = [
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,17 +51,26 @@ export default function Header() {
             ? "bg-kahu-cream/95 backdrop-blur-md shadow-sm"
             : "bg-transparent"
         )}
+        style={{
+          paddingTop: 'env(safe-area-inset-top, 0px)',
+        }}
       >
         <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 sm:h-20 items-center justify-between">
-            {/* Logo */}
-            <Link href="/" className="block">
+          <div className="flex h-16 sm:h-20 items-center justify-center md:justify-between relative">
+            {/* Spacer gauche - equilibre visuel sur mobile */}
+            <div className="absolute left-4 md:hidden w-11 h-11" aria-hidden="true" />
+
+            {/* Logo - centre sur mobile, gauche sur desktop */}
+            <Link
+              href="/"
+              className="block transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98]"
+            >
               <Image
                 src="/images/Logo.png"
                 alt="KAHU Studio"
-                width={200}
-                height={80}
-                className="h-16 sm:h-20 w-auto"
+                width={160}
+                height={64}
+                className="h-12 sm:h-14 md:h-16 w-auto"
                 priority
               />
             </Link>
@@ -78,12 +89,14 @@ export default function Header() {
               ))}
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
+            {/* Mobile Menu Button - 44px tactile */}
+            <motion.button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden relative w-10 h-10 flex items-center justify-center"
+              className="md:hidden absolute right-4 w-11 h-11 flex items-center justify-center rounded-full active:bg-kahu-bark/5 transition-colors"
               aria-label={isMobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
               aria-expanded={isMobileMenuOpen}
+              whileTap={{ scale: 0.92 }}
+              transition={{ duration: 0.15 }}
             >
               <div className="relative w-6 h-5">
                 <motion.span
@@ -111,7 +124,7 @@ export default function Header() {
                   transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                 />
               </div>
-            </button>
+            </motion.button>
           </div>
         </nav>
       </header>
