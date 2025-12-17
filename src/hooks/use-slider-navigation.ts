@@ -88,10 +88,14 @@ export function useSliderNavigation({
 
       switch (e.key) {
         case "ArrowLeft":
+        case "a":
+        case "A":
           e.preventDefault();
           goToPrev();
           break;
         case "ArrowRight":
+        case "d":
+        case "D":
           e.preventDefault();
           goToNext();
           break;

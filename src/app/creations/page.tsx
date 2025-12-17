@@ -6,13 +6,16 @@ import { ProductCard } from "@/components/ui/product-card";
 import { ProductFilters } from "@/components/sections/product-filters";
 import { ProductGridSkeleton } from "@/components/ui/skeleton";
 import {
+  GallerySection,
+  GallerySectionSkeleton,
+} from "@/components/sections/gallery-section";
+import {
   getProducts,
   getProductsByCategory,
   getFlashSaleProducts,
 } from "@/lib/notion";
 import type { ProductFilter, ProductCategory } from "@/lib/types";
 import {
-  CreationsHero,
   AnimatedProductsSection,
   AnimatedProductGrid,
   AnimatedProductItem,
@@ -77,9 +80,15 @@ export default async function CreationsPage({
     <>
       <Header />
 
-      <main className="pt-20">
-        {/* Hero Section avec animations cinematiques */}
-        <CreationsHero />
+      <main>
+        {/* Fullscreen Gallery - Hero Section */}
+        <Suspense fallback={<GallerySectionSkeleton />}>
+          <GallerySection
+            limit={7}
+            title="Creations"
+            autoPlay={false}
+          />
+        </Suspense>
 
         {/* Filters & Grid avec transitions fluides */}
         <AnimatedProductsSection

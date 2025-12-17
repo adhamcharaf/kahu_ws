@@ -87,3 +87,53 @@ export interface ExtractedColors {
   /** Indique si la couleur dominante est sombre */
   isDark: boolean;
 }
+
+// ============================================================================
+// Gallery Artwork Types - Types pour le fullscreen gallery slider
+// ============================================================================
+
+/**
+ * Artwork optimise pour la galerie fullscreen
+ * Compatible avec les produits Notion et les artworks statiques
+ */
+export interface GalleryArtwork {
+  /** Identifiant unique */
+  id: string;
+  /** Titre de l'oeuvre/produit */
+  title: string;
+  /** Nom de l'artiste/createur (optionnel) */
+  artist?: string;
+  /** Annee de creation */
+  year?: number;
+  /** Categorie */
+  category?: string;
+  /** Image pour la galerie */
+  image: {
+    /** URL de l'image */
+    src: string;
+    /** Texte alternatif */
+    alt: string;
+  };
+  /** Couleurs extraites pour le background dynamique */
+  colors?: ExtractedColors;
+  /** Lien vers la page detail */
+  href?: string;
+}
+
+/**
+ * Props pour les composants de la galerie fullscreen
+ */
+export interface FullscreenGalleryProps {
+  /** Liste des artworks a afficher */
+  artworks: GalleryArtwork[];
+  /** Variante d'affichage */
+  variant?: "homepage" | "creations";
+  /** Activer l'auto-play */
+  autoPlay?: boolean;
+  /** Intervalle auto-play en secondes */
+  autoPlayInterval?: number;
+  /** Afficher les hints clavier */
+  showKeyboardHint?: boolean;
+  /** Titre de la section */
+  title?: string;
+}
