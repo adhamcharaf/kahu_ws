@@ -47,7 +47,11 @@ export interface NotionProductResponse {
     Description: { rich_text: Array<{ plain_text: string }> };
     Materiaux: { rich_text: Array<{ plain_text: string }> };
     Dimensions: { rich_text: Array<{ plain_text: string }> };
-    Photos: { files: Array<{ file?: { url: string }; external?: { url: string } }> };
+    Photos: {
+      files?: Array<{ file?: { url: string }; external?: { url: string } }>;
+      url?: string | null;
+      type?: string;
+    };
     Ordre: { number: number | null };
   };
 }

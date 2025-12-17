@@ -5,7 +5,10 @@
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
-import { WHEEL_CONFIG } from "@/lib/slider-constants";
+import {
+  WHEEL_CONFIG,
+  FULLSCREEN_WHEEL_CONFIG,
+} from "@/lib/slider-constants";
 
 interface UseSliderWheelProps {
   /** Ref du container */
@@ -14,15 +17,27 @@ interface UseSliderWheelProps {
   onNavigate: (direction: -1 | 1) => void;
   /** Active/desactive le hook */
   enabled?: boolean;
+  /** Mode fullscreen avec support trackpad horizontal */
+  fullscreenMode?: boolean;
 }
 
 export function useSliderWheel({
   containerRef,
   onNavigate,
   enabled = true,
+  fullscreenMode = false,
 }: UseSliderWheelProps): void {
   const lastNavigationRef = useRef(0);
   const accumulatedDeltaRef = useRef(0);
+  const inactivityTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Choisir le threshold selon le mode
+  const threshold = fullscreenMode
+    ? FULLSCREEN_WHEEL_CONFIG.thresholdX
+    : WHEEL_CONFIG.threshold;
+  const cooldown = fullscreenMode
+    ? FULLSCREEN_WHEEL_CONFIG.cooldown
+    : WHEEL_CONFIG.cooldown;
 
   const handleWheel = useCallback(
     (e: WheelEvent) => {
@@ -34,22 +49,48 @@ export function useSliderWheel({
         return;
       }
 
-      // Empecher le scroll de la page
-      e.preventDefault();
-
       const now = Date.now();
       const timeSinceLastNav = now - lastNavigationRef.current;
 
       // Verification du cooldown
-      if (timeSinceLastNav < WHEEL_CONFIG.cooldown) {
+      if (timeSinceLastNav < cooldown) {
         return;
       }
 
-      // Accumuler le delta pour une detection plus fluide
-      accumulatedDeltaRef.current += e.deltaY * WHEEL_CONFIG.sensitivity;
+      let delta: number;
+      if (fullscreenMode) {
+        // En mode fullscreen: UNIQUEMENT reagir au scroll horizontal
+        // Si le scroll vertical est predominant, laisser passer pour scroller la page
+        if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+          return; // Ne pas bloquer, permettre scroll vertical de la page
+        }
+        // Scroll horizontal detecte -> navigation galerie
+        e.preventDefault();
+        delta = e.deltaX;
+      } else {
+        // Mode normal: utiliser deltaY
+        e.preventDefault();
+        delta = e.deltaY;
+      }
+
+      // Appliquer la resistance en mode fullscreen
+      const resistanceFactor = fullscreenMode
+        ? FULLSCREEN_WHEEL_CONFIG.resistance
+        : WHEEL_CONFIG.sensitivity;
+      accumulatedDeltaRef.current += delta * resistanceFactor;
+
+      // En mode fullscreen, reset l'accumulateur apres inactivite
+      if (fullscreenMode) {
+        if (inactivityTimerRef.current) {
+          clearTimeout(inactivityTimerRef.current);
+        }
+        inactivityTimerRef.current = setTimeout(() => {
+          accumulatedDeltaRef.current = 0;
+        }, FULLSCREEN_WHEEL_CONFIG.inactivityTimeout);
+      }
 
       // Verifier si le delta accumule depasse le seuil
-      if (Math.abs(accumulatedDeltaRef.current) > WHEEL_CONFIG.threshold) {
+      if (Math.abs(accumulatedDeltaRef.current) > threshold) {
         const direction = accumulatedDeltaRef.current > 0 ? 1 : -1;
 
         onNavigate(direction);
@@ -57,7 +98,7 @@ export function useSliderWheel({
         accumulatedDeltaRef.current = 0;
       }
     },
-    [enabled, containerRef, onNavigate]
+    [enabled, containerRef, onNavigate, fullscreenMode, threshold, cooldown]
   );
 
   useEffect(() => {
@@ -78,6 +119,9 @@ export function useSliderWheel({
   useEffect(() => {
     return () => {
       accumulatedDeltaRef.current = 0;
+      if (inactivityTimerRef.current) {
+        clearTimeout(inactivityTimerRef.current);
+      }
     };
   }, []);
 }

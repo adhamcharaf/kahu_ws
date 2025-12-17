@@ -10,9 +10,11 @@ import {
 } from "@/components/animations/scroll-cinema";
 import { GrainTexture, AmbientGlow } from "@/components/animations/floating-shapes";
 import { ArtGallerySlider } from "@/components/art-gallery-slider";
+import { MasonryGallery } from "@/components/galleries";
 import { usePrefersReducedMotion, useIsDesktop } from "@/hooks/use-media-query";
 import { DURATION, EASE, DELAY } from "@/lib/animation-config";
 import { atelierArtworks } from "@/data/artworks";
+import { atelierImages } from "@/data/atelier-images";
 
 // ============================================================================
 // Atelier Content - Version animee Apple-style
@@ -220,31 +222,30 @@ export function AtelierContent() {
         </div>
       </section>
 
-      {/* ============ Gallery avec Stagger Grid ============ */}
-      <section className="relative py-section bg-kahu-cream-warm overflow-hidden">
-        {isDesktop && (
-          <AmbientGlow
-            color="rgba(92, 107, 74, 0.04)"
-            size={600}
-            position={{ x: "50%", y: "50%" }}
-          />
-        )}
+      {/* ============ Masonry Gallery Parallax ============ */}
+      <section className="relative bg-kahu-bark overflow-hidden">
+        <GrainTexture opacity={0.02} />
 
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Titre en overlay */}
+        <div className="absolute top-0 left-0 right-0 z-10 pt-12 pb-8 bg-gradient-to-b from-kahu-bark via-kahu-bark/80 to-transparent">
           <SectionReveal variant="fade-up">
-            <h2 className="font-display text-display-md text-kahu-charcoal text-center">
+            <h2 className="font-display text-display-md text-kahu-cream text-center">
               L&apos;atelier en images
             </h2>
           </SectionReveal>
-
-          <CinemaStagger className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-4" staggerDelay={0.1}>
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <CinemaStaggerItem key={i}>
-                <GalleryItem index={i} />
-              </CinemaStaggerItem>
-            ))}
-          </CinemaStagger>
         </div>
+
+        {/* Galerie masonry avec defilement parallax */}
+        <MasonryGallery
+          images={atelierImages}
+          height="85vh"
+          baseDuration={60}
+          durationIncrement={5}
+          enableLightbox
+        />
+
+        {/* Gradient de fondu en bas */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-kahu-bark to-transparent pointer-events-none" />
       </section>
     </main>
   );
@@ -286,20 +287,3 @@ function ProcessStep({
   );
 }
 
-function GalleryItem({ index }: { index: number }) {
-  const shouldReduceMotion = usePrefersReducedMotion();
-
-  return (
-    <motion.div
-      className="aspect-square bg-kahu-cream-deep rounded-sm overflow-hidden cursor-pointer"
-      whileHover={shouldReduceMotion ? {} : { scale: 1.02 }}
-      transition={{ duration: 0.4, ease: EASE.cinematic }}
-    >
-      <motion.div
-        className="w-full h-full bg-gradient-to-br from-kahu-terracotta/5 to-kahu-olive/5"
-        whileHover={shouldReduceMotion ? {} : { scale: 1.1 }}
-        transition={{ duration: 0.6, ease: EASE.cinematic }}
-      />
-    </motion.div>
-  );
-}

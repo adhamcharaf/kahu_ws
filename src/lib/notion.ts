@@ -24,12 +24,22 @@ const PROJECTS_DB = process.env.NOTION_PROJECTS_DB!;
 function parseProduct(page: NotionProductResponse): Product {
   const props = page.properties;
 
-  // Extract photos URLs
-  const photos = props.Photos?.files?.map((file) => {
-    if (file.external?.url) return file.external.url;
-    if (file.file?.url) return file.file.url;
-    return "";
-  }).filter(Boolean) ?? [];
+  // Extract photos URLs - support both "files" array and "url" type
+  let photos: string[] = [];
+
+  // Option 1: Files array (Notion Files & media property)
+  if (props.Photos?.files && Array.isArray(props.Photos.files)) {
+    photos = props.Photos.files.map((file) => {
+      if (file.external?.url) return file.external.url;
+      if (file.file?.url) return file.file.url;
+      return "";
+    }).filter(Boolean);
+  }
+
+  // Option 2: URL type (Notion URL property)
+  if (photos.length === 0 && props.Photos?.url) {
+    photos = [props.Photos.url];
+  }
 
   // Parse basic fields
   const quantite = props.Quantite?.number ?? 1;
