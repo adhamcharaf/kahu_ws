@@ -152,7 +152,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       : {
           whileHover: { scale: 1.02 },
           whileTap: { scale: 0.97, transition: { duration: 0.1 } },
-          transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
+          transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] as const },
         };
 
     // Render as external link
