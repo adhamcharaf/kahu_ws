@@ -78,6 +78,7 @@ export function CSS3DGallery({
 
   // Calculer positions avec golden angle - distribution en cercle
   // Desktop: rayon 1.8x plus grand pour utiliser l'espace
+  // Note: Arrondir les valeurs pour eviter les hydration mismatches
   const imagePositions = useMemo(() => {
     const scale = isDesktop ? 1.8 : 1;
 
@@ -87,9 +88,10 @@ export function CSS3DGallery({
       const radius = baseRadius * scale;
 
       return {
-        x: Math.cos(angle) * radius,
-        y: Math.sin(angle) * radius * 0.35,
-        rotation: ((index % 2 === 0 ? 1 : -1) * (2 + index * 0.4)),
+        // Arrondir a 2 decimales pour coherence serveur/client
+        x: Math.round(Math.cos(angle) * radius * 100) / 100,
+        y: Math.round(Math.sin(angle) * radius * 0.35 * 100) / 100,
+        rotation: Math.round((index % 2 === 0 ? 1 : -1) * (2 + index * 0.4) * 100) / 100,
       };
     });
   }, [images.length, isDesktop]);
