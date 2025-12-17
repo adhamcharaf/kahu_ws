@@ -6,7 +6,7 @@
 "use client";
 
 import { useRef, useState, useCallback, useEffect } from "react";
-import { motion, useMotionValue, useSpring, PanInfo } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform, animate, PanInfo } from "framer-motion";
 import type { GalleryArtwork, FullscreenGalleryProps } from "@/types/artwork";
 import { useSliderNavigation } from "@/hooks/use-slider-navigation";
 import { useSliderWheel } from "@/hooks/use-slider-wheel";
@@ -19,7 +19,6 @@ import {
 import {
   FULLSCREEN_GALLERY_CONFIG,
   FULLSCREEN_DRAG_PHYSICS,
-  SLIDER_EASE,
   SLIDER_SPRING,
 } from "@/lib/slider-constants";
 import { cn } from "@/lib/utils";
@@ -86,7 +85,7 @@ export function FullscreenGallerySlider({
   });
 
   // Hook de palette de couleurs
-  const { gradientStyles, dominantColor, isLoading } = useColorPalette({
+  const { gradientStyles, dominantColor } = useColorPalette({
     artworks,
     activeIndex,
     disabled: prefersReducedMotion,
@@ -95,9 +94,6 @@ export function FullscreenGallerySlider({
   // Configuration - adapter selon le device
   const { card } = FULLSCREEN_GALLERY_CONFIG;
   const currentGap = isMobile ? card.gapMobile : card.gap;
-  const resistance = isMobile
-    ? FULLSCREEN_DRAG_PHYSICS.resistanceMobile
-    : FULLSCREEN_DRAG_PHYSICS.resistance;
   const snapThreshold = isMobile
     ? FULLSCREEN_DRAG_PHYSICS.snapThresholdMobile
     : FULLSCREEN_DRAG_PHYSICS.snapThreshold;
@@ -106,13 +102,8 @@ export function FullscreenGallerySlider({
     : FULLSCREEN_DRAG_PHYSICS.velocityThreshold;
   const { parallaxFactor } = FULLSCREEN_DRAG_PHYSICS;
 
-  // Motion values pour le drag
+  // Motion value pour le drag direct
   const dragX = useMotionValue(0);
-  const springX = useSpring(dragX, {
-    stiffness: SLIDER_SPRING.drag.stiffness,
-    damping: SLIDER_SPRING.drag.damping,
-    mass: SLIDER_SPRING.drag.mass,
-  });
 
   // Monter cote client uniquement
   useEffect(() => {
@@ -121,7 +112,7 @@ export function FullscreenGallerySlider({
 
   // Calculer la largeur d'une card (SSR-safe)
   const getCardWidth = useCallback(() => {
-    if (typeof window === "undefined") return 300; // Valeur par defaut SSR
+    if (typeof window === "undefined") return 300;
     const heightVh = isDesktop
       ? card.heightVhDesktop
       : isMobile
@@ -134,7 +125,7 @@ export function FullscreenGallerySlider({
   // Calculer l'offset pour centrer la card active (SSR-safe)
   const getTrackOffset = useCallback(
     (index: number) => {
-      if (typeof window === "undefined") return 0; // Valeur par defaut SSR
+      if (typeof window === "undefined") return 0;
       const cardWidth = getCardWidth();
       const containerWidth =
         containerRef.current?.offsetWidth || window.innerWidth;
@@ -144,51 +135,72 @@ export function FullscreenGallerySlider({
     [getCardWidth, currentGap]
   );
 
-  // Track offset anime - initialiser a 0 pour SSR
-  const trackOffset = useMotionValue(0);
-  const springTrackOffset = useSpring(trackOffset, {
+  // Track offset de base (position cible sans drag)
+  const baseOffset = useMotionValue(0);
+
+  // Combiner baseOffset + dragX pour la position finale
+  const trackX = useTransform(
+    [baseOffset, dragX],
+    ([base, drag]: number[]) => base + drag
+  );
+
+  // Spring pour animer le baseOffset lors du changement de slide
+  const springTrackX = useSpring(trackX, {
     stiffness: SLIDER_SPRING.slide.stiffness,
     damping: SLIDER_SPRING.slide.damping,
     mass: SLIDER_SPRING.slide.mass,
   });
 
-  // Mettre a jour l'offset quand monte ou index change
+  // Mettre a jour baseOffset quand activeIndex change
   useEffect(() => {
     if (mounted) {
-      trackOffset.set(getTrackOffset(activeIndex));
+      const newOffset = getTrackOffset(activeIndex);
+      // Animer vers la nouvelle position
+      animate(baseOffset, newOffset, {
+        type: "spring",
+        stiffness: SLIDER_SPRING.slide.stiffness,
+        damping: SLIDER_SPRING.slide.damping,
+        mass: SLIDER_SPRING.slide.mass,
+      });
     }
-  }, [mounted, activeIndex, getTrackOffset, trackOffset]);
+  }, [mounted, activeIndex, getTrackOffset, baseOffset]);
 
-  // Handlers de drag
+  // Handlers de drag - version simplifiee et reactive
   const handleDragStart = useCallback(() => {
     setIsDragging(true);
   }, []);
 
   const handleDrag = useCallback(
     (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-      // Appliquer la resistance (sensation "lourde")
-      const dampedOffset = info.offset.x * resistance;
-      dragX.set(dampedOffset);
+      // Mettre a jour dragX en temps reel pour suivre le doigt
+      dragX.set(info.offset.x);
     },
-    [resistance, dragX]
+    [dragX]
   );
 
   const handleDragEnd = useCallback(
     (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
       setIsDragging(false);
-      dragX.set(0);
 
       const velocity = info.velocity.x;
       const offset = info.offset.x;
 
-      // Determiner la direction de navigation (seuils adaptes au device)
-      if (
+      // Reset dragX avec animation
+      animate(dragX, 0, {
+        type: "spring",
+        stiffness: 400,
+        damping: 30,
+      });
+
+      // Determiner si on change de slide
+      const shouldNavigate =
         Math.abs(offset) > snapThreshold ||
-        Math.abs(velocity) > velocityThreshold * 1000
-      ) {
-        if (offset > 0 || velocity > 0) {
+        Math.abs(velocity) > velocityThreshold * 1000;
+
+      if (shouldNavigate) {
+        if (offset > 0 || velocity > 300) {
           goToPrev();
-        } else {
+        } else if (offset < 0 || velocity < -300) {
           goToNext();
         }
       }
@@ -222,7 +234,7 @@ export function FullscreenGallerySlider({
       ref={containerRef}
       className={cn(
         "relative w-full h-screen overflow-hidden",
-        "select-none"
+        "select-none touch-pan-y"
       )}
       style={{
         backgroundColor: FULLSCREEN_GALLERY_CONFIG.backgroundColor,
@@ -260,25 +272,26 @@ export function FullscreenGallerySlider({
         ref={trackRef}
         className={cn(
           "absolute inset-0 flex items-center",
-          "cursor-grab active:cursor-grabbing"
+          "cursor-grab active:cursor-grabbing",
+          "touch-none"
         )}
         style={{
-          x: springTrackOffset,
+          x: springTrackX,
           paddingLeft: currentGap / 2,
           paddingRight: currentGap / 2,
         }}
         drag="x"
-        dragConstraints={{ left: 0, right: 0 }}
-        dragElastic={isMobile ? 0.15 : 0.1}
+        dragDirectionLock
+        dragMomentum={false}
+        dragElastic={0}
         onDragStart={handleDragStart}
         onDrag={handleDrag}
         onDragEnd={handleDragEnd}
       >
-        <motion.div
+        <div
           className="flex items-center"
           style={{
             gap: currentGap,
-            x: springX,
           }}
         >
           {artworks.map((artwork, index) => (
@@ -291,7 +304,7 @@ export function FullscreenGallerySlider({
               onClick={() => goToSlide(index)}
             />
           ))}
-        </motion.div>
+        </div>
       </motion.div>
 
       {/* Navigation controls */}
