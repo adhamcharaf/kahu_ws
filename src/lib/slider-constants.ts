@@ -121,13 +121,15 @@ export const FULLSCREEN_GALLERY_CONFIG = {
     /** Hauteur en vh pour desktop */
     heightVhDesktop: 70,
     /** Hauteur en vh pour tablet */
-    heightVhTablet: 65,
+    heightVhTablet: 60,
     /** Hauteur en vh pour mobile */
-    heightVhMobile: 60,
+    heightVhMobile: 55,
     /** Ratio d'aspect (3:4) */
     aspectRatio: 3 / 4,
-    /** Espacement entre les cards (px) */
+    /** Espacement entre les cards (px) - desktop */
     gap: 24,
+    /** Espacement entre les cards (px) - mobile */
+    gapMobile: 12,
     /** Decalage Y au hover (px) */
     hoverLift: -8,
     /** Scale au hover */
@@ -174,14 +176,20 @@ export const FULLSCREEN_DRAG_PHYSICS = {
   resistance: 0.4,
   /** Facteur de momentum pour settling lent */
   momentumFactor: 0.1,
-  /** Seuil de snap en pixels */
+  /** Seuil de snap en pixels - desktop */
   snapThreshold: 80,
-  /** Seuil de velocite */
+  /** Seuil de snap en pixels - mobile (plus sensible) */
+  snapThresholdMobile: 40,
+  /** Seuil de velocite - desktop */
   velocityThreshold: 0.3,
+  /** Seuil de velocite - mobile (plus sensible) */
+  velocityThresholdMobile: 0.15,
   /** Facteur de parallaxe pendant le drag */
   parallaxFactor: 0.15,
   /** Taux de deceleration */
   decelerationRate: 0.92,
+  /** Resistance mobile (moins de resistance pour meilleure reactivite) */
+  resistanceMobile: 0.6,
 } as const;
 
 /**

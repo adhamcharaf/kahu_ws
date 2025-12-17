@@ -92,9 +92,19 @@ export function FullscreenGallerySlider({
     disabled: prefersReducedMotion,
   });
 
-  // Configuration
+  // Configuration - adapter selon le device
   const { card } = FULLSCREEN_GALLERY_CONFIG;
-  const { resistance, snapThreshold, parallaxFactor } = FULLSCREEN_DRAG_PHYSICS;
+  const currentGap = isMobile ? card.gapMobile : card.gap;
+  const resistance = isMobile
+    ? FULLSCREEN_DRAG_PHYSICS.resistanceMobile
+    : FULLSCREEN_DRAG_PHYSICS.resistance;
+  const snapThreshold = isMobile
+    ? FULLSCREEN_DRAG_PHYSICS.snapThresholdMobile
+    : FULLSCREEN_DRAG_PHYSICS.snapThreshold;
+  const velocityThreshold = isMobile
+    ? FULLSCREEN_DRAG_PHYSICS.velocityThresholdMobile
+    : FULLSCREEN_DRAG_PHYSICS.velocityThreshold;
+  const { parallaxFactor } = FULLSCREEN_DRAG_PHYSICS;
 
   // Motion values pour le drag
   const dragX = useMotionValue(0);
@@ -118,8 +128,8 @@ export function FullscreenGallerySlider({
       ? card.heightVhMobile
       : card.heightVhTablet;
     const height = (window.innerHeight * heightVh) / 100;
-    return height * card.aspectRatio + card.gap;
-  }, [isDesktop, isMobile, card]);
+    return height * card.aspectRatio + currentGap;
+  }, [isDesktop, isMobile, card, currentGap]);
 
   // Calculer l'offset pour centrer la card active (SSR-safe)
   const getTrackOffset = useCallback(
@@ -128,10 +138,10 @@ export function FullscreenGallerySlider({
       const cardWidth = getCardWidth();
       const containerWidth =
         containerRef.current?.offsetWidth || window.innerWidth;
-      const centerOffset = (containerWidth - cardWidth + card.gap) / 2;
+      const centerOffset = (containerWidth - cardWidth + currentGap) / 2;
       return centerOffset - index * cardWidth;
     },
-    [getCardWidth, card.gap]
+    [getCardWidth, currentGap]
   );
 
   // Track offset anime - initialiser a 0 pour SSR
@@ -171,10 +181,10 @@ export function FullscreenGallerySlider({
       const velocity = info.velocity.x;
       const offset = info.offset.x;
 
-      // Determiner la direction de navigation
+      // Determiner la direction de navigation (seuils adaptes au device)
       if (
         Math.abs(offset) > snapThreshold ||
-        Math.abs(velocity) > FULLSCREEN_DRAG_PHYSICS.velocityThreshold * 1000
+        Math.abs(velocity) > velocityThreshold * 1000
       ) {
         if (offset > 0 || velocity > 0) {
           goToPrev();
@@ -183,7 +193,7 @@ export function FullscreenGallerySlider({
         }
       }
     },
-    [snapThreshold, goToNext, goToPrev, dragX]
+    [snapThreshold, velocityThreshold, goToNext, goToPrev, dragX]
   );
 
   // Auto-play
@@ -229,14 +239,14 @@ export function FullscreenGallerySlider({
       />
 
       {/* Header - Titre, compteur et filtres */}
-      <header className="absolute top-0 left-0 right-0 z-20 pt-20 sm:pt-24 md:pt-8 px-5 md:px-8 lg:px-12 pb-4">
+      <header className="absolute top-0 left-0 right-0 z-20 pt-20 sm:pt-24 md:pt-8 px-5 md:px-8 lg:px-12 pb-6 md:pb-8">
         <div className="flex items-center justify-between">
           <GalleryTitle title={title} className="text-xl md:text-2xl tracking-tight" />
           <GallerySlideCounter current={activeIndex} total={artworks.length} className="tabular-nums" />
         </div>
         {/* Filtres de categorie avec scroll horizontal */}
         {showFilters && (
-          <div className="mt-4 -mx-5 px-5 overflow-x-auto scrollbar-hide">
+          <div className="mt-4 mb-4 md:mb-6 -mx-5 px-5 overflow-x-auto scrollbar-hide">
             <GalleryFilters
               currentFilter={currentFilter}
               className="flex gap-2 pb-1"
@@ -254,12 +264,12 @@ export function FullscreenGallerySlider({
         )}
         style={{
           x: springTrackOffset,
-          paddingLeft: card.gap / 2,
-          paddingRight: card.gap / 2,
+          paddingLeft: currentGap / 2,
+          paddingRight: currentGap / 2,
         }}
         drag="x"
         dragConstraints={{ left: 0, right: 0 }}
-        dragElastic={0.1}
+        dragElastic={isMobile ? 0.15 : 0.1}
         onDragStart={handleDragStart}
         onDrag={handleDrag}
         onDragEnd={handleDragEnd}
@@ -267,7 +277,7 @@ export function FullscreenGallerySlider({
         <motion.div
           className="flex items-center"
           style={{
-            gap: card.gap,
+            gap: currentGap,
             x: springX,
           }}
         >
