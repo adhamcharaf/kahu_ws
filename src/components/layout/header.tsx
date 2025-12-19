@@ -71,8 +71,10 @@ export default function Header({ lang = 'fr', dict }: HeaderProps) {
       >
         <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 sm:h-20 items-center justify-center md:justify-between relative">
-            {/* Spacer gauche - equilibre visuel sur mobile */}
-            <div className="absolute left-4 md:hidden w-11 h-11" aria-hidden="true" />
+            {/* Language Toggle - visible sur mobile à gauche */}
+            <div className="absolute left-4 md:hidden flex items-center">
+              <LanguageToggle currentLang={lang} />
+            </div>
 
             {/* Logo - centre sur mobile, gauche sur desktop */}
             <Link
@@ -154,7 +156,6 @@ export default function Header({ lang = 'fr', dict }: HeaderProps) {
               ...link,
               href: getLocalizedHref(link.href, lang)
             }))}
-            lang={lang}
             onClose={() => setIsMobileMenuOpen(false)}
           />
         )}
