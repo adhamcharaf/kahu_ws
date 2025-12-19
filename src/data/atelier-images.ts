@@ -12,9 +12,9 @@ export const atelierImages: string[] = [
   "/images/atelier/bougeoirs.png",
   "/images/atelier/chair4.png",
   "/images/atelier/chaise.png",
-  "/images/atelier/outils.png",
+  "/images/accueil/outils.png",
   "/images/atelier/ponce.webp",
-  "/images/atelier/portrait.png",
+  "/images/accueil/portrait.png",
   "/images/atelier/shay.png",
 ];
 

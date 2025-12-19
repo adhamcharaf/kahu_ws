@@ -46,7 +46,7 @@ export default async function HomePage({ params }: HomePageProps) {
       <PhilosophyBlock />
 
       {/* Custom CTA */}
-      <CustomCTA imageSrc="/images/atelier/outils.png" />
+      <CustomCTA imageSrc="/images/accueil/outils.png" />
     </main>
   );
 }

@@ -36,7 +36,7 @@ export const atelierArtworks: Artwork[] = [
     title: "Les Outils",
     description: "Outils de menuiserie traditionnels",
     image: {
-      src: "/images/atelier/outils.png",
+      src: "/images/accueil/outils.png",
       alt: "Outils de menuiserie traditionnels",
       dominantColor: "#5C4033",
       palette: ["#5C4033", "#8B7355", "#2D2420"],

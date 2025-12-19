@@ -13,7 +13,7 @@ import {
 import { getOptimizedImageUrl } from "./cloudinary";
 
 // Image placeholder pour les produits sans photos
-const PLACEHOLDER_IMAGE = "/images/atelier/outils.png";
+const PLACEHOLDER_IMAGE = "/images/accueil/outils.png";
 
 /**
  * Convertit un produit Notion en GalleryArtwork pour la galerie
