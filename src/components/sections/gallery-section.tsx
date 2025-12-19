@@ -1,6 +1,6 @@
 // ============================================================================
 // GallerySection - Section galerie fullscreen pour la homepage
-// Server component qui recupere les donnees et passe au client
+// Server component qui récupère les données et passe au client
 // ============================================================================
 
 import { FullscreenGallerySlider } from "@/components/galleries";
@@ -8,7 +8,7 @@ import { getGalleryProducts } from "@/lib/gallery-utils";
 import type { GalleryFilter } from "@/types/artwork";
 
 interface GallerySectionProps {
-  /** Nombre de produits a afficher */
+  /** Nombre de produits à afficher */
   limit?: number;
   /** Titre de la section */
   title?: string;
@@ -16,24 +16,24 @@ interface GallerySectionProps {
   autoPlay?: boolean;
   /** Variante d'affichage */
   variant?: "homepage" | "creations";
-  /** Afficher les filtres de categorie */
+  /** Afficher les filtres de catégorie */
   showFilters?: boolean;
-  /** Filtre de categorie actif */
+  /** Filtre de catégorie actif */
   filter?: GalleryFilter;
 }
 
 export async function GallerySection({
   limit = 7,
-  title = "Creations",
+  title = "Créations",
   autoPlay = false,
   variant = "homepage",
   showFilters = false,
   filter = "tous",
 }: GallerySectionProps) {
-  // Recuperer les produits pour la galerie (server-side)
+  // Récupérer les produits pour la galerie (server-side)
   const artworks = await getGalleryProducts(limit, filter);
 
-  // Si pas de produits, afficher un message elegant
+  // Si pas de produits, afficher un message élégant
   if (artworks.length === 0) {
     return <GalleryEmptyState title={title} />;
   }
@@ -52,7 +52,7 @@ export async function GallerySection({
 }
 
 // ============================================================================
-// GalleryEmptyState - Message elegant quand pas de produits
+// GalleryEmptyState - Message élégant quand pas de produits
 // ============================================================================
 
 function GalleryEmptyState({ title }: { title: string }) {
@@ -89,7 +89,7 @@ function GalleryEmptyState({ title }: { title: string }) {
 
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-lg">
-        {/* Icon decoratif */}
+        {/* Icon décoratif */}
         <div className="mb-6 flex justify-center">
           <div
             className="w-16 h-16 rounded-full flex items-center justify-center"
@@ -119,7 +119,7 @@ function GalleryEmptyState({ title }: { title: string }) {
           className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white mb-3"
           style={{ fontFamily: "var(--font-display, 'Playfair Display', serif)" }}
         >
-          Bientot disponible
+          Bientôt disponible
         </h3>
 
         {/* Description */}
@@ -127,9 +127,9 @@ function GalleryEmptyState({ title }: { title: string }) {
           className="text-white/60 text-sm md:text-base leading-relaxed"
           style={{ fontFamily: "var(--font-body, Inter, sans-serif)" }}
         >
-          Notre galerie de creations arrive prochainement.
+          Notre galerie de créations arrive prochainement.
           <br className="hidden md:block" />
-          Decouvrez bientot nos pieces uniques fabriquees a la main.
+          Découvrez bientôt nos pièces uniques fabriquées à la main.
         </p>
       </div>
 

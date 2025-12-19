@@ -1,12 +1,12 @@
 // ============================================================================
-// Artworks Data - Donnees des images de l'atelier
+// Artworks Data - Données des images de l'atelier
 // ============================================================================
 
 import type { Artwork } from "@/types/artwork";
 
 /**
  * Images de l'atelier pour le slider
- * Couleurs dominantes pre-calculees pour SSR
+ * Couleurs dominantes pré-calculées pour SSR
  */
 export const atelierArtworks: Artwork[] = [
   {
@@ -15,7 +15,7 @@ export const atelierArtworks: Artwork[] = [
     description: "Shaima Mouna dans son atelier",
     image: {
       src: "/images/atelier/portrait.png",
-      alt: "Shaima Mouna, designer produit et ebeniste",
+      alt: "Shaima Mouna, designer produit et ébéniste",
       dominantColor: "#8B7355",
       palette: ["#8B7355", "#6B5B4F", "#A67C52"],
     },
@@ -45,10 +45,10 @@ export const atelierArtworks: Artwork[] = [
   {
     id: "atelier-bougeoirs",
     title: "Bougeoirs en Bois",
-    description: "Collection de bougeoirs sculptes",
+    description: "Collection de bougeoirs sculptés",
     image: {
       src: "/images/atelier/bougeoirs.png",
-      alt: "Collection de bougeoirs sculptes a la main",
+      alt: "Collection de bougeoirs sculptés à la main",
       dominantColor: "#6B5B4F",
       palette: ["#6B5B4F", "#8B7355", "#4A3F35"],
     },

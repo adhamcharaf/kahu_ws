@@ -28,7 +28,7 @@ export default function Header({ lang = 'fr', dict }: HeaderProps) {
     { href: "/atelier", label: dict?.nav.atelier || "L'Atelier" },
     { href: "/objet", label: dict?.nav.objet || "Objet" },
     { href: "/espace", label: dict?.nav.espace || "Espace" },
-    { href: "/materiaux", label: dict?.nav.materiaux || "Materiaux" },
+    { href: "/materiaux", label: dict?.nav.materiaux || "Matériaux" },
     { href: "/contact", label: dict?.nav.contact || "Contact" },
   ];
   const [isScrolled, setIsScrolled] = useState(false);

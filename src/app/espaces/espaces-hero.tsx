@@ -41,7 +41,7 @@ export function EspacesHero() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <CinematicHeader
           title="Espaces"
-          subtitle="Des amenagements sur-mesure qui transforment vos espaces de vie. Chaque projet est une collaboration unique avec nos clients."
+          subtitle="Des aménagements sur-mesure qui transforment vos espaces de vie. Chaque projet est une collaboration unique avec nos clients."
         />
       </div>
     </section>

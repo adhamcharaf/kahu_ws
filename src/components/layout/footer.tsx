@@ -22,7 +22,7 @@ export default function Footer({ lang = 'fr', dict }: FooterProps) {
     { href: "/atelier", label: dict?.nav.atelier || "L'Atelier" },
     { href: "/objet", label: dict?.nav.objet || "Objet" },
     { href: "/espace", label: dict?.nav.espace || "Espace" },
-    { href: "/materiaux", label: dict?.nav.materiaux || "Materiaux" },
+    { href: "/materiaux", label: dict?.nav.materiaux || "Matériaux" },
     { href: "/contact", label: dict?.nav.contact || "Contact" },
   ];
 
@@ -42,7 +42,7 @@ export default function Footer({ lang = 'fr', dict }: FooterProps) {
               />
             </Link>
             <p className="mt-4 text-body-sm text-kahu-stone-light max-w-xs">
-              {dict?.metadata.description || "Studio de design mobilier artisanal a Abidjan. Creations uniques, sur-mesure et amenagement d'espaces."}
+              {dict?.metadata.description || "Studio de design mobilier artisanal à Abidjan. Créations uniques, sur-mesure et aménagement d'espaces."}
             </p>
           </div>
 
@@ -71,7 +71,7 @@ export default function Footer({ lang = 'fr', dict }: FooterProps) {
             </h3>
             <address className="not-italic flex flex-col gap-0.5 text-body-sm text-kahu-stone-light">
               <p className="py-1">Riviera 2 les jardins</p>
-              <p className="py-1">Abidjan, Cote d&apos;Ivoire</p>
+              <p className="py-1">Abidjan, Côte d&apos;Ivoire</p>
               <a
                 href="mailto:kahu.ci@outlook.com"
                 className="inline-flex items-center min-h-[44px] py-2 hover:text-kahu-ivory transition-colors"
@@ -115,7 +115,7 @@ export default function Footer({ lang = 'fr', dict }: FooterProps) {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-kahu-bark-soft">
           <p className="text-caption text-kahu-stone text-center">
-            &copy; {currentYear} KAHU Studio. {lang === 'fr' ? 'Tous droits reserves.' : 'All rights reserved.'}
+            &copy; {currentYear} KAHU Studio. {lang === 'fr' ? 'Tous droits réservés.' : 'All rights reserved.'}
           </p>
         </div>
       </div>

@@ -17,7 +17,7 @@ import { atelierArtworks } from "@/data/artworks";
 import { atelierImages } from "@/data/atelier-images";
 
 // ============================================================================
-// Atelier Content - Version animee Apple-style
+// Atelier Content - Version animée Apple-style
 // ============================================================================
 
 export function AtelierContent() {
@@ -42,7 +42,7 @@ export function AtelierContent() {
           <div className="max-w-3xl">
             <CinematicHeader
               title="L'Atelier"
-              subtitle="KAHU Studio est ne de la passion pour le bois et l'artisanat. Chaque piece qui sort de notre atelier raconte une histoire, celle d'un materiau noble transforme avec respect et intention."
+              subtitle="KAHU Studio est né de la passion pour le bois et l'artisanat. Chaque pièce qui sort de notre atelier raconte une histoire, celle d'un matériau noble transformé avec respect et intention."
             />
           </div>
         </div>
@@ -71,21 +71,21 @@ export function AtelierContent() {
                   Shaima Mouna
                 </h2>
                 <p className="mt-2 text-body-sm text-kahu-taupe uppercase tracking-wider">
-                  Designer produit & Ebeniste
+                  Designer produit & Ébéniste
                 </p>
               </SectionReveal>
 
               <SectionReveal variant="fade-up" delay={0.4}>
                 <div className="mt-6 space-y-4 text-body-md text-kahu-bark leading-relaxed">
                   <p>
-                    Formee au design produit et a l&apos;ebenisterie, Shaima a fonde
-                    KAHU Studio avec une vision claire : creer des pieces qui
-                    durent, qui ont une ame, et qui s&apos;integrent naturellement
+                    Formée au design produit et à l&apos;ébénisterie, Shaima a fondé
+                    KAHU Studio avec une vision claire : créer des pièces qui
+                    durent, qui ont une âme, et qui s&apos;intègrent naturellement
                     dans les espaces de vie.
                   </p>
                   <p>
-                    Chaque creation est pensee comme une sculpture fonctionnelle,
-                    ou la beaute du materiau brut rencontre l&apos;intention du design.
+                    Chaque création est pensée comme une sculpture fonctionnelle,
+                    où la beauté du matériau brut rencontre l&apos;intention du design.
                   </p>
                 </div>
               </SectionReveal>
@@ -140,8 +140,8 @@ export function AtelierContent() {
               est la contraction de{" "}
               <span className="text-kahu-ivory">Ka</span>rina et{" "}
               <span className="text-kahu-ivory">Hu</span>ssein, les parents de
-              Mouna. Un hommage a ceux qui lui ont transmis le gout du beau, du
-              bien fait, et l&apos;importance de creer avec le coeur.
+              Mouna. Un hommage à ceux qui lui ont transmis le goût du beau, du
+              bien fait, et l&apos;importance de créer avec le cœur.
             </p>
           </SectionReveal>
         </div>
@@ -164,15 +164,15 @@ export function AtelierContent() {
             <SectionReveal variant="fade-up" delay={0.2}>
               <div className="mt-8 space-y-6 text-body-md text-kahu-bark leading-relaxed">
                 <p>
-                  Chez KAHU, nous croyons que le mobilier doit etre plus qu&apos;un
+                  Chez KAHU, nous croyons que le mobilier doit être plus qu&apos;un
                   objet utilitaire. Il doit porter en lui une intention, une
-                  histoire, une presence.
+                  histoire, une présence.
                 </p>
                 <p>
                   Nous travaillons principalement avec des essences locales,
-                  selectionnees pour leur beaute naturelle et leur durabilite.
-                  Chaque piece est fabriquee a la main dans notre atelier
-                  d&apos;Abidjan, avec un soin particulier apporte aux finitions.
+                  sélectionnées pour leur beauté naturelle et leur durabilité.
+                  Chaque pièce est fabriquée à la main dans notre atelier
+                  d&apos;Abidjan, avec un soin particulier apporté aux finitions.
                 </p>
               </div>
             </SectionReveal>
@@ -187,7 +187,7 @@ export function AtelierContent() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionReveal variant="blur-up">
             <h2 className="font-display text-display-md text-kahu-charcoal text-center">
-              Le processus creatif
+              Le processus créatif
             </h2>
           </SectionReveal>
 
@@ -197,7 +197,7 @@ export function AtelierContent() {
               <ProcessStep
                 number={1}
                 title="Conception"
-                description="Chaque piece commence par un dessin, une reflexion sur la fonction et la forme."
+                description="Chaque pièce commence par un dessin, une réflexion sur la fonction et la forme."
               />
             </CinemaStaggerItem>
 
@@ -205,8 +205,8 @@ export function AtelierContent() {
             <CinemaStaggerItem>
               <ProcessStep
                 number={2}
-                title="Selection"
-                description="Le choix du bois est crucial. Nous selectionnons chaque planche pour ses veines, sa couleur, son caractere."
+                title="Sélection"
+                description="Le choix du bois est crucial. Nous sélectionnons chaque planche pour ses veines, sa couleur, son caractère."
               />
             </CinemaStaggerItem>
 
@@ -215,7 +215,7 @@ export function AtelierContent() {
               <ProcessStep
                 number={3}
                 title="Fabrication"
-                description="A la main, avec patience et precision. Chaque detail compte, chaque finition est soignee."
+                description="À la main, avec patience et précision. Chaque détail compte, chaque finition est soignée."
               />
             </CinemaStaggerItem>
           </CinemaStagger>
@@ -235,7 +235,7 @@ export function AtelierContent() {
           </SectionReveal>
         </div>
 
-        {/* Galerie masonry avec defilement parallax */}
+        {/* Galerie masonry avec défilement parallax */}
         <MasonryGallery
           images={atelierImages}
           height="85vh"

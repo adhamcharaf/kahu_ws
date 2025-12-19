@@ -102,7 +102,7 @@ export default async function BioMateriauxPage({ params }: BioMateriauxPageProps
               </p>
               <p className="text-body-md text-kahu-ivory/80 leading-relaxed">
                 {lang === "fr"
-                  ? "Les bio-matériaux sont au coeur de notre vision d'un artisanat responsable et créatif, où rien ne se perd et tout se transforme."
+                  ? "Les bio-matériaux sont au cœur de notre vision d'un artisanat responsable et créatif, où rien ne se perd et tout se transforme."
                   : "Bio-materials are at the heart of our vision for responsible and creative craftsmanship, where nothing is wasted and everything is transformed."}
               </p>
             </SectionReveal>
@@ -127,7 +127,7 @@ export default async function BioMateriauxPage({ params }: BioMateriauxPageProps
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <SectionReveal>
             <h2 className="font-display text-display-md text-kahu-charcoal mb-4">
-              {lang === "fr" ? "Interessé par nos recherches ?" : "Interested in our research?"}
+              {lang === "fr" ? "Intéressé par nos recherches ?" : "Interested in our research?"}
             </h2>
             <p className="text-body-md text-kahu-taupe max-w-xl mx-auto mb-8">
               {lang === "fr"

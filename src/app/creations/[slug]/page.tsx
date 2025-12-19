@@ -35,7 +35,7 @@ export async function generateMetadata({
 
   if (!product) {
     return {
-      title: "Produit non trouve",
+      title: "Produit non trouvé",
     };
   }
 
@@ -88,7 +88,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     href="/creations"
                     className="hover:text-kahu-terracotta transition-colors"
                   >
-                    Creations
+                    Créations
                   </Link>
                 </li>
                 <li aria-hidden="true">/</li>
@@ -128,7 +128,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   {/* Materials */}
                   <div>
                     <h3 className="text-body-sm font-medium uppercase tracking-wider text-kahu-taupe">
-                      Materiaux
+                      Matériaux
                     </h3>
                     <p className="mt-1 text-body-md text-kahu-bark">
                       {product.materiaux}
@@ -150,7 +150,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   {/* Category */}
                   <div>
                     <h3 className="text-body-sm font-medium uppercase tracking-wider text-kahu-taupe">
-                      Categorie
+                      Catégorie
                     </h3>
                     <p className="mt-1 text-body-md text-kahu-bark">
                       {product.categorie}
@@ -163,10 +163,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   {isSold ? (
                     <div className="space-y-4">
                       <p className="text-body-sm text-kahu-taupe">
-                        Cette piece a trouve son foyer.
+                        Cette pièce a trouvé son foyer.
                       </p>
                       <Button href="/creations" variant="secondary">
-                        Voir les creations disponibles
+                        Voir les créations disponibles
                       </Button>
                     </div>
                   ) : (
