@@ -1,16 +1,30 @@
 import Link from "next/link";
 import Image from "next/image";
+import type { Locale } from "@/lib/i18n/config";
+import type { Dictionary } from "@/lib/i18n/get-dictionary";
 
-const navLinks = [
-  { href: "/atelier", label: "Atelier" },
-  { href: "/creations", label: "Creations" },
-  { href: "/sur-mesure", label: "Sur-mesure" },
-  { href: "/espaces", label: "Espaces" },
-  { href: "/contact", label: "Contact" },
-];
+interface FooterProps {
+  lang?: Locale;
+  dict?: Dictionary;
+}
 
-export default function Footer() {
+// Helper to build localized links
+function getLocalizedHref(href: string, lang?: Locale): string {
+  if (!lang) return href;
+  return `/${lang}${href === '/' ? '' : href}`;
+}
+
+export default function Footer({ lang = 'fr', dict }: FooterProps) {
   const currentYear = new Date().getFullYear();
+
+  // Navigation links using dictionary or fallback
+  const navLinks = [
+    { href: "/atelier", label: dict?.nav.atelier || "L'Atelier" },
+    { href: "/objet", label: dict?.nav.objet || "Objet" },
+    { href: "/espace", label: dict?.nav.espace || "Espace" },
+    { href: "/materiaux", label: dict?.nav.materiaux || "Materiaux" },
+    { href: "/contact", label: dict?.nav.contact || "Contact" },
+  ];
 
   return (
     <footer className="bg-kahu-bark text-kahu-cream-warm">
@@ -18,7 +32,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
           {/* Brand */}
           <div>
-            <Link href="/" className="inline-block">
+            <Link href={getLocalizedHref("/", lang)} className="inline-block">
               <Image
                 src="/images/Logo.png"
                 alt="KAHU Studio"
@@ -28,8 +42,7 @@ export default function Footer() {
               />
             </Link>
             <p className="mt-4 text-body-sm text-kahu-stone-light max-w-xs">
-              Studio de design mobilier artisanal a Abidjan. Creations uniques,
-              sur-mesure et amenagement d&apos;espaces.
+              {dict?.metadata.description || "Studio de design mobilier artisanal a Abidjan. Creations uniques, sur-mesure et amenagement d'espaces."}
             </p>
           </div>
 
@@ -42,7 +55,7 @@ export default function Footer() {
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
-                  href={link.href}
+                  href={getLocalizedHref(link.href, lang)}
                   className="py-2.5 -mx-2 px-2 rounded-lg text-body-sm text-kahu-stone-light hover:text-kahu-ivory hover:bg-white/5 active:bg-white/10 transition-all duration-200"
                 >
                   {link.label}
@@ -102,7 +115,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-kahu-bark-soft">
           <p className="text-caption text-kahu-stone text-center">
-            &copy; {currentYear} KAHU Studio. Tous droits reserves.
+            &copy; {currentYear} KAHU Studio. {lang === 'fr' ? 'Tous droits reserves.' : 'All rights reserved.'}
           </p>
         </div>
       </div>

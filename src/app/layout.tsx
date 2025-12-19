@@ -17,6 +17,7 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
+// Base metadata - will be overridden by [lang]/layout.tsx
 export const metadata: Metadata = {
   title: {
     default: "KAHU Studio | Design mobilier artisanal",
@@ -40,17 +41,10 @@ export const metadata: Metadata = {
   creator: "KAHU Studio",
   openGraph: {
     type: "website",
-    locale: "fr_FR",
     siteName: "KAHU Studio",
-    title: "KAHU Studio | Design mobilier artisanal",
-    description:
-      "Studio de design mobilier artisanal a Abidjan. Creations uniques, sur-mesure et amenagement d'espaces.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "KAHU Studio | Design mobilier artisanal",
-    description:
-      "Studio de design mobilier artisanal a Abidjan. Creations uniques, sur-mesure et amenagement d'espaces.",
   },
   robots: {
     index: true,
@@ -62,13 +56,18 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
+interface RootLayoutProps {
   children: React.ReactNode;
-}>) {
+  params?: Promise<{ lang?: string }>;
+}
+
+export default async function RootLayout({ children, params }: RootLayoutProps) {
+  // Get lang from params if available, default to 'fr'
+  const resolvedParams = params ? await params : undefined;
+  const lang = resolvedParams?.lang || 'fr';
+
   return (
-    <html lang="fr">
+    <html lang={lang}>
       <body className={`${cormorant.variable} ${dmSans.variable} antialiased`}>
         {children}
       </body>

@@ -1,0 +1,337 @@
+{
+  "metadata": {
+    "title": "KAHU Studio | Design mobilier artisanal",
+    "description": "Studio de design mobilier artisanal a Abidjan. Creations uniques, sur-mesure et amenagement d'espaces par Mouna Shaima."
+  },
+  "nav": {
+    "home": "Accueil",
+    "atelier": "L'Atelier",
+    "objet": "Objet",
+    "espace": "Espace",
+    "materiaux": "Materiaux",
+    "contact": "Contact"
+  },
+  "common": {
+    "readMore": "En savoir plus",
+    "seeAll": "Voir tout",
+    "backHome": "Retour a l'accueil",
+    "loading": "Chargement...",
+    "breadcrumb": {
+      "creations": "Creations",
+      "espaces": "Espaces"
+    },
+    "filters": {
+      "all": "Tous",
+      "capsules": "Capsules",
+      "mobilier": "Mobilier"
+    },
+    "empty": {
+      "noProducts": "Aucun produit disponible pour le moment.",
+      "noProjects": "Aucun projet disponible pour le moment."
+    },
+    "product": {
+      "materials": "Materiaux",
+      "dimensions": "Dimensions",
+      "category": "Categorie",
+      "sold": "Vendu",
+      "available": "Disponible",
+      "soldMessage": "Cette piece a trouve son foyer.",
+      "seeAvailable": "Voir les creations disponibles",
+      "order": "Commander via WhatsApp",
+      "similar": "Vous aimerez aussi"
+    },
+    "project": {
+      "year": "Annee",
+      "location": "Lieu",
+      "similarProject": "Un projet similaire ?",
+      "discuss": "Discuter de mon projet"
+    },
+    "cta": {
+      "whatsapp": "Discuter de mon projet",
+      "contact": "Nous contacter"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "KAHU Studio",
+      "subtitle": "Design mobilier artisanal"
+    },
+    "philosophy": {
+      "title": "Notre Philosophie",
+      "description": "Chaque piece est une histoire de bois, de savoir-faire et de passion. Nous creons des meubles qui traversent le temps."
+    }
+  },
+  "atelier": {
+    "title": "L'Atelier",
+    "subtitle": "Decouvrez notre univers",
+    "sections": {
+      "equipe": {
+        "title": "L'Equipe",
+        "description": "Rencontrez les artisans qui donnent vie a vos projets"
+      },
+      "lieu": {
+        "title": "Le Lieu",
+        "description": "Un espace ou le bois prend forme"
+      },
+      "portfolio": {
+        "title": "Portfolio",
+        "description": "Nos realisations les plus marquantes"
+      }
+    },
+    "equipe": {
+      "title": "L'Equipe",
+      "subtitle": "Les artisans derriere chaque creation",
+      "heroText": "Chez KAHU, chaque piece est le fruit d'un savoir-faire collectif. Decouvrez les mains et les esprits qui transforment le bois en oeuvres uniques.",
+      "founderLabel": "Fondatrice",
+      "artisansLabel": "Nos Artisans",
+      "experienceLabel": "ans d'experience",
+      "specialtiesLabel": "Specialites"
+    },
+    "lieu": {
+      "title": "Le Lieu",
+      "subtitle": "Notre atelier a Abidjan",
+      "heroText": "Installe au coeur d'Abidjan, notre atelier est un espace ou tradition et modernite se rencontrent. C'est ici que naissent toutes nos creations.",
+      "features": {
+        "workshop": {
+          "title": "L'Atelier",
+          "description": "400m2 dedies a la transformation du bois, equipes de machines traditionnelles et contemporaines."
+        },
+        "showroom": {
+          "title": "Le Showroom",
+          "description": "Un espace d'exposition ou decouvrir nos collections et materiaux."
+        },
+        "stockage": {
+          "title": "Le Stockage Bois",
+          "description": "Notre reserve de bois precieux, seches naturellement pendant des mois."
+        }
+      },
+      "visitCta": "Nous rendre visite"
+    },
+    "portfolio": {
+      "title": "Portfolio",
+      "subtitle": "Nos realisations",
+      "heroText": "Une selection de nos projets les plus marquants, du mobilier sur-mesure aux amenagements complets.",
+      "filterAll": "Tous",
+      "filterMobilier": "Mobilier",
+      "filterEspaces": "Espaces",
+      "emptyState": "De nouveaux projets arrivent bientot."
+    }
+  },
+  "objet": {
+    "title": "Objet",
+    "subtitle": "Nos creations",
+    "sections": {
+      "capsules": {
+        "title": "Les Capsules",
+        "description": "Creations uniques et ephemeres, en quantites limitees"
+      },
+      "collections": {
+        "title": "Les Collections",
+        "description": "Mobilier intemporel, disponible en showroom ou sur commande"
+      },
+      "surMesure": {
+        "title": "Le Sur-Mesure",
+        "description": "De la rencontre a la conception, un accompagnement personnalise"
+      }
+    },
+    "capsules": {
+      "title": "Les Capsules",
+      "subtitle": "Creations uniques, editions limitees",
+      "heroText": "Chaque capsule est une exploration creative ephemere. Des pieces uniques ou en quantite tres limitee, qui ne seront jamais reproduites.",
+      "emptyState": "Nouvelle capsule bientot disponible. Inscrivez-vous pour etre informe en avant-premiere."
+    },
+    "collections": {
+      "title": "Les Collections",
+      "subtitle": "Mobilier intemporel",
+      "heroText": "Notre gamme permanente de mobilier artisanal. Des pieces concues pour durer, disponibles sur commande ou en showroom.",
+      "emptyState": "Notre catalogue s'enrichit prochainement."
+    },
+    "surMesure": {
+      "title": "Le Sur-Mesure",
+      "subtitle": "Votre vision, notre savoir-faire",
+      "heroText": "Parce que chaque espace est unique, chaque piece devrait l'etre aussi. Creez avec nous le mobilier qui vous ressemble, adapte a vos besoins et a votre interieur.",
+      "process": {
+        "title": "Le processus",
+        "subtitle": "De l'idee a la realisation, nous vous accompagnons a chaque etape pour creer la piece parfaite.",
+        "steps": [
+          {
+            "number": "01",
+            "title": "Premiere rencontre",
+            "description": "Nous echangeons sur votre projet, vos envies, vos contraintes d'espace et de budget. C'est le moment de partager vos inspirations."
+          },
+          {
+            "number": "02",
+            "title": "Conception",
+            "description": "Nous elaborons des esquisses et propositions. Ensemble, nous affinons le design jusqu'a obtenir la piece parfaite."
+          },
+          {
+            "number": "03",
+            "title": "Selection des materiaux",
+            "description": "Nous vous presentons les essences de bois disponibles. Vous participez au choix du materiau qui donnera vie a votre piece."
+          },
+          {
+            "number": "04",
+            "title": "Fabrication",
+            "description": "Votre piece prend forme dans notre atelier. Nous vous tenons informe de l'avancement et partageons des photos du processus."
+          },
+          {
+            "number": "05",
+            "title": "Livraison & Installation",
+            "description": "Nous livrons et installons votre piece chez vous. Le moment ou votre vision devient realite."
+          }
+        ]
+      },
+      "projectTypes": {
+        "title": "Types de projets",
+        "types": [
+          {
+            "title": "Mobilier d'interieur",
+            "description": "Tables, chaises, rangements, bibliotheques... Tout ce qui fait l'ame de votre interieur."
+          },
+          {
+            "title": "Amenagement d'espaces",
+            "description": "Cuisines, dressings, bureaux. Des solutions sur-mesure qui optimisent votre espace."
+          },
+          {
+            "title": "Pieces sculpturales",
+            "description": "Des creations uniques qui deviennent le point focal de votre espace."
+          },
+          {
+            "title": "Restauration",
+            "description": "Redonner vie a vos pieces anciennes tout en preservant leur caractere."
+          }
+        ]
+      },
+      "cta": {
+        "title": "Vous avez un projet ?",
+        "subtitle": "Discutons de votre vision. Chaque projet commence par une conversation."
+      }
+    }
+  },
+  "espace": {
+    "title": "Espace",
+    "subtitle": "Amenagement & Renovation",
+    "sections": {
+      "renovation": {
+        "title": "Renovation",
+        "description": "Transformer vos espaces avec elegance"
+      },
+      "amenagement": {
+        "title": "Amenagement",
+        "description": "Optimiser chaque metre carre avec intelligence"
+      },
+      "agrandissement": {
+        "title": "Agrandissement",
+        "description": "Extensions et dependances cle en main"
+      }
+    },
+    "renovation": {
+      "title": "Renovation",
+      "subtitle": "Transformer vos espaces avec elegance",
+      "heroText": "Redonner vie a vos espaces existants. Nous repensons l'agencement, les materiaux et les finitions pour creer un interieur qui vous ressemble.",
+      "features": [
+        "Renovation complete ou partielle",
+        "Repense de l'agencement",
+        "Selection des materiaux nobles",
+        "Suivi de chantier complet"
+      ]
+    },
+    "amenagement": {
+      "title": "Amenagement",
+      "subtitle": "Optimiser chaque metre carre",
+      "heroText": "Cuisines, dressings, bureaux, placards... Nous concevons des amenagements sur-mesure qui optimisent intelligemment votre espace.",
+      "features": [
+        "Conception sur-mesure",
+        "Optimisation de l'espace",
+        "Materiaux de qualite",
+        "Installation soignee"
+      ]
+    },
+    "agrandissement": {
+      "title": "Agrandissement",
+      "subtitle": "Extensions et dependances cle en main",
+      "heroText": "Gagnez de l'espace avec une extension harmonieuse. Du design a la construction, nous gerons votre projet de A a Z.",
+      "features": [
+        "Etude de faisabilite",
+        "Design architectural",
+        "Gestion des travaux",
+        "Finitions soignees"
+      ]
+    },
+    "cta": {
+      "title": "Un projet d'amenagement ?",
+      "subtitle": "Discutons de votre espace et de vos envies. Chaque projet est unique."
+    }
+  },
+  "materiaux": {
+    "title": "Materiaux",
+    "subtitle": "L'essence de notre craft",
+    "sections": {
+      "essences": {
+        "title": "Les Essences",
+        "description": "9 bois africains d'exception"
+      },
+      "bioMateriaux": {
+        "title": "Bio-Materiaux",
+        "description": "L'innovation au service de l'environnement"
+      },
+      "laboKahu": {
+        "title": "Le Labo KAHU",
+        "description": "Notre espace d'experimentation"
+      }
+    },
+    "essences": {
+      "title": "Les Essences",
+      "subtitle": "9 bois africains d'exception",
+      "heroText": "Chaque essence de bois raconte une histoire. De l'Iroko robuste au Bete raffine, decouvrez les bois africains qui donnent vie a nos creations.",
+      "durabilityLabel": "Durabilite",
+      "originLabel": "Origine",
+      "densityLabel": "Densite"
+    },
+    "bioMateriaux": {
+      "title": "Bio-Materiaux",
+      "subtitle": "L'innovation au service de l'environnement",
+      "heroText": "Notre engagement envers la durabilite nous pousse a explorer de nouveaux materiaux. Valorisation des dechets, bio-composites et matieres premieres locales.",
+      "statusLabels": {
+        "research": "Recherche",
+        "prototype": "Prototype",
+        "production": "Production"
+      }
+    },
+    "laboKahu": {
+      "title": "Le Labo KAHU",
+      "subtitle": "Notre espace d'experimentation",
+      "heroText": "Le Labo KAHU est notre terrain de jeu creatif. Un espace dedie a l'experimentation, ou nous testons de nouvelles techniques, explorons des materiaux innovants et repoussons les limites du possible.",
+      "sections": {
+        "research": {
+          "title": "Recherche & Developpement",
+          "description": "Exploration de nouvelles techniques de transformation du bois et de valorisation des chutes."
+        },
+        "prototyping": {
+          "title": "Prototypage",
+          "description": "Tests et iterations rapides pour valider nos idees avant la production."
+        },
+        "collaboration": {
+          "title": "Collaborations",
+          "description": "Partenariats avec des artisans locaux et des chercheurs pour enrichir notre savoir-faire."
+        }
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Parlons de votre projet",
+    "form": {
+      "name": "Nom",
+      "email": "Email",
+      "message": "Message",
+      "submit": "Envoyer"
+    },
+    "info": {
+      "address": "Abidjan, Cote d'Ivoire",
+      "phone": "+225 XX XX XX XX",
+      "email": "contact@kahustudio.com",
+      "hours": "Lun - Ven : 9h - 18h"
+    }
+  }
+}

@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
+import LanguageToggle from "@/components/ui/language-toggle";
+import type { Locale } from "@/lib/i18n/config";
 
 interface NavLink {
   href: string;
@@ -10,6 +12,7 @@ interface NavLink {
 
 interface MobileNavProps {
   links: NavLink[];
+  lang: Locale;
   onClose: () => void;
 }
 
@@ -51,7 +54,7 @@ const itemVariants: Variants = {
   },
 };
 
-export default function MobileNav({ links, onClose }: MobileNavProps) {
+export default function MobileNav({ links, lang, onClose }: MobileNavProps) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -72,12 +75,17 @@ export default function MobileNav({ links, onClose }: MobileNavProps) {
             <Link
               href={link.href}
               onClick={onClose}
-              className="block py-4 font-display text-display-sm text-kahu-charcoal hover:text-kahu-terracotta transition-colors"
+              className="block py-4 font-display text-display-sm text-kahu-charcoal hover:text-kahu-terracotta transition-colors uppercase tracking-wide"
             >
               {link.label}
             </Link>
           </motion.div>
         ))}
+
+        {/* Language Toggle */}
+        <motion.div variants={itemVariants} className="mt-8">
+          <LanguageToggle currentLang={lang} />
+        </motion.div>
 
         {/* Social / Contact at bottom - avec safe-area */}
         <motion.div

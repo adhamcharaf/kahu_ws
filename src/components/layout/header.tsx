@@ -7,16 +7,30 @@ import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/use-media-query";
 import MobileNav from "./mobile-nav";
+import LanguageToggle from "@/components/ui/language-toggle";
+import type { Locale } from "@/lib/i18n/config";
+import type { Dictionary } from "@/lib/i18n/get-dictionary";
 
-const navLinks = [
-  { href: "/atelier", label: "Atelier" },
-  { href: "/creations", label: "Creations" },
-  { href: "/sur-mesure", label: "Sur-mesure" },
-  { href: "/espaces", label: "Espaces" },
-  { href: "/contact", label: "Contact" },
-];
+interface HeaderProps {
+  lang?: Locale;
+  dict?: Dictionary;
+}
 
-export default function Header() {
+// Helper to build localized links
+function getLocalizedHref(href: string, lang?: Locale): string {
+  if (!lang) return href;
+  return `/${lang}${href === '/' ? '' : href}`;
+}
+
+export default function Header({ lang = 'fr', dict }: HeaderProps) {
+  // Navigation links using dictionary or fallback
+  const navLinks = [
+    { href: "/atelier", label: dict?.nav.atelier || "L'Atelier" },
+    { href: "/objet", label: dict?.nav.objet || "Objet" },
+    { href: "/espace", label: dict?.nav.espace || "Espace" },
+    { href: "/materiaux", label: dict?.nav.materiaux || "Materiaux" },
+    { href: "/contact", label: dict?.nav.contact || "Contact" },
+  ];
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isMobile = useIsMobile();
@@ -62,7 +76,7 @@ export default function Header() {
 
             {/* Logo - centre sur mobile, gauche sur desktop */}
             <Link
-              href="/"
+              href={getLocalizedHref("/", lang)}
               className="block transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98]"
             >
               <Image
@@ -76,17 +90,20 @@ export default function Header() {
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-6 lg:gap-8">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
-                  href={link.href}
-                  className="text-body-sm font-medium text-kahu-bark hover:text-kahu-terracotta transition-colors relative group"
+                  href={getLocalizedHref(link.href, lang)}
+                  className="text-body-sm font-medium text-kahu-bark hover:text-kahu-terracotta transition-colors relative group uppercase tracking-wide"
                 >
                   {link.label}
                   <span className="absolute -bottom-1 left-0 w-0 h-px bg-kahu-terracotta transition-all duration-300 group-hover:w-full" />
                 </Link>
               ))}
+
+              {/* Language Toggle */}
+              <LanguageToggle currentLang={lang} />
             </div>
 
             {/* Mobile Menu Button - 44px tactile */}
@@ -133,7 +150,11 @@ export default function Header() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <MobileNav
-            links={navLinks}
+            links={navLinks.map(link => ({
+              ...link,
+              href: getLocalizedHref(link.href, lang)
+            }))}
+            lang={lang}
             onClose={() => setIsMobileMenuOpen(false)}
           />
         )}

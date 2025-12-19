@@ -10,9 +10,10 @@ import type { Project } from "@/lib/types";
 interface ProjectCardProps {
   project: Project;
   priority?: boolean;
+  lang?: string;
 }
 
-export function ProjectCard({ project, priority = false }: ProjectCardProps) {
+export function ProjectCard({ project, priority = false, lang = 'fr' }: ProjectCardProps) {
   const { nom, slug, annee, photos } = project;
 
   const imageUrl = photos[0] ? getOptimizedImageUrl(photos[0], "gallery") : "/placeholder.jpg";
@@ -24,7 +25,7 @@ export function ProjectCard({ project, priority = false }: ProjectCardProps) {
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
     >
-      <Link href={`/espaces/${slug}`} className="group block">
+      <Link href={`/${lang}/espace/${slug}`} className="group block">
         {/* Image Container */}
         <div className="relative aspect-[4/3] overflow-hidden rounded-sm bg-kahu-cream-deep">
           <Image

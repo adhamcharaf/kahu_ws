@@ -1,0 +1,337 @@
+{
+  "metadata": {
+    "title": "KAHU Studio | Artisanal Furniture Design",
+    "description": "Artisanal furniture design studio in Abidjan. Unique creations, bespoke pieces and space design by Mouna Shaima."
+  },
+  "nav": {
+    "home": "Home",
+    "atelier": "The Studio",
+    "objet": "Objects",
+    "espace": "Spaces",
+    "materiaux": "Materials",
+    "contact": "Contact"
+  },
+  "common": {
+    "readMore": "Read more",
+    "seeAll": "See all",
+    "backHome": "Back to home",
+    "loading": "Loading...",
+    "breadcrumb": {
+      "creations": "Creations",
+      "espaces": "Spaces"
+    },
+    "filters": {
+      "all": "All",
+      "capsules": "Capsules",
+      "mobilier": "Furniture"
+    },
+    "empty": {
+      "noProducts": "No products available at the moment.",
+      "noProjects": "No projects available at the moment."
+    },
+    "product": {
+      "materials": "Materials",
+      "dimensions": "Dimensions",
+      "category": "Category",
+      "sold": "Sold",
+      "available": "Available",
+      "soldMessage": "This piece has found its home.",
+      "seeAvailable": "See available creations",
+      "order": "Order via WhatsApp",
+      "similar": "You may also like"
+    },
+    "project": {
+      "year": "Year",
+      "location": "Location",
+      "similarProject": "A similar project?",
+      "discuss": "Discuss my project"
+    },
+    "cta": {
+      "whatsapp": "Discuss my project",
+      "contact": "Contact us"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "KAHU Studio",
+      "subtitle": "Artisanal furniture design"
+    },
+    "philosophy": {
+      "title": "Our Philosophy",
+      "description": "Each piece tells a story of wood, craftsmanship and passion. We create furniture that stands the test of time."
+    }
+  },
+  "atelier": {
+    "title": "The Studio",
+    "subtitle": "Discover our universe",
+    "sections": {
+      "equipe": {
+        "title": "The Team",
+        "description": "Meet the artisans who bring your projects to life"
+      },
+      "lieu": {
+        "title": "The Space",
+        "description": "A place where wood takes shape"
+      },
+      "portfolio": {
+        "title": "Portfolio",
+        "description": "Our most remarkable achievements"
+      }
+    },
+    "equipe": {
+      "title": "The Team",
+      "subtitle": "The artisans behind each creation",
+      "heroText": "At KAHU, each piece is the result of collective craftsmanship. Discover the hands and minds that transform wood into unique works.",
+      "founderLabel": "Founder",
+      "artisansLabel": "Our Artisans",
+      "experienceLabel": "years of experience",
+      "specialtiesLabel": "Specialties"
+    },
+    "lieu": {
+      "title": "The Space",
+      "subtitle": "Our workshop in Abidjan",
+      "heroText": "Located in the heart of Abidjan, our workshop is a space where tradition and modernity meet. This is where all our creations are born.",
+      "features": {
+        "workshop": {
+          "title": "The Workshop",
+          "description": "400m2 dedicated to wood transformation, equipped with traditional and contemporary machines."
+        },
+        "showroom": {
+          "title": "The Showroom",
+          "description": "An exhibition space to discover our collections and materials."
+        },
+        "stockage": {
+          "title": "Wood Storage",
+          "description": "Our reserve of precious woods, naturally dried for months."
+        }
+      },
+      "visitCta": "Visit us"
+    },
+    "portfolio": {
+      "title": "Portfolio",
+      "subtitle": "Our achievements",
+      "heroText": "A selection of our most remarkable projects, from bespoke furniture to complete layouts.",
+      "filterAll": "All",
+      "filterMobilier": "Furniture",
+      "filterEspaces": "Spaces",
+      "emptyState": "New projects coming soon."
+    }
+  },
+  "objet": {
+    "title": "Objects",
+    "subtitle": "Our creations",
+    "sections": {
+      "capsules": {
+        "title": "Capsules",
+        "description": "Unique and ephemeral creations, in limited quantities"
+      },
+      "collections": {
+        "title": "Collections",
+        "description": "Timeless furniture, available in showroom or on order"
+      },
+      "surMesure": {
+        "title": "Bespoke",
+        "description": "From meeting to creation, personalized guidance"
+      }
+    },
+    "capsules": {
+      "title": "Capsules",
+      "subtitle": "Unique creations, limited editions",
+      "heroText": "Each capsule is an ephemeral creative exploration. Unique or very limited quantity pieces that will never be reproduced.",
+      "emptyState": "New capsule coming soon. Subscribe to be informed first."
+    },
+    "collections": {
+      "title": "Collections",
+      "subtitle": "Timeless furniture",
+      "heroText": "Our permanent range of artisanal furniture. Pieces designed to last, available on order or in showroom.",
+      "emptyState": "Our catalog is expanding soon."
+    },
+    "surMesure": {
+      "title": "Bespoke",
+      "subtitle": "Your vision, our expertise",
+      "heroText": "Because every space is unique, every piece should be too. Create with us furniture that reflects you, adapted to your needs and interior.",
+      "process": {
+        "title": "The process",
+        "subtitle": "From idea to realization, we guide you through every step to create the perfect piece.",
+        "steps": [
+          {
+            "number": "01",
+            "title": "First meeting",
+            "description": "We discuss your project, your desires, your space and budget constraints. This is the moment to share your inspirations."
+          },
+          {
+            "number": "02",
+            "title": "Design",
+            "description": "We develop sketches and proposals. Together, we refine the design until we achieve the perfect piece."
+          },
+          {
+            "number": "03",
+            "title": "Material selection",
+            "description": "We present the available wood species. You participate in choosing the material that will bring your piece to life."
+          },
+          {
+            "number": "04",
+            "title": "Manufacturing",
+            "description": "Your piece takes shape in our workshop. We keep you informed of progress and share photos of the process."
+          },
+          {
+            "number": "05",
+            "title": "Delivery & Installation",
+            "description": "We deliver and install your piece at your home. The moment your vision becomes reality."
+          }
+        ]
+      },
+      "projectTypes": {
+        "title": "Project types",
+        "types": [
+          {
+            "title": "Interior furniture",
+            "description": "Tables, chairs, storage, bookcases... Everything that makes the soul of your interior."
+          },
+          {
+            "title": "Space design",
+            "description": "Kitchens, dressings, offices. Bespoke solutions that optimize your space."
+          },
+          {
+            "title": "Sculptural pieces",
+            "description": "Unique creations that become the focal point of your space."
+          },
+          {
+            "title": "Restoration",
+            "description": "Bringing your old pieces back to life while preserving their character."
+          }
+        ]
+      },
+      "cta": {
+        "title": "Do you have a project?",
+        "subtitle": "Let's discuss your vision. Every project starts with a conversation."
+      }
+    }
+  },
+  "espace": {
+    "title": "Spaces",
+    "subtitle": "Design & Renovation",
+    "sections": {
+      "renovation": {
+        "title": "Renovation",
+        "description": "Transform your spaces with elegance"
+      },
+      "amenagement": {
+        "title": "Layout",
+        "description": "Optimize every square meter intelligently"
+      },
+      "agrandissement": {
+        "title": "Extension",
+        "description": "Turnkey extensions and outbuildings"
+      }
+    },
+    "renovation": {
+      "title": "Renovation",
+      "subtitle": "Transform your spaces with elegance",
+      "heroText": "Bring your existing spaces back to life. We rethink the layout, materials and finishes to create an interior that reflects you.",
+      "features": [
+        "Complete or partial renovation",
+        "Layout redesign",
+        "Noble materials selection",
+        "Complete project management"
+      ]
+    },
+    "amenagement": {
+      "title": "Layout",
+      "subtitle": "Optimize every square meter",
+      "heroText": "Kitchens, dressings, offices, closets... We design bespoke layouts that intelligently optimize your space.",
+      "features": [
+        "Bespoke design",
+        "Space optimization",
+        "Quality materials",
+        "Careful installation"
+      ]
+    },
+    "agrandissement": {
+      "title": "Extension",
+      "subtitle": "Turnkey extensions and outbuildings",
+      "heroText": "Gain space with a harmonious extension. From design to construction, we manage your project from A to Z.",
+      "features": [
+        "Feasibility study",
+        "Architectural design",
+        "Works management",
+        "Quality finishes"
+      ]
+    },
+    "cta": {
+      "title": "A layout project?",
+      "subtitle": "Let's discuss your space and desires. Every project is unique."
+    }
+  },
+  "materiaux": {
+    "title": "Materials",
+    "subtitle": "The essence of our craft",
+    "sections": {
+      "essences": {
+        "title": "Wood Species",
+        "description": "9 exceptional African woods"
+      },
+      "bioMateriaux": {
+        "title": "Bio-Materials",
+        "description": "Innovation serving the environment"
+      },
+      "laboKahu": {
+        "title": "KAHU Lab",
+        "description": "Our experimentation space"
+      }
+    },
+    "essences": {
+      "title": "Wood Species",
+      "subtitle": "9 exceptional African woods",
+      "heroText": "Each wood species tells a story. From robust Iroko to refined Bete, discover the African woods that bring our creations to life.",
+      "durabilityLabel": "Durability",
+      "originLabel": "Origin",
+      "densityLabel": "Density"
+    },
+    "bioMateriaux": {
+      "title": "Bio-Materials",
+      "subtitle": "Innovation serving the environment",
+      "heroText": "Our commitment to sustainability drives us to explore new materials. Waste valorization, bio-composites and local raw materials.",
+      "statusLabels": {
+        "research": "Research",
+        "prototype": "Prototype",
+        "production": "Production"
+      }
+    },
+    "laboKahu": {
+      "title": "KAHU Lab",
+      "subtitle": "Our experimentation space",
+      "heroText": "KAHU Lab is our creative playground. A space dedicated to experimentation, where we test new techniques, explore innovative materials and push the limits of what's possible.",
+      "sections": {
+        "research": {
+          "title": "Research & Development",
+          "description": "Exploring new wood transformation techniques and waste valorization."
+        },
+        "prototyping": {
+          "title": "Prototyping",
+          "description": "Rapid testing and iterations to validate our ideas before production."
+        },
+        "collaboration": {
+          "title": "Collaborations",
+          "description": "Partnerships with local artisans and researchers to enrich our expertise."
+        }
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Let's talk about your project",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "submit": "Send"
+    },
+    "info": {
+      "address": "Abidjan, Ivory Coast",
+      "phone": "+225 XX XX XX XX",
+      "email": "contact@kahustudio.com",
+      "hours": "Mon - Fri: 9am - 6pm"
+    }
+  }
+}
