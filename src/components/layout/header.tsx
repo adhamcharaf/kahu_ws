@@ -32,12 +32,17 @@ export default function Header({ lang = 'fr', dict }: HeaderProps) {
     { href: "/contact", label: dict?.nav.contact || "Contact" },
   ];
   const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isMobile = useIsMobile();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      setScrollProgress(progress);
+      setIsScrolled(scrollTop > 50);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -146,6 +151,18 @@ export default function Header({ lang = 'fr', dict }: HeaderProps) {
             </motion.button>
           </div>
         </nav>
+
+        {/* Progress Bar - Barre de progression artisanale */}
+        {!isMobileMenuOpen && (
+          <motion.div
+            className="h-[2px] origin-left"
+            style={{
+              width: `${scrollProgress}%`,
+              background: 'linear-gradient(90deg, #8B3A3A 0%, #A65454 70%, #6B2D2D 100%)',
+              boxShadow: scrollProgress > 0 ? '0 0 8px rgba(139, 58, 58, 0.3)' : 'none',
+            }}
+          />
+        )}
       </header>
 
       {/* Mobile Navigation */}

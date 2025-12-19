@@ -111,16 +111,15 @@ const transitionVariants: Record<string, Variants> = {
   },
 
   // Mode cinematique Apple-style - plus lent, plus dramatique
+  // Note: filter: blur() a été retiré car il casse position: fixed du header
   cinematic: {
     initial: {
       opacity: 0,
       y: 40,
-      filter: "blur(4px)",
     },
     enter: {
       opacity: 1,
       y: 0,
-      filter: "blur(0px)",
       transition: {
         duration: DURATION.cinematic,
         ease: EASE.cinematic,
@@ -131,7 +130,6 @@ const transitionVariants: Record<string, Variants> = {
     exit: {
       opacity: 0,
       y: -20,
-      filter: "blur(4px)",
       transition: {
         duration: DURATION.fast,
         ease: EASE.cinematic,
