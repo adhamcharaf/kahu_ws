@@ -21,9 +21,11 @@ interface ProductCardProps {
   priority?: boolean;
   /** Index pour le stagger delay */
   index?: number;
+  /** Language for i18n routing */
+  lang?: string;
 }
 
-export function ProductCard({ product, priority = false, index = 0 }: ProductCardProps) {
+export function ProductCard({ product, priority = false, index = 0, lang = 'fr' }: ProductCardProps) {
   const { nom, slug, prix, statut, venteFlash, photos } = product;
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, VIEWPORT.default);
@@ -47,7 +49,7 @@ export function ProductCard({ product, priority = false, index = 0 }: ProductCar
         ease: KAHU_EASE,
       }}
     >
-      <Link href={`/creations/${slug}`} className="group block">
+      <Link href={`/${lang}/objet/${slug}`} className="group block">
         {/* Image Container avec Tilt 3D */}
         <ProductTiltCard className="relative aspect-[3/4] overflow-hidden rounded-sm bg-kahu-cream-deep">
           {/* Image principale */}
@@ -190,9 +192,10 @@ export function ProductCardSkeleton() {
 interface ProductGridProps {
   products: Product[];
   className?: string;
+  lang?: string;
 }
 
-export function ProductGrid({ products, className }: ProductGridProps) {
+export function ProductGrid({ products, className, lang = 'fr' }: ProductGridProps) {
   return (
     <div
       className={cn(
@@ -206,6 +209,7 @@ export function ProductGrid({ products, className }: ProductGridProps) {
           product={product}
           index={index}
           priority={index < 4}
+          lang={lang}
         />
       ))}
     </div>
