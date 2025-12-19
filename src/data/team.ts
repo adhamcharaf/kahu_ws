@@ -32,13 +32,13 @@ export const teamMembers: TeamMember[] = [
       en: "Founder & Designer",
     },
     bio: {
-      fr: "Designer produit et ebeniste de formation, Mouna a fonde KAHU Studio en 2019 avec une vision claire : creer du mobilier artisanal qui celebre les bois africains tout en repondant aux standards du design contemporain. Son approche allie tradition et innovation, chaque piece etant pensee comme une oeuvre unique.",
+      fr: "Designer produit et ébéniste de formation, Mouna a fondé KAHU Studio en 2019 avec une vision claire : créer du mobilier artisanal qui célèbre les bois africains tout en répondant aux standards du design contemporain. Son approche allie tradition et innovation, chaque pièce étant pensée comme une œuvre unique.",
       en: "A product designer and trained cabinetmaker, Mouna founded KAHU Studio in 2019 with a clear vision: to create artisanal furniture that celebrates African woods while meeting contemporary design standards. Her approach combines tradition and innovation, with each piece conceived as a unique work.",
     },
     image: "/images/team/mouna-shaima.jpg",
     isFounder: true,
     specialties: {
-      fr: ["Design mobilier", "Direction artistique", "Recherche materiaux"],
+      fr: ["Design mobilier", "Direction artistique", "Recherche matériaux"],
       en: ["Furniture design", "Art direction", "Material research"],
     },
   },
@@ -46,11 +46,11 @@ export const teamMembers: TeamMember[] = [
     id: "kouadio-yao",
     name: "Kouadio Yao",
     role: {
-      fr: "Maitre Ebeniste",
+      fr: "Maître Ébéniste",
       en: "Master Cabinetmaker",
     },
     bio: {
-      fr: "Avec plus de 25 ans d'experience dans le travail du bois, Kouadio est le gardien des techniques traditionnelles d'ebenisterie. Sa maitrise des assemblages complexes et son oeil pour les details font de lui un pilier de l'atelier.",
+      fr: "Avec plus de 25 ans d'expérience dans le travail du bois, Kouadio est le gardien des techniques traditionnelles d'ébénisterie. Sa maîtrise des assemblages complexes et son œil pour les détails font de lui un pilier de l'atelier.",
       en: "With over 25 years of experience in woodworking, Kouadio is the guardian of traditional cabinetmaking techniques. His mastery of complex joinery and eye for detail make him a pillar of the workshop.",
     },
     image: "/images/team/kouadio-yao.jpg",
@@ -62,13 +62,13 @@ export const teamMembers: TeamMember[] = [
   },
   {
     id: "aminata-kone",
-    name: "Aminata Kone",
+    name: "Aminata Koné",
     role: {
       fr: "Artisan Finitions",
       en: "Finishing Artisan",
     },
     bio: {
-      fr: "Specialisee dans les finitions et la teinture naturelle du bois, Aminata apporte la touche finale qui sublime chaque creation. Son expertise dans les huiles et cires naturelles garantit des finitions durables et respectueuses de l'environnement.",
+      fr: "Spécialisée dans les finitions et la teinture naturelle du bois, Aminata apporte la touche finale qui sublime chaque création. Son expertise dans les huiles et cires naturelles garantit des finitions durables et respectueuses de l'environnement.",
       en: "Specialized in finishing and natural wood staining, Aminata brings the final touch that elevates each creation. Her expertise in natural oils and waxes ensures durable and environmentally friendly finishes.",
     },
     image: "/images/team/aminata-kone.jpg",
@@ -80,18 +80,18 @@ export const teamMembers: TeamMember[] = [
   },
   {
     id: "sekou-traore",
-    name: "Sekou Traore",
+    name: "Sékou Traoré",
     role: {
       fr: "Artisan Sculpteur",
       en: "Sculptor Artisan",
     },
     bio: {
-      fr: "Sekou transforme le bois en oeuvres sculpturales. Son approche intuitive et sa comprehension profonde de la matiere lui permettent de creer des pieces qui repoussent les limites entre mobilier et art.",
+      fr: "Sékou transforme le bois en œuvres sculpturales. Son approche intuitive et sa compréhension profonde de la matière lui permettent de créer des pièces qui repoussent les limites entre mobilier et art.",
       en: "Sekou transforms wood into sculptural works. His intuitive approach and deep understanding of the material allow him to create pieces that push the boundaries between furniture and art.",
     },
     image: "/images/team/sekou-traore.jpg",
     specialties: {
-      fr: ["Sculpture sur bois", "Pieces uniques", "Travail organique"],
+      fr: ["Sculpture sur bois", "Pièces uniques", "Travail organique"],
       en: ["Wood sculpture", "Unique pieces", "Organic work"],
     },
     experience: 18,

@@ -166,9 +166,9 @@ export function CustomCTA({ imageSrc }: CustomCTAProps) {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.6, duration: DURATION.normal, ease: KAHU_EASE }}
             >
-              Parce que chaque espace est unique, chaque piece devrait l&apos;etre
-              aussi. Creez avec nous le mobilier qui vous ressemble, adapte a
-              vos besoins et a votre interieur.
+              Parce que chaque espace est unique, chaque pièce devrait l&apos;être
+              aussi. Créez avec nous le mobilier qui vous ressemble, adapté à
+              vos besoins et à votre intérieur.
             </motion.p>
 
             {/* Benefits list */}
@@ -179,8 +179,8 @@ export function CustomCTA({ imageSrc }: CustomCTAProps) {
               transition={{ delay: 0.8, duration: DURATION.normal }}
             >
               {[
-                "Consultation personnalisee",
-                "Materiaux nobles selectionnes",
+                "Consultation personnalisée",
+                "Matériaux nobles sélectionnés",
                 "Fabrication artisanale",
               ].map((benefit, index) => (
                 <motion.li
@@ -218,7 +218,7 @@ export function CustomCTA({ imageSrc }: CustomCTAProps) {
               transition={{ delay: 1.2, duration: DURATION.normal, ease: KAHU_EASE }}
             >
               <Button href="/sur-mesure" variant="primary">
-                Decouvrir le processus
+                Découvrir le processus
               </Button>
               <Button href={generateWhatsAppLink()} external variant="secondary">
                 Discuter de mon projet

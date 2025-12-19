@@ -9,9 +9,9 @@ import {
 import type { GalleryFilter } from "@/types/artwork";
 
 export const metadata: Metadata = {
-  title: "Creations",
+  title: "Créations",
   description:
-    "Decouvrez les creations KAHU Studio : mobilier artisanal, capsules uniques et objets de decoration fabriques a la main a Abidjan.",
+    "Découvrez les créations KAHU Studio : mobilier artisanal, capsules uniques et objets de décoration fabriqués à la main à Abidjan.",
 };
 
 // Revalidate every 60 seconds
@@ -32,11 +32,11 @@ export default async function CreationsPage({
       <Header />
 
       <main>
-        {/* Fullscreen Gallery avec filtres integres */}
+        {/* Fullscreen Gallery avec filtres intégrés */}
         <Suspense fallback={<GallerySectionSkeleton />}>
           <GallerySection
             limit={20}
-            title="Creations"
+            title="Créations"
             autoPlay={false}
             variant="creations"
             showFilters

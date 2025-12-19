@@ -36,12 +36,12 @@ export function FeaturedProductsClient({ products }: FeaturedProductsClientProps
           >
             {shouldReduceMotion ? (
               <h2 className="font-display text-display-md text-kahu-charcoal">
-                Creations
+                Créations
               </h2>
             ) : (
               <h2 className="font-display text-display-md text-kahu-charcoal">
                 <TextReveal
-                  text="Creations"
+                  text="Créations"
                   mode="character"
                   charDelay={0.04}
                   className="justify-center"
@@ -56,7 +56,7 @@ export function FeaturedProductsClient({ products }: FeaturedProductsClientProps
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.4, duration: DURATION.normal, ease: KAHU_EASE }}
           >
-            Des pieces fabriquees a la main, ou la beaute du bois rencontre
+            Des pièces fabriquées à la main, où la beauté du bois rencontre
             l&apos;intention du design.
           </motion.p>
         </div>
@@ -85,7 +85,7 @@ export function FeaturedProductsClient({ products }: FeaturedProductsClientProps
           transition={{ delay: 1.2, duration: DURATION.normal, ease: KAHU_EASE }}
         >
           <Button href="/creations" variant="secondary">
-            Voir toutes les creations
+            Voir toutes les créations
           </Button>
         </motion.div>
       </div>

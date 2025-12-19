@@ -35,7 +35,7 @@ async function ProjectsGrid({ lang }: { lang: Locale }) {
     return (
       <div className="text-center py-16">
         <p className="text-body-md text-kahu-taupe">
-          Aucun projet de renovation disponible pour le moment.
+          Aucun projet de rénovation disponible pour le moment.
         </p>
       </div>
     );

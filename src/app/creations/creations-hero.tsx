@@ -13,7 +13,7 @@ import { usePrefersReducedMotion, useIsDesktop } from "@/hooks/use-media-query";
 import { EASE } from "@/lib/animation-config";
 
 // ============================================================================
-// Creations Page Components - Animations Apple-style
+// Créations Page Components - Animations Apple-style
 // ============================================================================
 
 export function CreationsHero() {
@@ -40,8 +40,8 @@ export function CreationsHero() {
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <CinematicHeader
-          title="Creations"
-          subtitle="Des pieces uniques, fabriquees a la main dans notre atelier d'Abidjan. Chaque creation porte en elle une intention, une histoire."
+          title="Créations"
+          subtitle="Des pièces uniques, fabriquées à la main dans notre atelier d'Abidjan. Chaque création porte en elle une intention, une histoire."
         />
       </div>
     </section>
@@ -118,7 +118,7 @@ export function EmptyState() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
         >
-          Aucune creation dans cette categorie pour le moment.
+          Aucune création dans cette catégorie pour le moment.
         </motion.p>
       </div>
     </SectionReveal>

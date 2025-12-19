@@ -53,7 +53,7 @@ export default async function ObjetPage({ params }: ObjetPageProps) {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <SectionReveal>
             <span className="inline-block text-body-sm text-kahu-taupe uppercase tracking-[0.2em] mb-4">
-              Nos Creations
+              Nos Créations
             </span>
             <h1 className="font-display text-display-xl text-kahu-charcoal uppercase tracking-[0.1em]">
               {dict.objet.title}

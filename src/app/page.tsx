@@ -25,7 +25,7 @@ export default function Home() {
         <Suspense fallback={<GallerySectionSkeleton />}>
           <GallerySection
             limit={7}
-            title="Creations"
+            title="Créations"
             autoPlay={false}
           />
         </Suspense>

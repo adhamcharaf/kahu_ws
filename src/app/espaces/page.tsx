@@ -16,7 +16,7 @@ import {
 export const metadata: Metadata = {
   title: "Espaces",
   description:
-    "Decouvrez les projets d'amenagement realises par KAHU Studio. Espaces sur-mesure, cuisines, dressings et bien plus a Abidjan.",
+    "Découvrez les projets d'aménagement réalisés par KAHU Studio. Espaces sur-mesure, cuisines, dressings et bien plus à Abidjan.",
 };
 
 // Revalidate every 60 seconds
