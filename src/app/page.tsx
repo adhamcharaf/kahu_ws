@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
-import { HeroSection } from "@/components/sections/hero";
+import { HeroOverlayWithContent } from "@/components/sections/hero-overlay";
 import {
   GallerySection,
   GallerySectionSkeleton,
@@ -19,7 +19,10 @@ export default function Home() {
 
       <main>
         {/* Hero */}
-        <HeroSection />
+        <HeroOverlayWithContent
+          horizontalImage="/images/accueil/portrait.png"
+          verticalImage="/images/accueil/shay.png"
+        />
 
         {/* Fullscreen Gallery - Replaces FeaturedProducts */}
         <Suspense fallback={<GallerySectionSkeleton />}>
@@ -34,7 +37,7 @@ export default function Home() {
         <PhilosophyBlock />
 
         {/* Custom CTA */}
-        <CustomCTA imageSrc="/images/atelier/outils.png" />
+        <CustomCTA imageSrc="/images/accueil/outils.png" />
       </main>
 
       <Footer />

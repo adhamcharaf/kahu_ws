@@ -19,8 +19,8 @@ interface HeroOverlayProps {
 }
 
 export function HeroOverlay({
-  horizontalImage = "/images/hero/horizontal.jpg",
-  verticalImage = "/images/hero/vertical.jpg",
+  horizontalImage = "/images/accueil/portrait.png",
+  verticalImage = "/images/accueil/shay.png",
   className,
 }: HeroOverlayProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -75,18 +75,15 @@ export function HeroOverlay({
         {/* Image container with aspect ratio */}
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="relative w-[85%] md:w-[70%] lg:w-[60%] aspect-[16/10] rounded-sm overflow-hidden shadow-2xl shadow-kahu-bark/20">
-            {/* Placeholder gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-kahu-bark/40 via-kahu-taupe/30 to-kahu-olive/30" />
-
-            {/* Actual image - uncomment when images are available */}
-            {/* <Image
+            {/* Image horizontale */}
+            <Image
               src={horizontalImage}
               alt="KAHU Studio - Atelier"
               fill
               className="object-cover"
               priority
               sizes="(max-width: 768px) 85vw, (max-width: 1024px) 70vw, 60vw"
-            /> */}
+            />
 
             {/* Subtle inner shadow */}
             <div className="absolute inset-0 shadow-inner pointer-events-none" />
@@ -135,18 +132,15 @@ export function HeroOverlay({
               ease: EASE.reveal,
             }}
           >
-            {/* Placeholder gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-kahu-charcoal/50 via-kahu-bark/40 to-kahu-terracotta/30" />
-
-            {/* Actual image - uncomment when images are available */}
-            {/* <Image
+            {/* Image verticale */}
+            <Image
               src={verticalImage}
               alt="KAHU Studio - Creation"
               fill
               className="object-cover"
               priority
               sizes="(max-width: 768px) 45vw, (max-width: 1024px) 35vw, 28vw"
-            /> */}
+            />
 
             {/* Frame border effect */}
             <div className="absolute inset-2 border border-kahu-ivory/20 rounded-sm pointer-events-none" />
@@ -283,8 +277,8 @@ function HeroDecorativeElements({
 // ============================================================================
 
 export function HeroOverlaySimple({
-  horizontalImage = "/images/hero/horizontal.jpg",
-  verticalImage = "/images/hero/vertical.jpg",
+  horizontalImage = "/images/accueil/portrait.png",
+  verticalImage = "/images/accueil/shay.png",
   className,
 }: HeroOverlayProps) {
   const shouldReduceMotion = usePrefersReducedMotion();
@@ -349,12 +343,12 @@ interface HeroOverlayWithContentProps {
 export function HeroOverlayWithContent({
   title = "KAHU Studio",
   subtitle = "Design mobilier artisanal",
-  ctaText = "Découvrir",
+  ctaText = "Découvrir les créations",
   ctaHref = "/fr/objet",
   secondaryCtaText = "L'Atelier",
   secondaryCtaHref = "/fr/atelier",
-  horizontalImage,
-  verticalImage,
+  horizontalImage = "/images/accueil/portrait.png",
+  verticalImage = "/images/accueil/shay.png",
 }: HeroOverlayWithContentProps) {
   const containerRef = useRef<HTMLElement>(null);
   const shouldReduceMotion = usePrefersReducedMotion();
@@ -365,122 +359,139 @@ export function HeroOverlayWithContent({
     offset: ["start start", "end start"],
   });
 
-  const contentY = useTransform(scrollYProgress, [0, 1], [0, 100]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
-  const smoothY = useSpring(contentY, { stiffness: 50, damping: 20 });
-  const smoothOpacity = useSpring(contentOpacity, { stiffness: 50, damping: 20 });
+  const imagesY = useTransform(scrollYProgress, [0, 1], [0, 80]);
+  const smoothImagesY = useSpring(imagesY, { stiffness: 50, damping: 20 });
 
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center overflow-hidden bg-kahu-cream-deep"
     >
-      {/* Background Overlay */}
-      <HeroOverlay
-        horizontalImage={horizontalImage}
-        verticalImage={verticalImage}
-      />
+      {/* Background texture */}
+      <div className="absolute inset-0 opacity-[0.02]" style={{
+        backgroundImage: `radial-gradient(circle at 2px 2px, rgb(45, 36, 32) 1px, transparent 0)`,
+        backgroundSize: '32px 32px',
+      }} />
 
-      {/* Content gradient overlay */}
-      <div className="absolute inset-0 z-[5] pointer-events-none bg-gradient-to-b from-kahu-cream-deep/70 via-transparent to-kahu-cream-deep/50" />
+      {/* Main content grid */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 lg:pt-32 lg:pb-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-      {/* Content */}
-      <motion.div
-        className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto"
-        style={
-          shouldReduceMotion || !isDesktop
-            ? {}
-            : { y: smoothY, opacity: smoothOpacity }
-        }
-      >
-        {/* Logo */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{
-            duration: 1.0,
-            delay: 0.5,
-            ease: EASE.dramatic,
-          }}
-          className="mb-8"
-        >
-          <Image
-            src="/images/Logo.png"
-            alt="KAHU"
-            width={280}
-            height={112}
-            className="h-24 sm:h-32 md:h-40 w-auto mx-auto"
-            priority
-          />
-        </motion.div>
-
-        {/* Title */}
-        <motion.h1
-          className="font-display text-display-xl text-kahu-charcoal tracking-tight mb-4"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.8,
-            delay: 0.8,
-            ease: EASE.reveal,
-          }}
-        >
-          {title}
-        </motion.h1>
-
-        {/* Subtitle */}
-        <motion.p
-          className="text-body-lg text-kahu-taupe max-w-xl mx-auto leading-relaxed"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.8,
-            delay: 1.0,
-            ease: EASE.reveal,
-          }}
-        >
-          {subtitle}
-        </motion.p>
-
-        {/* CTAs */}
-        <motion.div
-          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.8,
-            delay: 1.3,
-            ease: EASE.reveal,
-          }}
-        >
-          <a
-            href={ctaHref}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-kahu-charcoal text-kahu-ivory text-body-md font-medium rounded-sm hover:bg-kahu-bark transition-colors"
+          {/* Left: Text content */}
+          <motion.div
+            className="order-2 lg:order-1 text-center lg:text-left"
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: EASE.reveal }}
           >
-            {ctaText}
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-            </svg>
-          </a>
-          <a
-            href={secondaryCtaHref}
-            className="inline-flex items-center gap-2 px-8 py-4 text-kahu-charcoal text-body-md font-medium rounded-sm border border-kahu-charcoal/20 hover:bg-kahu-cream-deep/50 transition-colors"
+            {/* Title */}
+            <motion.h1
+              className="font-display text-display-xl text-kahu-charcoal tracking-tight mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5, ease: EASE.reveal }}
+            >
+              {title}
+            </motion.h1>
+
+            {/* Subtitle */}
+            <motion.p
+              className="text-body-lg text-kahu-taupe max-w-md mx-auto lg:mx-0 leading-relaxed mb-10"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.7, ease: EASE.reveal }}
+            >
+              {subtitle}
+            </motion.p>
+
+            {/* CTAs */}
+            <motion.div
+              className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.9, ease: EASE.reveal }}
+            >
+              <a
+                href={ctaHref}
+                className="inline-flex items-center gap-2 px-8 py-4 bg-kahu-charcoal text-kahu-ivory text-body-md font-medium rounded-sm hover:bg-kahu-bark transition-colors"
+              >
+                {ctaText}
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </a>
+              <a
+                href={secondaryCtaHref}
+                className="inline-flex items-center gap-2 px-8 py-4 text-kahu-charcoal text-body-md font-medium rounded-sm border border-kahu-charcoal/20 hover:bg-kahu-cream/50 transition-colors"
+              >
+                {secondaryCtaText}
+              </a>
+            </motion.div>
+          </motion.div>
+
+          {/* Right: Images superposées */}
+          <motion.div
+            className="order-1 lg:order-2 relative"
+            style={shouldReduceMotion || !isDesktop ? {} : { y: smoothImagesY }}
           >
-            {secondaryCtaText}
-          </a>
-        </motion.div>
-      </motion.div>
+            <div className="relative w-full aspect-[4/5] lg:aspect-[3/4]">
+              {/* Image principale (portrait) */}
+              <motion.div
+                className="absolute top-0 left-0 w-[80%] lg:w-[75%] aspect-[4/5] rounded-sm overflow-hidden shadow-2xl shadow-kahu-bark/20"
+                initial={{ opacity: 0, x: -20, scale: 0.95 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                transition={{ duration: 1.0, delay: 0.4, ease: EASE.dramatic }}
+              >
+                <Image
+                  src={horizontalImage}
+                  alt="KAHU Studio - Atelier"
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="(max-width: 1024px) 80vw, 40vw"
+                />
+              </motion.div>
+
+              {/* Image secondaire (shay) - chevauche */}
+              <motion.div
+                className="absolute bottom-0 right-0 w-[55%] lg:w-[50%] aspect-[3/4] rounded-sm overflow-hidden shadow-2xl shadow-kahu-charcoal/30"
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 1.0, delay: 0.7, ease: EASE.dramatic }}
+              >
+                <Image
+                  src={verticalImage}
+                  alt="KAHU Studio - Création"
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="(max-width: 1024px) 55vw, 25vw"
+                />
+                {/* Frame border */}
+                <div className="absolute inset-2 border border-kahu-ivory/20 rounded-sm pointer-events-none" />
+              </motion.div>
+
+              {/* Accent décoratif */}
+              <motion.div
+                className="absolute -bottom-4 -left-4 w-24 h-24 border-l-2 border-b-2 border-kahu-terracotta/30"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 1.2, ease: KAHU_EASE }}
+              />
+            </div>
+          </motion.div>
+        </div>
+      </div>
 
       {/* Scroll indicator */}
       <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 2.0, duration: 0.8 }}
+        transition={{ delay: 1.5, duration: 0.8 }}
       >
         <motion.div
           className="w-6 h-10 border-2 border-kahu-bark/30 rounded-full flex justify-center pt-2"
-          animate={shouldReduceMotion ? {} : {}}
         >
           <motion.div
             className="w-1 h-2 bg-kahu-terracotta/60 rounded-full"
