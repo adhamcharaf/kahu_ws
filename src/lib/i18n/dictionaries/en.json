@@ -70,7 +70,7 @@
         "description": "Meet the artisans who bring your projects to life"
       },
       "lieu": {
-        "title": "The Space",
+        "title": "The Studio",
         "description": "A place where wood takes shape"
       },
       "portfolio": {
@@ -88,7 +88,7 @@
       "specialtiesLabel": "Specialties"
     },
     "lieu": {
-      "title": "The Space",
+      "title": "The Studio",
       "subtitle": "Our workshop in Abidjan",
       "heroText": "Located in the heart of Abidjan, our workshop is a space where tradition and modernity meet. This is where all our creations are born.",
       "features": {

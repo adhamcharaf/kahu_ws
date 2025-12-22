@@ -70,7 +70,7 @@
         "description": "Rencontrez les artisans qui donnent vie à vos projets"
       },
       "lieu": {
-        "title": "Le Lieu",
+        "title": "Le Studio",
         "description": "Un espace où le bois prend forme"
       },
       "portfolio": {
@@ -88,7 +88,7 @@
       "specialtiesLabel": "Spécialités"
     },
     "lieu": {
-      "title": "Le Lieu",
+      "title": "Le Studio",
       "subtitle": "Notre atelier à Abidjan",
       "heroText": "Installé au cœur d'Abidjan, notre atelier est un espace où tradition et modernité se rencontrent. C'est ici que naissent toutes nos créations.",
       "features": {

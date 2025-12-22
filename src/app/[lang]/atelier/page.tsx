@@ -28,19 +28,19 @@ export default async function AtelierPage({ params }: AtelierPageProps) {
   const sections = [
     {
       href: `/${lang}/atelier/equipe`,
-      image: "/images/atelier/team-placeholder.jpg",
+      image: "/images/equipe.jpg",
       title: dict.atelier.sections.equipe.title,
       description: dict.atelier.sections.equipe.description,
     },
     {
       href: `/${lang}/atelier/lieu`,
-      image: "/images/atelier/lieu-placeholder.jpg",
+      image: "/images/atelier/atelier_ppl.jpg",
       title: dict.atelier.sections.lieu.title,
       description: dict.atelier.sections.lieu.description,
     },
     {
       href: `/${lang}/atelier/portfolio`,
-      image: "/images/atelier/portfolio-placeholder.jpg",
+      image: "/images/atelier/chair4.png",
       title: dict.atelier.sections.portfolio.title,
       description: dict.atelier.sections.portfolio.description,
     },
