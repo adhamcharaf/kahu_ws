@@ -29,7 +29,7 @@ export default function NotFound() {
               <Button href="/" variant="primary">
                 Retour a l&apos;accueil
               </Button>
-              <Button href="/creations" variant="secondary">
+              <Button href="/fr/objet" variant="secondary">
                 Voir les creations
               </Button>
             </div>

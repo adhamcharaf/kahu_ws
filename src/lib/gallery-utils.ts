@@ -39,7 +39,7 @@ export function productToGalleryArtwork(product: Product): GalleryArtwork {
     },
     // Les couleurs seront extraites cote client
     colors: undefined,
-    href: `/creations/${product.slug}`,
+    href: `/fr/objet/${product.slug}`,
   };
 }
 

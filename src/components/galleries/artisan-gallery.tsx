@@ -15,6 +15,7 @@ interface ArtisanGalleryProps {
   products: ArtisanCardProduct[];
   title?: string;
   showFilters?: boolean;
+  showViewAll?: boolean;
   lang?: string;
   className?: string;
 }
@@ -23,6 +24,7 @@ export function ArtisanGallery({
   products,
   title,
   showFilters = true,
+  showViewAll = true,
   lang = "fr",
   className,
 }: ArtisanGalleryProps) {
@@ -130,7 +132,7 @@ export function ArtisanGallery({
         <ArtisanGalleryGrid products={filteredProducts} lang={lang} />
 
         {/* View all CTA - optional */}
-        {filteredProducts.length > 0 && (
+        {showViewAll && filteredProducts.length > 0 && (
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -139,7 +141,7 @@ export function ArtisanGallery({
             className="text-center mt-12"
           >
             <a
-              href={`/${lang}/creations`}
+              href={`/${lang}/objet`}
               className={cn(
                 "inline-flex items-center gap-2",
                 "px-6 py-3",

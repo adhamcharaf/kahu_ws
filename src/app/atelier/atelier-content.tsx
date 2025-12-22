@@ -10,11 +10,9 @@ import {
 } from "@/components/animations/scroll-cinema";
 import { GrainTexture, AmbientGlow } from "@/components/animations/floating-shapes";
 import { ArtGallerySlider } from "@/components/art-gallery-slider";
-import { MasonryGallery } from "@/components/galleries";
 import { usePrefersReducedMotion, useIsDesktop } from "@/hooks/use-media-query";
 import { DURATION, EASE, DELAY } from "@/lib/animation-config";
 import { atelierArtworks } from "@/data/artworks";
-import { atelierImages } from "@/data/atelier-images";
 
 // ============================================================================
 // Atelier Content - Version animée Apple-style
@@ -222,30 +220,45 @@ export function AtelierContent() {
         </div>
       </section>
 
-      {/* ============ Masonry Gallery Parallax ============ */}
-      <section className="relative bg-kahu-bark overflow-hidden">
+      {/* ============ Atelier Images Section ============ */}
+      <section className="relative py-section bg-kahu-bark overflow-hidden">
         <GrainTexture opacity={0.02} />
 
-        {/* Titre en overlay */}
-        <div className="absolute top-0 left-0 right-0 z-10 pt-12 pb-8 bg-gradient-to-b from-kahu-bark via-kahu-bark/80 to-transparent">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionReveal variant="fade-up">
-            <h2 className="font-display text-display-md text-kahu-cream text-center">
+            <h2 className="font-display text-display-md text-kahu-cream text-center mb-12">
               L&apos;atelier en images
             </h2>
           </SectionReveal>
+
+          {/* Grid d'images de l'atelier */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {[
+              "/images/atelier/atelier-1.jpg",
+              "/images/atelier/atelier-2.jpg",
+              "/images/atelier/atelier-3.jpg",
+              "/images/atelier/atelier-4.jpg",
+              "/images/atelier/atelier-5.jpg",
+              "/images/atelier/atelier-6.jpg",
+            ].map((src, index) => (
+              <motion.div
+                key={index}
+                className="aspect-[4/5] bg-kahu-cream/10 rounded-sm overflow-hidden"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+              >
+                <img
+                  src={src}
+                  alt={`Atelier KAHU ${index + 1}`}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </motion.div>
+            ))}
+          </div>
         </div>
-
-        {/* Galerie masonry avec défilement parallax */}
-        <MasonryGallery
-          images={atelierImages}
-          height="85vh"
-          baseDuration={60}
-          durationIncrement={5}
-          enableLightbox
-        />
-
-        {/* Gradient de fondu en bas */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-kahu-bark to-transparent pointer-events-none" />
       </section>
     </main>
   );

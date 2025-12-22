@@ -1,8 +1,7 @@
-import { Suspense } from "react";
 import { type Locale, isValidLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { SectionReveal } from "@/components/animations/scroll-cinema";
-import { GallerySection, GallerySectionSkeleton } from "@/components/sections/gallery-section";
+import { ArtisanGallerySection } from "@/components/sections/artisan-gallery-section";
 
 export const revalidate = 60;
 
@@ -46,16 +45,12 @@ export default async function CollectionsPage({ params }: CollectionsPageProps) 
       </section>
 
       {/* Gallery with Mobilier filter */}
-      <Suspense fallback={<GallerySectionSkeleton />}>
-        <GallerySection
-          limit={20}
-          title={dict.objet.collections.title}
-          autoPlay={false}
-          variant="creations"
-          showFilters={false}
-          filter="mobilier"
-        />
-      </Suspense>
+      <ArtisanGallerySection
+        limit={20}
+        title={dict.objet.collections.title}
+        filter="mobilier"
+        lang={lang}
+      />
     </main>
   );
 }

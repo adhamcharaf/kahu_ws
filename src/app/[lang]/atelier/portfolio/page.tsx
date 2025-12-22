@@ -1,8 +1,7 @@
-import { Suspense } from "react";
 import { type Locale, isValidLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { SectionReveal } from "@/components/animations/scroll-cinema";
-import { GallerySection, GallerySectionSkeleton } from "@/components/sections/gallery-section";
+import { ArtisanGallerySection } from "@/components/sections/artisan-gallery-section";
 
 export const revalidate = 60;
 
@@ -59,15 +58,12 @@ export default async function PortfolioPage({ params }: PortfolioPageProps) {
             </p>
           </SectionReveal>
         </div>
-        <Suspense fallback={<GallerySectionSkeleton />}>
-          <GallerySection
-            limit={12}
-            title={dict.atelier.portfolio.filterMobilier}
-            autoPlay={false}
-            variant="creations"
-            showFilters={false}
-          />
-        </Suspense>
+        <ArtisanGallerySection
+          limit={12}
+          title={dict.atelier.portfolio.filterMobilier}
+          showFilters={false}
+          lang={lang}
+        />
       </section>
 
       {/* Projects Section - Link to Espace */}

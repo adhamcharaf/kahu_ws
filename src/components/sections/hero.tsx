@@ -134,7 +134,7 @@ export function HeroSection() {
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
           >
-            <Button href="/creations" size="lg">
+            <Button href="/fr/objet" size="lg">
               Découvrir les créations
             </Button>
           </motion.div>
@@ -252,7 +252,7 @@ export function MinimalHero({
   title,
   subtitle,
   ctaText = "Découvrir",
-  ctaHref = "/creations",
+  ctaHref = "/fr/objet",
 }: MinimalHeroProps) {
   const shouldReduceMotion = usePrefersReducedMotion();
 

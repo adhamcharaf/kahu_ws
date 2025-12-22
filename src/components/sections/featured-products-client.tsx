@@ -84,7 +84,7 @@ export function FeaturedProductsClient({ products }: FeaturedProductsClientProps
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 1.2, duration: DURATION.normal, ease: KAHU_EASE }}
         >
-          <Button href="/creations" variant="secondary">
+          <Button href="/fr/objet" variant="secondary">
             Voir toutes les créations
           </Button>
         </motion.div>

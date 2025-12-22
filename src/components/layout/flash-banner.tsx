@@ -18,7 +18,7 @@ export function FlashBanner({ isVisible }: FlashBannerProps) {
       className="fixed top-0 left-0 right-0 z-[60] bg-kahu-terracotta"
     >
       <Link
-        href="/creations?filter=flash"
+        href="/fr/objet?filter=flash"
         className="flex items-center justify-center gap-2 px-4 py-2 text-kahu-ivory hover:bg-kahu-terracotta-dark transition-colors"
       >
         <span className="animate-pulse-soft">🔥</span>

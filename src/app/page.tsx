@@ -1,11 +1,7 @@
-import { Suspense } from "react";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import { HeroOverlayWithContent } from "@/components/sections/hero-overlay";
-import {
-  GallerySection,
-  GallerySectionSkeleton,
-} from "@/components/sections/gallery-section";
+import { ArtisanGallerySection } from "@/components/sections/artisan-gallery-section";
 import { PhilosophyBlock } from "@/components/sections/philosophy-block";
 import { CustomCTA } from "@/components/sections/custom-cta";
 
@@ -24,14 +20,13 @@ export default function Home() {
           verticalImage="/images/accueil/shay.png"
         />
 
-        {/* Fullscreen Gallery - Replaces FeaturedProducts */}
-        <Suspense fallback={<GallerySectionSkeleton />}>
-          <GallerySection
-            limit={7}
-            title="Créations"
-            autoPlay={false}
-          />
-        </Suspense>
+        {/* Artisan Gallery - Masonry grid of products */}
+        <ArtisanGallerySection
+          limit={8}
+          title="Créations"
+          showFilters={false}
+          lang="fr"
+        />
 
         {/* Philosophy */}
         <PhilosophyBlock />
