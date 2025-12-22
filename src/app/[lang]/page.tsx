@@ -1,11 +1,7 @@
-import { Suspense } from "react";
 import { type Locale, isValidLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { HeroOverlayWithContent } from "@/components/sections/hero-overlay";
-import {
-  GallerySection,
-  GallerySectionSkeleton,
-} from "@/components/sections/gallery-section";
+import { ArtisanGallerySection } from "@/components/sections/artisan-gallery-section";
 import { PhilosophyBlock } from "@/components/sections/philosophy-block";
 import { CustomCTA } from "@/components/sections/custom-cta";
 
@@ -33,14 +29,14 @@ export default async function HomePage({ params }: HomePageProps) {
         secondaryCtaHref={`/${lang}/atelier`}
       />
 
-      {/* Fullscreen Gallery - Replaces FeaturedProducts */}
-      <Suspense fallback={<GallerySectionSkeleton />}>
-        <GallerySection
-          limit={7}
-          title={dict.nav.objet}
-          autoPlay={false}
-        />
-      </Suspense>
+      {/* Artisan Gallery - Masonry style */}
+      <ArtisanGallerySection
+        title={dict.nav.objet}
+        showFilters={true}
+        featured={true}
+        limit={12}
+        lang={lang}
+      />
 
       {/* Philosophy */}
       <PhilosophyBlock />

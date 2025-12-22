@@ -21,6 +21,7 @@
   --color-kahu-olive-light: #7A8B68;
   --color-kahu-stone: #9A958F;
   --color-kahu-stone-light: #B5B0AA;
+  --color-kahu-sand: #E8E0D5;
 
   /* Typography Scale */
   --font-size-display-xl: clamp(3rem, 8vw, 6rem);
@@ -35,6 +36,7 @@
   /* Font Families */
   --font-display: var(--font-cormorant);
   --font-body: var(--font-dm-sans);
+  --font-mono: var(--font-dm-mono);
 
   /* Animation Easing - Apple-style */
   --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
@@ -97,6 +99,10 @@ body {
 
 .font-body {
   font-family: var(--font-body), sans-serif;
+}
+
+.font-mono {
+  font-family: var(--font-mono), monospace;
 }
 
 /* Text Sizes */
