@@ -28,19 +28,19 @@ export default async function ObjetPage({ params }: ObjetPageProps) {
   const sections = [
     {
       href: `/${lang}/objet/capsules`,
-      image: "/images/produits/capsules-placeholder.jpg",
+      image: "/images/3dlibrary/chaise1.png",
       title: dict.objet.sections.capsules.title,
       description: dict.objet.sections.capsules.description,
     },
     {
       href: `/${lang}/objet/collections`,
-      image: "/images/produits/collections-placeholder.jpg",
+      image: "/images/3dlibrary/lignum_newhome.png",
       title: dict.objet.sections.collections.title,
       description: dict.objet.sections.collections.description,
     },
     {
       href: `/${lang}/objet/sur-mesure`,
-      image: "/images/produits/sur-mesure-placeholder.jpg",
+      image: "/images/atelier/ponce.webp",
       title: dict.objet.sections.surMesure.title,
       description: dict.objet.sections.surMesure.description,
     },
@@ -53,7 +53,7 @@ export default async function ObjetPage({ params }: ObjetPageProps) {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <SectionReveal>
             <span className="inline-block text-body-sm text-kahu-taupe uppercase tracking-[0.2em] mb-4">
-              Nos Créations
+              KAHU Studio
             </span>
             <h1 className="font-display text-display-xl text-kahu-charcoal uppercase tracking-[0.1em]">
               {dict.objet.title}

@@ -28,7 +28,7 @@ export default async function AtelierPage({ params }: AtelierPageProps) {
   const sections = [
     {
       href: `/${lang}/atelier/equipe`,
-      image: "/images/equipe.jpg",
+      image: "/images/atelier/equipe.jpg",
       title: dict.atelier.sections.equipe.title,
       description: dict.atelier.sections.equipe.description,
     },
