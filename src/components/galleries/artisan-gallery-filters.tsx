@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 // Artisan Gallery Filters - Filtres catégorie avec pill animée
 // ============================================================================
 
-export type GalleryFilter = "tous" | "mobilier" | "objet" | "capsule";
+export type GalleryFilter = "tous" | "mobilier" | "capsule";
 
 interface FilterOption {
   value: GalleryFilter;
@@ -18,7 +18,6 @@ interface FilterOption {
 const FILTER_OPTIONS: FilterOption[] = [
   { value: "tous", label: "Tous" },
   { value: "mobilier", label: "Mobilier" },
-  { value: "objet", label: "Objet" },
   { value: "capsule", label: "Capsule" },
 ];
 

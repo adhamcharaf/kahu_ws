@@ -3,7 +3,7 @@
 // ================================================
 
 export type ProductStatus = "Disponible" | "Vendu" | "Brouillon";
-export type ProductCategory = "Capsule" | "Mobilier" | "Objet";
+export type ProductCategory = "Capsule" | "Mobilier";
 
 export interface Product {
   id: string;
@@ -70,4 +70,4 @@ export interface NotionProjectResponse {
 }
 
 // Filter types
-export type ProductFilter = "tous" | "capsule" | "mobilier" | "objet" | "flash";
+export type ProductFilter = "tous" | "capsule" | "mobilier" | "flash";

@@ -15,7 +15,6 @@ const filters: { value: ProductFilter; label: string }[] = [
   { value: "tous", label: "Tous" },
   { value: "capsule", label: "Capsules" },
   { value: "mobilier", label: "Mobilier" },
-  { value: "objet", label: "Objets" },
 ];
 
 export function ProductFilters() {
