@@ -66,7 +66,6 @@ export async function getGalleryProducts(
     const categoryMap: Record<string, ProductCategory> = {
       capsule: "Capsule",
       mobilier: "Mobilier",
-      objet: "Objet",
     };
     const category = categoryMap[filter];
     products = category
