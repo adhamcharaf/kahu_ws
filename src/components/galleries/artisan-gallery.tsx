@@ -40,7 +40,6 @@ export function ArtisanGallery({
     const categoryMap: Record<GalleryFilter, string> = {
       tous: "",
       mobilier: "mobilier",
-      objet: "objet",
       capsule: "capsule",
     };
 
@@ -55,7 +54,6 @@ export function ArtisanGallery({
     const counts: Record<GalleryFilter, number> = {
       tous: products.length,
       mobilier: 0,
-      objet: 0,
       capsule: 0,
     };
 
