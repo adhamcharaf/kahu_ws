@@ -28,19 +28,19 @@ export default async function EspacePage({ params }: EspacePageProps) {
   const sections = [
     {
       href: `/${lang}/espace/renovation`,
-      image: "/images/espaces/renovation-placeholder.jpg",
+      image: "/images/renovation.jpg",
       title: dict.espace.sections.renovation.title,
       description: dict.espace.sections.renovation.description,
     },
     {
       href: `/${lang}/espace/amenagement`,
-      image: "/images/espaces/amenagement-placeholder.jpg",
+      image: "/images/amenagement.jpg",
       title: dict.espace.sections.amenagement.title,
       description: dict.espace.sections.amenagement.description,
     },
     {
       href: `/${lang}/espace/agrandissement`,
-      image: "/images/espaces/agrandissement-placeholder.jpg",
+      image: "/images/agrandissement.jpg",
       title: dict.espace.sections.agrandissement.title,
       description: dict.espace.sections.agrandissement.description,
     },
