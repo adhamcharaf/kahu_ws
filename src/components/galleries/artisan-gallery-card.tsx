@@ -103,7 +103,7 @@ export function ArtisanGalleryCard({
   };
 
   const imageSrc = product.photos[0] || "/images/accueil/outils.png";
-  const productUrl = `/${lang}/creations/${product.slug}`;
+  const productUrl = `/${lang}/objet/${product.slug}`;
 
   return (
     <motion.div
