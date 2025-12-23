@@ -50,6 +50,7 @@ export interface NotionProductResponse {
     Photos: {
       files?: Array<{ file?: { url: string }; external?: { url: string } }>;
       url?: string | null;
+      rich_text?: Array<{ plain_text: string }>;
       type?: string;
     };
     Ordre: { number: number | null };

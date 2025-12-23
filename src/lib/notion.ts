@@ -41,6 +41,15 @@ function parseProduct(page: NotionProductResponse): Product {
     photos = [props.Photos.url];
   }
 
+  // Option 3: Rich text type (URLs séparées par sauts de ligne)
+  if (photos.length === 0 && props.Photos?.rich_text) {
+    const rawText = props.Photos.rich_text.map((t) => t.plain_text).join("");
+    photos = rawText
+      .split(/[\n\r]+/)
+      .map((url) => url.trim())
+      .filter((url) => url.startsWith("http"));
+  }
+
   // Parse basic fields
   const quantite = props.Quantite?.number ?? 1;
   let statut = (props.Statut?.select?.name ?? "Brouillon") as ProductStatus;
