@@ -28,19 +28,19 @@ export default async function MateriauxPage({ params }: MateriauxPageProps) {
   const sections = [
     {
       href: `/${lang}/materiaux/essences`,
-      image: "/images/materiaux/essences-placeholder.jpg",
+      image: "/images/materiaux/type_bois.jpg",
       title: dict.materiaux.sections.essences.title,
       description: dict.materiaux.sections.essences.description,
     },
     {
       href: `/${lang}/materiaux/bio-materiaux`,
-      image: "/images/materiaux/bio-placeholder.jpg",
+      image: "/images/recyle.png",
       title: dict.materiaux.sections.bioMateriaux.title,
       description: dict.materiaux.sections.bioMateriaux.description,
     },
     {
       href: `/${lang}/materiaux/labo-kahu`,
-      image: "/images/materiaux/labo-placeholder.jpg",
+      image: "/images/atelier/chair4.png",
       title: dict.materiaux.sections.laboKahu.title,
       description: dict.materiaux.sections.laboKahu.description,
     },
