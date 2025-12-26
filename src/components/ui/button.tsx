@@ -36,7 +36,7 @@ const variantStyles: Record<ButtonVariant, string> = {
   primary:
     "bg-kahu-terracotta text-kahu-ivory hover:bg-kahu-terracotta-dark active:bg-kahu-terracotta-dark",
   secondary:
-    "bg-transparent border border-kahu-bark text-kahu-bark hover:bg-kahu-bark hover:text-kahu-ivory",
+    "bg-transparent border border-kahu-bark text-kahu-bark hover:bg-kahu-cream/50",
   ghost:
     "bg-transparent text-kahu-bark hover:text-kahu-terracotta underline-offset-4 hover:underline",
 };

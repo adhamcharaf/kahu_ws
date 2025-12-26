@@ -413,7 +413,7 @@ export function HeroOverlayWithContent({
             >
               <a
                 href={ctaHref}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-kahu-charcoal text-kahu-ivory text-body-md font-medium rounded-sm hover:bg-kahu-bark transition-colors"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-kahu-terracotta text-kahu-ivory text-body-md font-medium rounded-sm hover:bg-kahu-terracotta-dark transition-colors"
               >
                 {ctaText}
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -422,7 +422,7 @@ export function HeroOverlayWithContent({
               </a>
               <a
                 href={secondaryCtaHref}
-                className="inline-flex items-center gap-2 px-8 py-4 text-kahu-charcoal text-body-md font-medium rounded-sm border border-kahu-charcoal/20 hover:bg-kahu-cream/50 transition-colors"
+                className="inline-flex items-center gap-2 px-8 py-4 text-kahu-bark text-body-md font-medium rounded-sm border border-kahu-bark hover:bg-kahu-cream/50 transition-colors"
               >
                 {secondaryCtaText}
               </a>
