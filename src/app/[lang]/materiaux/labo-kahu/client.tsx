@@ -128,7 +128,7 @@ export function LaboKahuClient({ lang, dict, parentTitle }: LaboKahuClientProps)
             {parentTitle}
           </motion.span>
           <motion.h1
-            className="font-display text-display-xl text-kahu-charcoal uppercase tracking-[0.1em]"
+            className="font-display text-display-xl text-kahu-terracotta uppercase tracking-[0.1em]"
             initial={{ opacity: 0, y: 30 }}
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1, ease: KAHU_EASE }}
@@ -211,7 +211,7 @@ export function LaboKahuClient({ lang, dict, parentTitle }: LaboKahuClientProps)
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: KAHU_EASE }}
           >
-            <h2 className="font-display text-display-md text-kahu-charcoal">
+            <h2 className="font-display text-display-md text-kahu-terracotta">
               {lang === "fr" ? "Le cycle de l'innovation" : "The innovation cycle"}
             </h2>
           </motion.div>
@@ -256,7 +256,7 @@ export function LaboKahuClient({ lang, dict, parentTitle }: LaboKahuClientProps)
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: KAHU_EASE }}
           >
-            <h2 className="font-display text-display-md text-kahu-charcoal mb-4">
+            <h2 className="font-display text-display-md text-kahu-terracotta mb-4">
               {lang === "fr" ? "Rejoignez l'aventure" : "Join the adventure"}
             </h2>
             <p className="text-body-md text-kahu-taupe max-w-xl mx-auto mb-8">

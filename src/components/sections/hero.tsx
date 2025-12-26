@@ -99,7 +99,7 @@ export function HeroSection() {
         {/* Titre principal avec révélation caractère par caractère */}
         <HeroTitleReveal
           title="KAHU Studio"
-          titleClassName="font-display text-display-xl text-kahu-charcoal tracking-tight"
+          titleClassName="font-display text-display-xl text-kahu-terracotta tracking-tight"
           className="mb-6"
         />
 

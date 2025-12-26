@@ -34,7 +34,7 @@ export default async function CapsulesPage({ params }: CapsulesPageProps) {
             <span className="inline-block text-body-sm text-kahu-taupe uppercase tracking-[0.2em] mb-4">
               {dict.objet.title}
             </span>
-            <h1 className="font-display text-display-xl text-kahu-charcoal uppercase tracking-[0.1em]">
+            <h1 className="font-display text-display-xl text-kahu-terracotta uppercase tracking-[0.1em]">
               {dict.objet.capsules.title}
             </h1>
             <p className="mt-6 text-body-lg text-kahu-taupe max-w-2xl mx-auto">

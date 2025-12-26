@@ -113,7 +113,7 @@ export function LieuClient({ lang, dict, parentTitle }: LieuClientProps) {
             {parentTitle}
           </motion.span>
           <motion.h1
-            className="font-display text-display-xl text-kahu-charcoal uppercase tracking-[0.1em]"
+            className="font-display text-display-xl text-kahu-terracotta uppercase tracking-[0.1em]"
             initial={{ opacity: 0, y: 30 }}
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1, ease: KAHU_EASE }}

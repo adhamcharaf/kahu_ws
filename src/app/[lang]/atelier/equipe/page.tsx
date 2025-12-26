@@ -42,7 +42,7 @@ export default async function EquipePage({ params }: EquipePageProps) {
             <span className="inline-block text-body-sm text-kahu-taupe uppercase tracking-[0.2em] mb-4">
               {dict.atelier.title}
             </span>
-            <h1 className="font-display text-display-xl text-kahu-charcoal uppercase tracking-[0.1em]">
+            <h1 className="font-display text-display-xl text-kahu-terracotta uppercase tracking-[0.1em]">
               {dict.atelier.equipe.title}
             </h1>
             <p className="mt-6 text-body-lg text-kahu-taupe max-w-3xl mx-auto leading-relaxed">
@@ -73,7 +73,7 @@ export default async function EquipePage({ params }: EquipePageProps) {
       <section className="py-16 md:py-24 bg-kahu-cream border-t border-kahu-cream-deep">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <SectionReveal>
-            <h2 className="font-display text-display-md text-kahu-charcoal mb-4">
+            <h2 className="font-display text-display-md text-kahu-terracotta mb-4">
               {lang === "fr" ? "Envie de nous rencontrer ?" : "Want to meet us?"}
             </h2>
             <p className="text-body-md text-kahu-taupe max-w-xl mx-auto mb-8">

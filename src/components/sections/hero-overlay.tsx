@@ -386,7 +386,7 @@ export function HeroOverlayWithContent({
           >
             {/* Title */}
             <motion.h1
-              className="font-display text-display-xl text-kahu-charcoal tracking-tight mb-6"
+              className="font-display text-display-xl text-kahu-terracotta tracking-tight mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5, ease: EASE.reveal }}
