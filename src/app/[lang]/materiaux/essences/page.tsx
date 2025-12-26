@@ -98,7 +98,7 @@ export default async function EssencesPage({ params }: EssencesPageProps) {
             </p>
             <a
               href={`/${lang}/contact`}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-kahu-charcoal text-kahu-ivory text-body-sm font-medium rounded-sm hover:bg-kahu-bark transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-kahu-terracotta text-kahu-ivory text-body-sm font-medium rounded-sm hover:bg-kahu-terracotta-dark transition-colors"
             >
               {lang === "fr" ? "Discuter de mon projet" : "Discuss my project"}
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

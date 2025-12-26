@@ -106,7 +106,7 @@ export default async function PortfolioPage({ params }: PortfolioPageProps) {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href={`/${lang}/objet/sur-mesure`}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-kahu-charcoal text-kahu-ivory text-body-sm font-medium rounded-sm hover:bg-kahu-bark transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-kahu-terracotta text-kahu-ivory text-body-sm font-medium rounded-sm hover:bg-kahu-terracotta-dark transition-colors"
               >
                 {lang === "fr" ? "Découvrir le sur-mesure" : "Discover bespoke"}
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -115,7 +115,7 @@ export default async function PortfolioPage({ params }: PortfolioPageProps) {
               </a>
               <a
                 href={`/${lang}/contact`}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-kahu-charcoal text-kahu-charcoal text-body-sm font-medium rounded-sm hover:bg-kahu-charcoal hover:text-kahu-ivory transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-kahu-bark text-kahu-bark text-body-sm font-medium rounded-sm hover:bg-kahu-cream/50 transition-colors"
               >
                 {lang === "fr" ? "Nous contacter" : "Contact us"}
               </a>
