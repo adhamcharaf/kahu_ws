@@ -33,16 +33,6 @@ export function PhilosophyBlock() {
       <WoodGrainTexture opacity={0.06} />
 
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center relative">
-        {/* Quote marks - Animated */}
-        <motion.div
-          className="font-display text-[120px] leading-none text-kahu-cream/10 absolute -top-8 left-0 select-none"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: DURATION.slow, ease: KAHU_EASE }}
-        >
-          &ldquo;
-        </motion.div>
-
         {/* Main Quote with Text Reveal */}
         <blockquote className="font-display text-display-sm text-kahu-cream italic relative z-10">
           {shouldReduceMotion ? (
@@ -94,16 +84,6 @@ export function PhilosophyBlock() {
           </Button>
         </motion.div>
       </div>
-
-      {/* Closing quote mark */}
-      <motion.div
-        className="font-display text-[120px] leading-none text-kahu-cream/10 absolute bottom-0 right-8 select-none hidden lg:block"
-        initial={{ opacity: 0, y: -20 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: DURATION.slow, delay: 0.3, ease: KAHU_EASE }}
-      >
-        &rdquo;
-      </motion.div>
     </section>
   );
 }
