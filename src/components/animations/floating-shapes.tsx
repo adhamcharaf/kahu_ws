@@ -273,6 +273,43 @@ export function GrainTexture({
 }
 
 // ============================================================================
+// Wood Grain Texture - Texture de veines de bois subtile
+// ============================================================================
+
+interface WoodGrainTextureProps {
+  className?: string;
+  opacity?: number;
+  /** Couleur des veines (défaut: couleur claire pour fond sombre) */
+  color?: string;
+}
+
+export function WoodGrainTexture({
+  className = "",
+  opacity = 0.04,
+  color = "#d4c4b0", // kahu-cream
+}: WoodGrainTextureProps) {
+  // SVG avec veines de bois horizontales - encodé pour URL (traits fins et subtils)
+  const woodGrainSvg = `%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='60' viewBox='0 0 200 60'%3E%3Cpath d='M0,8 Q50,4 100,8 T200,8' stroke='${encodeURIComponent(color)}' stroke-width='0.4' fill='none'/%3E%3Cpath d='M0,16 Q60,20 120,16 T200,16' stroke='${encodeURIComponent(color)}' stroke-width='0.3' fill='none'/%3E%3Cpath d='M0,24 Q40,22 80,24 T160,24 T200,24' stroke='${encodeURIComponent(color)}' stroke-width='0.5' fill='none'/%3E%3Cpath d='M0,32 Q70,36 140,32 T200,32' stroke='${encodeURIComponent(color)}' stroke-width='0.25' fill='none'/%3E%3Cpath d='M0,40 Q30,38 60,40 T120,40 T200,40' stroke='${encodeURIComponent(color)}' stroke-width='0.4' fill='none'/%3E%3Cpath d='M0,48 Q50,52 100,48 T200,48' stroke='${encodeURIComponent(color)}' stroke-width='0.3' fill='none'/%3E%3Cpath d='M0,56 Q80,54 160,56 T200,56' stroke='${encodeURIComponent(color)}' stroke-width='0.35' fill='none'/%3E%3C/svg%3E`;
+
+  return (
+    <div
+      className={`absolute inset-0 pointer-events-none ${className}`}
+      aria-hidden="true"
+      style={{ opacity }}
+    >
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,${woodGrainSvg}")`,
+          backgroundRepeat: "repeat",
+          backgroundSize: "200px 60px",
+        }}
+      />
+    </div>
+  );
+}
+
+// ============================================================================
 // Ambient Glow - Lueur ambiante qui pulse doucement
 // ============================================================================
 

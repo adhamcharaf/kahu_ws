@@ -139,6 +139,14 @@ export interface Dictionary {
           description: string;
         }>;
       };
+      realisations: {
+        title: string;
+        subtitle: string;
+        items: Array<{
+          title: string;
+          description: string;
+        }>;
+      };
       projectTypes: {
         title: string;
         types: Array<{
@@ -156,23 +164,23 @@ export interface Dictionary {
     title: string;
     subtitle: string;
     sections: {
-      renovation: { title: string; description: string };
-      amenagement: { title: string; description: string };
-      agrandissement: { title: string; description: string };
+      amenagementRenovation: { title: string; description: string };
+      constructionExtension: { title: string; description: string };
+      transformation: { title: string; description: string };
     };
-    renovation: {
+    amenagementRenovation: {
       title: string;
       subtitle: string;
       heroText: string;
       features: string[];
     };
-    amenagement: {
+    constructionExtension: {
       title: string;
       subtitle: string;
       heroText: string;
       features: string[];
     };
-    agrandissement: {
+    transformation: {
       title: string;
       subtitle: string;
       heroText: string;

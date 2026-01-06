@@ -181,6 +181,16 @@
           }
         ]
       },
+      "realisations": {
+        "title": "Our Creations",
+        "subtitle": "Discover some of our bespoke creations",
+        "items": [
+          {
+            "title": "Placeholder Project",
+            "description": "Description of the bespoke project. This text will be replaced with a real project description including details about the materials used, dimensions and the story of this unique creation."
+          }
+        ]
+      },
       "projectTypes": {
         "title": "Project types",
         "types": [
@@ -210,52 +220,52 @@
   },
   "espace": {
     "title": "Spaces",
-    "subtitle": "Design & Renovation",
+    "subtitle": "Architecture & Interior Design",
     "sections": {
-      "renovation": {
-        "title": "Renovation",
-        "description": "Transform your spaces with elegance"
+      "amenagementRenovation": {
+        "title": "Design & Renovation",
+        "description": "Rethink and transform your existing spaces"
       },
-      "amenagement": {
-        "title": "Layout",
-        "description": "Optimize every square meter intelligently"
+      "constructionExtension": {
+        "title": "Construction & Extension",
+        "description": "Build and expand your home"
       },
-      "agrandissement": {
-        "title": "Extension",
-        "description": "Turnkey extensions and outbuildings"
+      "transformation": {
+        "title": "Space Transformation",
+        "description": "Reinvent the purpose of your spaces"
       }
     },
-    "renovation": {
-      "title": "Renovation",
-      "subtitle": "Transform your spaces with elegance",
+    "amenagementRenovation": {
+      "title": "Design & Renovation",
+      "subtitle": "Rethink and transform your existing spaces",
       "heroText": "Bring your existing spaces back to life. We rethink the layout, materials and finishes to create an interior that reflects you.",
       "features": [
         "Complete or partial renovation",
-        "Layout redesign",
+        "Bespoke layout design",
         "Noble materials selection",
         "Complete project management"
       ]
     },
-    "amenagement": {
-      "title": "Layout",
-      "subtitle": "Optimize every square meter",
-      "heroText": "Kitchens, dressings, offices, closets... We design bespoke layouts that intelligently optimize your space.",
-      "features": [
-        "Bespoke design",
-        "Space optimization",
-        "Quality materials",
-        "Careful installation"
-      ]
-    },
-    "agrandissement": {
-      "title": "Extension",
-      "subtitle": "Turnkey extensions and outbuildings",
-      "heroText": "Gain space with a harmonious extension. From design to construction, we manage your project from A to Z.",
+    "constructionExtension": {
+      "title": "Construction & Extension",
+      "subtitle": "Build and expand your home",
+      "heroText": "Realize your new construction or extension projects. From architectural design to delivery, we manage your project from A to Z.",
       "features": [
         "Feasibility study",
         "Architectural design",
-        "Works management",
-        "Quality finishes"
+        "Complete works management",
+        "High-end finishes"
+      ]
+    },
+    "transformation": {
+      "title": "Space Transformation",
+      "subtitle": "Reinvent the purpose of your spaces",
+      "heroText": "Transform the purpose of your spaces. Office to bedroom, garage to studio, commercial space to residence... We rethink each space according to your needs.",
+      "features": [
+        "Change of use",
+        "Volume optimization",
+        "Compliance updates",
+        "Administrative support"
       ]
     },
     "cta": {

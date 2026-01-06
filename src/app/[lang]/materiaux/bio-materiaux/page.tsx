@@ -1,6 +1,7 @@
 import { type Locale, isValidLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { SectionReveal } from "@/components/animations/scroll-cinema";
+import { WoodGrainTexture } from "@/components/animations/floating-shapes";
 import { MaterialGrid, MaterialTimeline } from "@/components/ui/material-card";
 import { bioMaterials } from "@/data/materials";
 
@@ -88,8 +89,9 @@ export default async function BioMateriauxPage({ params }: BioMateriauxPageProps
       </section>
 
       {/* Philosophy Section */}
-      <section className="py-16 md:py-24 bg-kahu-bark text-kahu-ivory">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative py-16 md:py-24 bg-kahu-bark text-kahu-ivory overflow-hidden">
+        <WoodGrainTexture opacity={0.06} />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <SectionReveal>
               <h2 className="font-display text-display-md mb-6">

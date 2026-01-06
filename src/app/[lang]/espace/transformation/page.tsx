@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { type Locale, isValidLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { SectionReveal } from "@/components/animations/scroll-cinema";
+import { WoodGrainTexture } from "@/components/animations/floating-shapes";
 import { ProjectCard } from "@/components/ui/project-card";
 import { ProjectGridSkeleton } from "@/components/ui/skeleton";
 import { getProjects } from "@/lib/notion";
@@ -10,32 +11,31 @@ import { generateWhatsAppLink } from "@/lib/utils";
 
 export const revalidate = 60;
 
-interface RenovationPageProps {
+interface TransformationPageProps {
   params: Promise<{ lang: string }>;
 }
 
-export async function generateMetadata({ params }: RenovationPageProps) {
+export async function generateMetadata({ params }: TransformationPageProps) {
   const { lang: langParam } = await params;
   const lang = (isValidLocale(langParam) ? langParam : 'fr') as Locale;
   const dict = await getDictionary(lang);
 
   return {
-    title: dict.espace.renovation.title,
-    description: dict.espace.renovation.heroText,
+    title: dict.espace.transformation.title,
+    description: dict.espace.transformation.heroText,
   };
 }
 
 async function ProjectsGrid({ lang }: { lang: Locale }) {
   const projects = await getProjects();
   // TODO: Filter by project type when available in Notion schema
-  // const filteredProjects = projects.filter(p => p.type === 'renovation');
   const filteredProjects = projects;
 
   if (filteredProjects.length === 0) {
     return (
       <div className="text-center py-16">
         <p className="text-body-md text-kahu-taupe">
-          Aucun projet de rénovation disponible pour le moment.
+          Aucun projet disponible pour le moment.
         </p>
       </div>
     );
@@ -55,7 +55,7 @@ async function ProjectsGrid({ lang }: { lang: Locale }) {
   );
 }
 
-export default async function RenovationPage({ params }: RenovationPageProps) {
+export default async function TransformationPage({ params }: TransformationPageProps) {
   const { lang: langParam } = await params;
   const lang = (isValidLocale(langParam) ? langParam : 'fr') as Locale;
   const dict = await getDictionary(lang);
@@ -70,17 +70,17 @@ export default async function RenovationPage({ params }: RenovationPageProps) {
               {dict.espace.title}
             </span>
             <h1 className="font-display text-display-xl text-kahu-terracotta uppercase tracking-[0.1em]">
-              {dict.espace.renovation.title}
+              {dict.espace.transformation.title}
             </h1>
             <p className="mt-6 text-body-lg text-kahu-taupe max-w-2xl">
-              {dict.espace.renovation.heroText}
+              {dict.espace.transformation.heroText}
             </p>
           </SectionReveal>
 
           {/* Features */}
           <SectionReveal delay={0.2}>
             <ul className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl">
-              {dict.espace.renovation.features.map((feature, index) => (
+              {dict.espace.transformation.features.map((feature, index) => (
                 <li key={index} className="flex items-center gap-3 text-body-md text-kahu-bark">
                   <span className="w-2 h-2 bg-kahu-terracotta rounded-full shrink-0" />
                   {feature}
@@ -101,8 +101,9 @@ export default async function RenovationPage({ params }: RenovationPageProps) {
       </section>
 
       {/* CTA Section */}
-      <section className="py-section bg-kahu-bark">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
+      <section className="relative py-section bg-kahu-bark overflow-hidden">
+        <WoodGrainTexture opacity={0.06} />
+        <div className="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-display text-display-sm text-kahu-cream">
             {dict.espace.cta.title}
           </h2>

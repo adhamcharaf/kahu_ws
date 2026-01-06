@@ -181,6 +181,16 @@
           }
         ]
       },
+      "realisations": {
+        "title": "Nos Réalisations",
+        "subtitle": "Découvrez quelques-unes de nos créations sur-mesure",
+        "items": [
+          {
+            "title": "Projet Placeholder",
+            "description": "Description du projet sur-mesure. Ce texte sera remplacé par une vraie description de projet avec les détails des matériaux utilisés, les dimensions et l'histoire de cette création unique."
+          }
+        ]
+      },
       "projectTypes": {
         "title": "Types de projets",
         "types": [
@@ -210,52 +220,52 @@
   },
   "espace": {
     "title": "Espace",
-    "subtitle": "Aménagement & Rénovation",
+    "subtitle": "Architecture & Design d'Intérieur",
     "sections": {
-      "renovation": {
-        "title": "Rénovation",
-        "description": "Transformer vos espaces avec élégance"
+      "amenagementRenovation": {
+        "title": "Aménagement et Rénovation",
+        "description": "Repenser et transformer vos espaces existants"
       },
-      "amenagement": {
-        "title": "Aménagement",
-        "description": "Optimiser chaque mètre carré avec intelligence"
+      "constructionExtension": {
+        "title": "Construction et Extension",
+        "description": "Construire et agrandir votre habitat"
       },
-      "agrandissement": {
-        "title": "Agrandissement",
-        "description": "Extensions et dépendances clé en main"
+      "transformation": {
+        "title": "Transformation d'Espace",
+        "description": "Réinventer la fonction de vos espaces"
       }
     },
-    "renovation": {
-      "title": "Rénovation",
-      "subtitle": "Transformer vos espaces avec élégance",
+    "amenagementRenovation": {
+      "title": "Aménagement et Rénovation",
+      "subtitle": "Repenser et transformer vos espaces existants",
       "heroText": "Redonner vie à vos espaces existants. Nous repensons l'agencement, les matériaux et les finitions pour créer un intérieur qui vous ressemble.",
       "features": [
         "Rénovation complète ou partielle",
-        "Repenser l'agencement",
+        "Conception d'aménagements sur-mesure",
         "Sélection des matériaux nobles",
         "Suivi de chantier complet"
       ]
     },
-    "amenagement": {
-      "title": "Aménagement",
-      "subtitle": "Optimiser chaque mètre carré",
-      "heroText": "Cuisines, dressings, bureaux, placards... Nous concevons des aménagements sur-mesure qui optimisent intelligemment votre espace.",
-      "features": [
-        "Conception sur-mesure",
-        "Optimisation de l'espace",
-        "Matériaux de qualité",
-        "Installation soignée"
-      ]
-    },
-    "agrandissement": {
-      "title": "Agrandissement",
-      "subtitle": "Extensions et dépendances clé en main",
-      "heroText": "Gagnez de l'espace avec une extension harmonieuse. Du design à la construction, nous gérons votre projet de A à Z.",
+    "constructionExtension": {
+      "title": "Construction et Extension",
+      "subtitle": "Construire et agrandir votre habitat",
+      "heroText": "Réalisez vos projets de construction neuve ou d'extension. Du design architectural à la livraison, nous gérons votre projet de A à Z.",
       "features": [
         "Étude de faisabilité",
         "Design architectural",
-        "Gestion des travaux",
-        "Finitions soignées"
+        "Gestion complète des travaux",
+        "Finitions haut de gamme"
+      ]
+    },
+    "transformation": {
+      "title": "Transformation d'Espace",
+      "subtitle": "Réinventer la fonction de vos espaces",
+      "heroText": "Transformez la vocation de vos espaces. Bureau en chambre, garage en studio, local commercial en habitation... Nous repensons chaque espace selon vos besoins.",
+      "features": [
+        "Changement de destination",
+        "Optimisation des volumes",
+        "Mise aux normes",
+        "Accompagnement administratif"
       ]
     },
     "cta": {

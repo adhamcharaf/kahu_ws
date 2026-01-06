@@ -10,7 +10,7 @@ import {
   CinemaStagger,
   CinemaStaggerItem,
 } from "@/components/animations/scroll-cinema";
-import { GrainTexture, AmbientGlow } from "@/components/animations/floating-shapes";
+import { GrainTexture, AmbientGlow, WoodGrainTexture } from "@/components/animations/floating-shapes";
 import { usePrefersReducedMotion, useIsDesktop } from "@/hooks/use-media-query";
 import { EASE } from "@/lib/animation-config";
 import type { Locale } from "@/lib/i18n/config";
@@ -90,24 +90,70 @@ export function SurMesureContent({ lang, dict }: SurMesureContentProps) {
         </div>
       </ColorMorphSection>
 
-      {/* ============ Project Types Section ============ */}
-      <section className="relative py-section bg-kahu-bark overflow-hidden">
+      {/* ============ Réalisations Section ============ */}
+      <section className="relative py-section bg-kahu-cream overflow-hidden">
         <GrainTexture opacity={0.03} />
 
         {isDesktop && (
-          <>
-            <AmbientGlow
-              color="rgba(255, 248, 240, 0.04)"
-              size={400}
-              position={{ x: "20%", y: "30%" }}
-            />
-            <AmbientGlow
-              color="rgba(139, 58, 58, 0.06)"
-              size={350}
-              position={{ x: "80%", y: "70%" }}
-            />
-          </>
+          <AmbientGlow
+            color="rgba(92, 107, 74, 0.05)"
+            size={400}
+            position={{ x: "15%", y: "50%" }}
+          />
         )}
+
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionReveal variant="blur-up">
+            <h2 className="font-display text-display-md text-kahu-charcoal text-center">
+              {surMesure.realisations.title}
+            </h2>
+          </SectionReveal>
+
+          <SectionReveal variant="fade-up" delay={0.2}>
+            <p className="mt-4 text-body-md text-kahu-taupe text-center max-w-2xl mx-auto">
+              {surMesure.realisations.subtitle}
+            </p>
+          </SectionReveal>
+
+          {/* Réalisation items - Text left, Image right */}
+          <div className="mt-16 space-y-16">
+            {surMesure.realisations.items.map((item, index) => (
+              <SectionReveal key={index} variant="fade-up" delay={0.3}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+                  {/* Text - Left */}
+                  <div className="order-2 md:order-1">
+                    <h3 className="font-display text-display-sm text-kahu-charcoal">
+                      {item.title}
+                    </h3>
+                    <p className="mt-4 text-body-md text-kahu-taupe leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+
+                  {/* Image - Right */}
+                  <div className="order-1 md:order-2">
+                    <motion.div
+                      className="aspect-[4/3] bg-kahu-cream-deep rounded-sm overflow-hidden"
+                      whileHover={shouldReduceMotion ? {} : { scale: 1.02 }}
+                      transition={{ duration: 0.3, ease: EASE.smooth }}
+                    >
+                      {/* Placeholder image */}
+                      <div className="w-full h-full flex items-center justify-center text-kahu-taupe border-2 border-dashed border-kahu-cream-warm">
+                        <span className="text-body-sm">Image placeholder</span>
+                      </div>
+                    </motion.div>
+                  </div>
+                </div>
+              </SectionReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ Project Types Section ============ */}
+      <section className="relative py-section bg-kahu-bark overflow-hidden">
+        <GrainTexture opacity={0.03} />
+        <WoodGrainTexture opacity={0.06} />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionReveal variant="blur-up">

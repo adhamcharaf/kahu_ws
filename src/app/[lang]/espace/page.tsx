@@ -27,22 +27,22 @@ export default async function EspacePage({ params }: EspacePageProps) {
 
   const sections = [
     {
-      href: `/${lang}/espace/renovation`,
-      image: "/images/renovation.jpg",
-      title: dict.espace.sections.renovation.title,
-      description: dict.espace.sections.renovation.description,
-    },
-    {
-      href: `/${lang}/espace/amenagement`,
+      href: `/${lang}/espace/amenagement-renovation`,
       image: "/images/amenagement.jpg",
-      title: dict.espace.sections.amenagement.title,
-      description: dict.espace.sections.amenagement.description,
+      title: dict.espace.sections.amenagementRenovation.title,
+      description: dict.espace.sections.amenagementRenovation.description,
     },
     {
-      href: `/${lang}/espace/agrandissement`,
+      href: `/${lang}/espace/construction-extension`,
       image: "/images/agrandissement.jpg",
-      title: dict.espace.sections.agrandissement.title,
-      description: dict.espace.sections.agrandissement.description,
+      title: dict.espace.sections.constructionExtension.title,
+      description: dict.espace.sections.constructionExtension.description,
+    },
+    {
+      href: `/${lang}/espace/transformation`,
+      image: "/images/renovation.jpg",
+      title: dict.espace.sections.transformation.title,
+      description: dict.espace.sections.transformation.description,
     },
   ];
 
